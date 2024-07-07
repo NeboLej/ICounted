@@ -11,6 +11,11 @@
 		8EBB739A2C3AB14E00A0A899 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB73992C3AB14E00A0A899 /* ContentView.swift */; };
 		8EBB739C2C3AB14F00A0A899 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EBB739B2C3AB14F00A0A899 /* Assets.xcassets */; };
 		8EBB739F2C3AB14F00A0A899 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EBB739E2C3AB14F00A0A899 /* Preview Assets.xcassets */; };
+		8EBB73A92C3AB2D000A0A899 /* CountersListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB73A82C3AB2D000A0A899 /* CountersListScreen.swift */; };
+		8EBB73AB2C3AB31A00A0A899 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB73AA2C3AB31A00A0A899 /* AppReducer.swift */; };
+		8EBB73AD2C3AB34300A0A899 /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB73AC2C3AB34300A0A899 /* AppAction.swift */; };
+		8EBB73AF2C3AB35800A0A899 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB73AE2C3AB35800A0A899 /* AppState.swift */; };
+		8EBB73B12C3AB36900A0A899 /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB73B02C3AB36900A0A899 /* AppStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,11 @@
 		8EBB73992C3AB14E00A0A899 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8EBB739B2C3AB14F00A0A899 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8EBB739E2C3AB14F00A0A899 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8EBB73A82C3AB2D000A0A899 /* CountersListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountersListScreen.swift; sourceTree = "<group>"; };
+		8EBB73AA2C3AB31A00A0A899 /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
+		8EBB73AC2C3AB34300A0A899 /* AppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
+		8EBB73AE2C3AB35800A0A899 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		8EBB73B02C3AB36900A0A899 /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +61,7 @@
 		8EBB73962C3AB14E00A0A899 /* ICounted */ = {
 			isa = PBXGroup;
 			children = (
+				8EBB73A52C3AB23D00A0A899 /* 🪇UI */,
 				8EBB73972C3AB14E00A0A899 /* ICountedApp.swift */,
 				8EBB73992C3AB14E00A0A899 /* ContentView.swift */,
 				8EBB739B2C3AB14F00A0A899 /* Assets.xcassets */,
@@ -65,6 +76,34 @@
 				8EBB739E2C3AB14F00A0A899 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8EBB73A52C3AB23D00A0A899 /* 🪇UI */ = {
+			isa = PBXGroup;
+			children = (
+				8EBB73A72C3AB29D00A0A899 /* CountersListScreen */,
+				8EBB73A62C3AB27200A0A899 /* 🐺Base */,
+			);
+			path = "🪇UI";
+			sourceTree = "<group>";
+		};
+		8EBB73A62C3AB27200A0A899 /* 🐺Base */ = {
+			isa = PBXGroup;
+			children = (
+				8EBB73AA2C3AB31A00A0A899 /* AppReducer.swift */,
+				8EBB73AC2C3AB34300A0A899 /* AppAction.swift */,
+				8EBB73AE2C3AB35800A0A899 /* AppState.swift */,
+				8EBB73B02C3AB36900A0A899 /* AppStore.swift */,
+			);
+			path = "🐺Base";
+			sourceTree = "<group>";
+		};
+		8EBB73A72C3AB29D00A0A899 /* CountersListScreen */ = {
+			isa = PBXGroup;
+			children = (
+				8EBB73A82C3AB2D000A0A899 /* CountersListScreen.swift */,
+			);
+			path = CountersListScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +176,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EBB73A92C3AB2D000A0A899 /* CountersListScreen.swift in Sources */,
 				8EBB739A2C3AB14E00A0A899 /* ContentView.swift in Sources */,
+				8EBB73AD2C3AB34300A0A899 /* AppAction.swift in Sources */,
+				8EBB73AF2C3AB35800A0A899 /* AppState.swift in Sources */,
+				8EBB73AB2C3AB31A00A0A899 /* AppReducer.swift in Sources */,
+				8EBB73B12C3AB36900A0A899 /* AppStore.swift in Sources */,
 				8EBB73982C3AB14E00A0A899 /* ICountedApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
