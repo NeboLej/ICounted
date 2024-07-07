@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class Store: ObservableObject {
+final class AppStore: ObservableObject {
      @Published private(set) var state: AppState
      
      init(state: AppState = AppState() ) {

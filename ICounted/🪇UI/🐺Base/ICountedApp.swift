@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct ICountedApp: App {
+    
+    let store = AppStore()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CountersListScreen().environmentObject(store)
         }
     }
 }
