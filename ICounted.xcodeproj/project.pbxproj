@@ -16,6 +16,8 @@
 		8EBB73AF2C3AB35800A0A899 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB73AE2C3AB35800A0A899 /* AppState.swift */; };
 		8EBB73B12C3AB36900A0A899 /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB73B02C3AB36900A0A899 /* AppStore.swift */; };
 		8EBB73B32C3AB55700A0A899 /* CounterListScreenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB73B22C3AB55700A0A899 /* CounterListScreenStore.swift */; };
+		8EBB73B52C3ABFE300A0A899 /* ShadowModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB73B42C3ABFE300A0A899 /* ShadowModifier.swift */; };
+		8EBB73BA2C3AD89900A0A899 /* CounterValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB73B92C3AD89900A0A899 /* CounterValueView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		8EBB73AE2C3AB35800A0A899 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		8EBB73B02C3AB36900A0A899 /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		8EBB73B22C3AB55700A0A899 /* CounterListScreenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterListScreenStore.swift; sourceTree = "<group>"; };
+		8EBB73B42C3ABFE300A0A899 /* ShadowModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowModifier.swift; sourceTree = "<group>"; };
+		8EBB73B92C3AD89900A0A899 /* CounterValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterValueView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,7 @@
 		8EBB73962C3AB14E00A0A899 /* ICounted */ = {
 			isa = PBXGroup;
 			children = (
+				8EBB73B72C3AD4FA00A0A899 /* Resources */,
 				8EBB73A52C3AB23D00A0A899 /* 🪇UI */,
 				8EBB739B2C3AB14F00A0A899 /* Assets.xcassets */,
 				8EBB739D2C3AB14F00A0A899 /* Preview Content */,
@@ -79,6 +84,8 @@
 		8EBB73A52C3AB23D00A0A899 /* 🪇UI */ = {
 			isa = PBXGroup;
 			children = (
+				8EBB73B82C3AD87000A0A899 /* Components */,
+				8EBB73B62C3AC21900A0A899 /* 🐣Modifiers */,
 				8EBB73A72C3AB29D00A0A899 /* CountersListScreen */,
 				8EBB73A62C3AB27200A0A899 /* 🐺Base */,
 			);
@@ -104,6 +111,29 @@
 				8EBB73B22C3AB55700A0A899 /* CounterListScreenStore.swift */,
 			);
 			path = CountersListScreen;
+			sourceTree = "<group>";
+		};
+		8EBB73B62C3AC21900A0A899 /* 🐣Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				8EBB73B42C3ABFE300A0A899 /* ShadowModifier.swift */,
+			);
+			path = "🐣Modifiers";
+			sourceTree = "<group>";
+		};
+		8EBB73B72C3AD4FA00A0A899 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		8EBB73B82C3AD87000A0A899 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				8EBB73B92C3AD89900A0A899 /* CounterValueView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,9 +210,11 @@
 				8EBB73A92C3AB2D000A0A899 /* CountersListScreen.swift in Sources */,
 				8EBB73AD2C3AB34300A0A899 /* AppAction.swift in Sources */,
 				8EBB73AF2C3AB35800A0A899 /* AppState.swift in Sources */,
+				8EBB73B52C3ABFE300A0A899 /* ShadowModifier.swift in Sources */,
 				8EBB73AB2C3AB31A00A0A899 /* AppReducer.swift in Sources */,
 				8EBB73B12C3AB36900A0A899 /* AppStore.swift in Sources */,
 				8EBB73982C3AB14E00A0A899 /* ICountedApp.swift in Sources */,
+				8EBB73BA2C3AD89900A0A899 /* CounterValueView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

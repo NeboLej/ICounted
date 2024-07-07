@@ -6,7 +6,21 @@
 //
 
 import Foundation
+import Combine
 
 class CounterListScreenStore: ObservableObject {
+    
+    @Published var count: Int = 55
+    @Published var allCount: Int = 448
+    
+//    var cancel = Set<AnyCancellable>()
+//    
+//    init() {
+//        
+//        $count.sink { [weak self] coun in
+//            self?.ffCount = String(coun).map { String($0) }
+//        }.store(in: &cancel)
+//        
+//    }
     
 }
