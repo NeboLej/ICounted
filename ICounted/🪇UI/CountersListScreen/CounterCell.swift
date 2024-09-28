@@ -7,18 +7,9 @@
 
 import SwiftUI
 
-struct Counter: Identifiable {
-    let id: UUID = .init()
-    let name: String
-    let description: String
-    let count: Int
-    let lastRecord: Date
-    let colorHex: String
-    let isFavorites: Bool
-    let taggetCount: Int?
-}
-
 struct CounterCell: View {
+    
+    @EnvironmentObject var store: AppStore
     let counter: Counter
     
     var body: some View {
@@ -41,7 +32,10 @@ struct CounterCell: View {
                     }
                     Spacer()
                     VStack {
-                        Image(counter.isFavorites ? .starActive : .star)
+                        Image(counter.isFavorite ? .starActive : .star)
+                            .onTapGesture {
+                                store.dispatch(action: .toggleIsFavorite(counterId: counter.id))
+                            }
                         Spacer()
                     }
                 }
@@ -63,11 +57,17 @@ struct CounterCell: View {
                         Spacer()
                         Image(systemName: "arrow.2.squarepath")
                             .foregroundStyle(.textInfo)
+                            .onTapGesture {
+                                store.dispatch(action: .countMinus(counterId: counter.id))
+                            }
                     }
                     
                     RoundedRectangle(cornerRadius: 10)
                         .foregroundStyle(Color(hex: counter.colorHex))
                         .frame(width: 45)
+                        .onTapGesture {
+                            store.dispatch(action: .countPlus(counterId: counter.id))
+                        }
                         
                 }.frame(height: 45)
             }

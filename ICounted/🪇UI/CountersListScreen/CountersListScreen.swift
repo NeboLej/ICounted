@@ -43,6 +43,7 @@ struct CountersListScreen: View {
     private func counterList() -> some View {
         ForEach(store.state.counters) {
             CounterCell(counter: $0)
+                .environmentObject(store)
         }
     }
     
@@ -93,30 +94,3 @@ struct CountersListScreen: View {
     CountersListScreen()
         .environmentObject(TEST)
 }
-
-var TEST: AppStore = AppStore(state: AppState(counters: [
-    Counter(name: "Smoked some cigarettes ",
-            description: "how much have I smoked since winter sad sds da d dsfds fsd fsd fs fs f dsabsmndb as dabs djhbasf wf we fewf  qwdwqd qdzd as jsnkadjnakj ndkajsnd kaskd absdan dkjasn dkanskd jnak",
-            count: 20,
-            lastRecord: Date(),
-            colorHex: "04a6d9",
-            isFavorites: true,
-            taggetCount: nil),
-    
-    Counter(name: "Walking the dog",
-            description: "",
-            count: 104,
-            lastRecord: Date(),
-            colorHex: "ea9171",
-            isFavorites: false,
-            taggetCount: nil),
-    
-    Counter(name: "Jog in the mornings",
-            description: "run 30 times and evaluate the result",
-            count: 777,
-            lastRecord: Date(),
-            colorHex: "043464",
-            isFavorites: true,
-            taggetCount: nil),
-    
-]))
