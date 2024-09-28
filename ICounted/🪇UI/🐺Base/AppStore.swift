@@ -10,7 +10,7 @@ import Foundation
 final class AppStore: ObservableObject {
      @Published private(set) var state: AppState
      
-     init(state: AppState = AppState() ) {
+    init(state: AppState = TEST.state) {
          self.state = state
      }
      
@@ -18,3 +18,4 @@ final class AppStore: ObservableObject {
          state = reducer(state: state, action: action)
      }
  }
+

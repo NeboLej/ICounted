@@ -10,6 +10,8 @@ import Foundation
 func reducer(state: AppState, action: AppAction) -> AppState {
     var state = state
     
+    state.counters = []
+    
     switch action {
         
     }

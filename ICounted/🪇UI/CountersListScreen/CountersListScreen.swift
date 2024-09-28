@@ -14,30 +14,44 @@ struct CountersListScreen: View {
     
     
     var body: some View {
-        ZStack {
-            ScrollView {
-                HStack {
-                    counter()
-                        .modifier(ShadowModifier(foregroundColor: .red))
-                    Spacer(minLength: 12)
-                    allCount()
-                        .modifier(ShadowModifier(foregroundColor: .green))
-                    Spacer(minLength: 12)
-                    setting()
-                        .modifier(ShadowModifier(foregroundColor: .yellow))
-                }
+        ScrollView {
+            headerView()
                 .padding(.horizontal, 16)
                 .frame(height: 80)
-            }
+            Spacer(minLength: 30)
+            counterList()
+                .padding(.top, 8)
+                .padding(.horizontal, 16)
+        }.background(Color.background1)
+    }
+    
+    @ViewBuilder
+    private func headerView() -> some View {
+        HStack {
+            counter()
+                .modifier(ShadowModifier(foregroundColor: .background1))
+            Spacer(minLength: 12)
+            allCount()
+                .modifier(ShadowModifier(foregroundColor: .background1))
+            Spacer(minLength: 12)
+            setting()
+                .modifier(ShadowModifier(foregroundColor: .background2))
         }
-        .background(Color.yellow.opacity(0.1))
+    }
+    
+    @ViewBuilder
+    private func counterList() -> some View {
+        ForEach(store.state.counters) {
+            CounterCell(counter: $0)
+        }
     }
     
     @ViewBuilder
     private func counter() -> some View {
         VStack {
             Text("Counters")
-                .font(.custom("", size: 16))
+                .font(.system(size: 16))
+                .foregroundStyle(.textDark)
             Rectangle()
                 .frame(height: 1)
                 .padding(.horizontal, 16)
@@ -48,10 +62,13 @@ struct CountersListScreen: View {
     private func allCount() -> some View {
         VStack {
             Text("Count")
-                .font(.custom("", size: 16))
+                .font(.system(size: 16))
+                .foregroundStyle(.textDark)
             Text("all count + ")
-                .font(.custom("", size: 8))
+                .font(.system(size: 8))
+                .foregroundStyle(.textDark)
             Rectangle()
+                .fill(.black)
                 .frame(height: 1)
                 .padding(.horizontal, 16)
             CounterValueView(count: $localStore.allCount)
@@ -65,11 +82,41 @@ struct CountersListScreen: View {
                 .foregroundStyle(.blue)
                 .padding(.bottom, 3)
             Text("Settings")
-                .font(.custom("", size: 16))
+                .font(.system(size: 16))
+                .foregroundStyle(.textDark)
         }
     }
+    
 }
 
 #Preview {
     CountersListScreen()
+        .environmentObject(TEST)
 }
+
+var TEST: AppStore = AppStore(state: AppState(counters: [
+    Counter(name: "Smoked some cigarettes ",
+            description: "how much have I smoked since winter sad sds da d dsfds fsd fsd fs fs f dsabsmndb as dabs djhbasf wf we fewf  qwdwqd qdzd as jsnkadjnakj ndkajsnd kaskd absdan dkjasn dkanskd jnak",
+            count: 20,
+            lastRecord: Date(),
+            colorHex: "04a6d9",
+            isFavorites: true,
+            taggetCount: nil),
+    
+    Counter(name: "Walking the dog",
+            description: "",
+            count: 104,
+            lastRecord: Date(),
+            colorHex: "ea9171",
+            isFavorites: false,
+            taggetCount: nil),
+    
+    Counter(name: "Jog in the mornings",
+            description: "run 30 times and evaluate the result",
+            count: 777,
+            lastRecord: Date(),
+            colorHex: "043464",
+            isFavorites: true,
+            taggetCount: nil),
+    
+]))

@@ -32,16 +32,17 @@ struct ShadowModifier: ViewModifier {
             RoundedRectangle(cornerRadius: cornerRadius)
                 .shadow(color: Color(shadowColor), radius: 0, x: xOffset, y: yOffser)
                 .foregroundStyle(Color(foregroundColor))
-                .overlay(
-                    content
-                )
             
             RoundedRectangle(cornerRadius: cornerRadius)
                 .stroke(Color(borderColor), lineWidth: lineWidth)
+            
+            content.cornerRadius(cornerRadius)               
         }
     }
 }
 
+
 #Preview {
     CountersListScreen()
+        .environmentObject(TEST)
 }

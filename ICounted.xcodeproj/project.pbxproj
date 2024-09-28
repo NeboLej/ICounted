@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E2BDA772CA80E8300941DE1 /* CounterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2BDA762CA80E8200941DE1 /* CounterCell.swift */; };
+		8E2BDA7A2CA82E5B00941DE1 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2BDA792CA82E5B00941DE1 /* Color+.swift */; };
+		8E2BDA7C2CA832FA00941DE1 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2BDA7B2CA832FA00941DE1 /* Date+.swift */; };
+		8E2BDA7E2CA8368900941DE1 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E2BDA7D2CA8368900941DE1 /* Colors.xcassets */; };
+		8E2BDA802CA8378E00941DE1 /* IconNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2BDA7F2CA8378E00941DE1 /* IconNameView.swift */; };
 		8EBB73982C3AB14E00A0A899 /* ICountedApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB73972C3AB14E00A0A899 /* ICountedApp.swift */; };
-		8EBB739C2C3AB14F00A0A899 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EBB739B2C3AB14F00A0A899 /* Assets.xcassets */; };
+		8EBB739C2C3AB14F00A0A899 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EBB739B2C3AB14F00A0A899 /* Images.xcassets */; };
 		8EBB739F2C3AB14F00A0A899 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EBB739E2C3AB14F00A0A899 /* Preview Assets.xcassets */; };
 		8EBB73A92C3AB2D000A0A899 /* CountersListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB73A82C3AB2D000A0A899 /* CountersListScreen.swift */; };
 		8EBB73AB2C3AB31A00A0A899 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB73AA2C3AB31A00A0A899 /* AppReducer.swift */; };
@@ -21,9 +26,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8E2BDA762CA80E8200941DE1 /* CounterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterCell.swift; sourceTree = "<group>"; };
+		8E2BDA792CA82E5B00941DE1 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
+		8E2BDA7B2CA832FA00941DE1 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		8E2BDA7D2CA8368900941DE1 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		8E2BDA7F2CA8378E00941DE1 /* IconNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconNameView.swift; sourceTree = "<group>"; };
 		8EBB73942C3AB14E00A0A899 /* ICounted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ICounted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EBB73972C3AB14E00A0A899 /* ICountedApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICountedApp.swift; sourceTree = "<group>"; };
-		8EBB739B2C3AB14F00A0A899 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8EBB739B2C3AB14F00A0A899 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8EBB739E2C3AB14F00A0A899 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8EBB73A82C3AB2D000A0A899 /* CountersListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountersListScreen.swift; sourceTree = "<group>"; };
 		8EBB73AA2C3AB31A00A0A899 /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
@@ -46,6 +56,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E2BDA782CA82E5100941DE1 /* Extensioins */ = {
+			isa = PBXGroup;
+			children = (
+				8E2BDA792CA82E5B00941DE1 /* Color+.swift */,
+				8E2BDA7B2CA832FA00941DE1 /* Date+.swift */,
+			);
+			path = Extensioins;
+			sourceTree = "<group>";
+		};
 		8EBB738B2C3AB14E00A0A899 = {
 			isa = PBXGroup;
 			children = (
@@ -65,9 +84,9 @@
 		8EBB73962C3AB14E00A0A899 /* ICounted */ = {
 			isa = PBXGroup;
 			children = (
+				8E2BDA782CA82E5100941DE1 /* Extensioins */,
 				8EBB73B72C3AD4FA00A0A899 /* Resources */,
 				8EBB73A52C3AB23D00A0A899 /* 🪇UI */,
-				8EBB739B2C3AB14F00A0A899 /* Assets.xcassets */,
 				8EBB739D2C3AB14F00A0A899 /* Preview Content */,
 			);
 			path = ICounted;
@@ -109,6 +128,7 @@
 			children = (
 				8EBB73A82C3AB2D000A0A899 /* CountersListScreen.swift */,
 				8EBB73B22C3AB55700A0A899 /* CounterListScreenStore.swift */,
+				8E2BDA762CA80E8200941DE1 /* CounterCell.swift */,
 			);
 			path = CountersListScreen;
 			sourceTree = "<group>";
@@ -124,6 +144,8 @@
 		8EBB73B72C3AD4FA00A0A899 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8E2BDA7D2CA8368900941DE1 /* Colors.xcassets */,
+				8EBB739B2C3AB14F00A0A899 /* Images.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -132,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				8EBB73B92C3AD89900A0A899 /* CounterValueView.swift */,
+				8E2BDA7F2CA8378E00941DE1 /* IconNameView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -194,8 +217,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E2BDA7E2CA8368900941DE1 /* Colors.xcassets in Resources */,
 				8EBB739F2C3AB14F00A0A899 /* Preview Assets.xcassets in Resources */,
-				8EBB739C2C3AB14F00A0A899 /* Assets.xcassets in Resources */,
+				8EBB739C2C3AB14F00A0A899 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,13 +230,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E2BDA772CA80E8300941DE1 /* CounterCell.swift in Sources */,
 				8EBB73B32C3AB55700A0A899 /* CounterListScreenStore.swift in Sources */,
 				8EBB73A92C3AB2D000A0A899 /* CountersListScreen.swift in Sources */,
+				8E2BDA7C2CA832FA00941DE1 /* Date+.swift in Sources */,
+				8E2BDA802CA8378E00941DE1 /* IconNameView.swift in Sources */,
 				8EBB73AD2C3AB34300A0A899 /* AppAction.swift in Sources */,
 				8EBB73AF2C3AB35800A0A899 /* AppState.swift in Sources */,
 				8EBB73B52C3ABFE300A0A899 /* ShadowModifier.swift in Sources */,
 				8EBB73AB2C3AB31A00A0A899 /* AppReducer.swift in Sources */,
 				8EBB73B12C3AB36900A0A899 /* AppStore.swift in Sources */,
+				8E2BDA7A2CA82E5B00941DE1 /* Color+.swift in Sources */,
 				8EBB73982C3AB14E00A0A899 /* ICountedApp.swift in Sources */,
 				8EBB73BA2C3AD89900A0A899 /* CounterValueView.swift in Sources */,
 			);
@@ -348,6 +376,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ICounted/Preview Content\"";
+				DEVELOPMENT_TEAM = 955DP87LHM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -376,6 +405,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ICounted/Preview Content\"";
+				DEVELOPMENT_TEAM = 955DP87LHM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
