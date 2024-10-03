@@ -13,6 +13,13 @@ class CounterListScreenStore: ObservableObject {
     @Published var count: Int = 55
     @Published var allCount: Int = 448
     
+    @Published var isCreateCounter: Bool = false
+    
+    
+    func createCounter() {
+        isCreateCounter = true
+    }
+    
 //    var cancel = Set<AnyCancellable>()
 //    
 //    init() {
