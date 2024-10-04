@@ -44,7 +44,6 @@ struct ICTextField: View {
         ZStack(alignment: .top) {
             TextField("", text: $text, prompt: Text(placeholder).foregroundStyle(.textInfo.opacity(0.5)), axis: .vertical)
                 .lineLimit(lineLimit)
-//                .frame(height: 48)
                 .padding(EdgeInsets(top: 12, leading: 12, bottom: 10, trailing: 12))
                 .background(.white)
                 .tint(.blue)
@@ -59,12 +58,12 @@ struct ICTextField: View {
                 .onAppear { calculateProgress(text: text) }
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(lineWidth: 1.0)
+                        .stroke(lineWidth: 3.0)
                         .foregroundStyle(.black)
                 )
+                .cornerRadius(10)
+                .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/, radius: 0, x: 3, y: 4)
                 .padding(.top, 2)
-               
-                
             
             ICTextProgressBar(progress: $progress)
                 .frame(height: 5)
