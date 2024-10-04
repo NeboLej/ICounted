@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct IconNameView: View {
+struct ICIconNameView: View {
     
     let name: String
     let color: Color
@@ -46,5 +46,5 @@ struct IconNameView: View {
 }
 
 #Preview {
-    IconNameView(name: "asd ds asd ff", color: .red)
+    ICIconNameView(name: "asd ds asd ff", color: .red)
 }

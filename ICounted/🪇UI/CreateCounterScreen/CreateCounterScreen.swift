@@ -14,15 +14,31 @@ struct CreateCounterScreen: View {
     
     var body: some View {
         VStack {
-            HeaderView(name: localStore.name.isEmpty ? "New counter" : localStore.name, color: localStore.color)
-            ICTextField(text: $localStore.name, name: "Name", placeholder: "counter name", maxLength: 30)
-                .padding([.horizontal, .top], 10)
+            ICHeaderView(name: localStore.name.isEmpty ? "New counter" : localStore.name, color: localStore.color)
             
-            HStack(alignment: .top, spacing: 24) {
-                ICTextField(text: $localStore.description, name: "Description", placeholder: "counter description", lineLimit: 2...6, maxLength: 200)
-                colorPicker()
-            }.padding([.horizontal, .top], 10)
-
+            Group {
+                ICTextField(text: $localStore.name, name: "Name", placeholder: "counter name", maxLength: 30)
+                    .padding(.top, 10)
+                
+                HStack(alignment: .top, spacing: 24) {
+                    ICTextField(text: $localStore.description, name: "Description", placeholder: "counter description", lineLimit: 2...6, maxLength: 200)
+                    colorPicker()
+                }.padding(.top, 10)
+                
+                HStack {
+                    ICNumberSetterView(number: $localStore.startValue)
+                    Spacer()
+                    Text("starting value")
+                        .font(.system(size: 14))
+                        .foregroundStyle(.textInfo)
+                }.padding(.top , 20)
+                
+                Rectangle()
+                    .foregroundStyle(.separatorColor1)
+                    .frame(height: 1)
+                
+            }.padding(.horizontal, 16)
+            
             Spacer()
         }
         .background(.background1)
@@ -34,7 +50,7 @@ struct CreateCounterScreen: View {
             Text("Color")
                 .font(.system(size: 14))
                 .foregroundStyle(.textInfo)
-            IconNameView(name: localStore.name, color: localStore.color)
+            ICIconNameView(name: localStore.name, color: localStore.color)
                 .modifier(ShadowModifier(foregroundColor: .background1, cornerRadius: 15, lineWidth: 1))
                 .frame(width: 68, height: 68)
         }

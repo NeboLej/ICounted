@@ -1,5 +1,5 @@
 //
-//  HeaderView.swift
+//  ICHeaderView.swift
 //  ICounted
 //
 //  Created by Nebo on 03.10.2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HeaderView: View {
+struct ICHeaderView: View {
     
     let name: String
     let color: Color
@@ -28,5 +28,5 @@ struct HeaderView: View {
 }
 
 #Preview {
-    HeaderView(name: "asd", color: .background2)
+    ICHeaderView(name: "asd", color: .background2)
 }

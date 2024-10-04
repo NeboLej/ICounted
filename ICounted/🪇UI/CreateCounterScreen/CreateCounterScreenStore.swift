@@ -12,4 +12,5 @@ class CreateCounterScreenStore: ObservableObject {
     @Published var name: String = ""
     @Published var description: String = ""
     @Published var color: Color = .blue
+    @Published var startValue: Int = 120
 }
