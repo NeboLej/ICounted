@@ -34,6 +34,9 @@ func reducer(state: AppState, action: AppAction) -> AppState {
             counters[counterIndex] = counter.copy(isFavorite: !counter.isFavorite)
             state.counters = counters
         }
+        
+    case .addCounter(counter: let counter):
+        state.counters.append(counter)
     }
     
     return state

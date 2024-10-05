@@ -12,32 +12,52 @@ struct CountersListScreen: View {
     @EnvironmentObject var store: AppStore
     @StateObject var localStore = CounterListScreenStore()
     
-    
     var body: some View {
-        ScrollView {
-            headerView()
-                .padding(.horizontal, 16)
-                .frame(height: 80)
-            Spacer(minLength: 30)
-            counterList()
-                .padding(.top, 8)
-                .padding(.horizontal, 16)
-        }.background(Color.background1)
+        ZStack(alignment: .bottomTrailing) {
+            ScrollView {
+                headerView()
+                    .padding(.horizontal, 16)
+                    .frame(height: 80)
+                Spacer(minLength: 30)
+                counterList()
+                    .padding(.top, 8)
+                    .padding(.horizontal, 16)
+            }.background(Color.background1)
+            
+            createCounterButton()
+                .frame(width: 54, height: 54)
+                .padding(.trailing, 16)
+            
+        }.sheet(isPresented: $localStore.isCreateCounter, content: {
+            CreateCounterScreen(isShow: $localStore.isCreateCounter)
+                .environmentObject(store)
+        })
     }
     
     @ViewBuilder
     private func headerView() -> some View {
-        HStack {
+        HStack(spacing: 12) {
             counter()
                 .modifier(ShadowModifier(foregroundColor: .background1))
-            Spacer(minLength: 12)
             allCount()
                 .modifier(ShadowModifier(foregroundColor: .background1))
-            Spacer(minLength: 12)
             setting()
                 .modifier(ShadowModifier(foregroundColor: .background2))
         }
     }
+    
+    @ViewBuilder
+    private func createCounterButton() -> some View {
+        Image(systemName: "plus.circle.fill")
+            .resizable()
+            .foregroundStyle(.background3)
+            .modifier(ShadowModifier(foregroundColor: .black, cornerRadius: 27))
+            .onTapGesture {
+                localStore.createCounter()
+            }
+
+    }
+    
     
     @ViewBuilder
     private func counterList() -> some View {

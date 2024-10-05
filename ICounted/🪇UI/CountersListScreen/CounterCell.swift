@@ -17,7 +17,7 @@ struct CounterCell: View {
         ZStack {
             VStack {
                 HStack {
-                    IconNameView(name: counter.name, color: Color(hex: counter.colorHex))
+                    ICIconNameView(name: counter.name, color: Color(hex: counter.colorHex))
                         .frame(width: 45, height: 45)
                     VStack(alignment: .leading) {
                         Text(counter.name)

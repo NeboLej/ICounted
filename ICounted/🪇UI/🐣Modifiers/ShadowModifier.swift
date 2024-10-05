@@ -33,10 +33,10 @@ struct ShadowModifier: ViewModifier {
                 .shadow(color: Color(shadowColor), radius: 0, x: xOffset, y: yOffser)
                 .foregroundStyle(Color(foregroundColor))
             
+            content.cornerRadius(cornerRadius)
+            
             RoundedRectangle(cornerRadius: cornerRadius)
                 .stroke(Color(borderColor), lineWidth: lineWidth)
-            
-            content.cornerRadius(cornerRadius)               
         }
     }
 }
