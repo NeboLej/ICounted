@@ -17,6 +17,7 @@
 		8E6FA9062CAF27C200DAAEA5 /* ICTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6FA9052CAF27C200DAAEA5 /* ICTextField.swift */; };
 		8E6FA9082CAF447800DAAEA5 /* ICTextProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6FA9072CAF447800DAAEA5 /* ICTextProgressBar.swift */; };
 		8E6FA90C2CB084BE00DAAEA5 /* ICNumberSetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6FA90B2CB084BE00DAAEA5 /* ICNumberSetterView.swift */; };
+		8E7C56172CB1CF6E006A56C9 /* ICToggleControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C56162CB1CF6E006A56C9 /* ICToggleControlView.swift */; };
 		8E9E1BBB2CAF1875002B12E2 /* CreateCounterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9E1BBA2CAF1875002B12E2 /* CreateCounterScreen.swift */; };
 		8E9E1BBD2CAF188D002B12E2 /* CreateCounterScreenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9E1BBC2CAF188D002B12E2 /* CreateCounterScreenStore.swift */; };
 		8EBB73982C3AB14E00A0A899 /* ICountedApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB73972C3AB14E00A0A899 /* ICountedApp.swift */; };
@@ -43,6 +44,7 @@
 		8E6FA9052CAF27C200DAAEA5 /* ICTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICTextField.swift; sourceTree = "<group>"; };
 		8E6FA9072CAF447800DAAEA5 /* ICTextProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICTextProgressBar.swift; sourceTree = "<group>"; };
 		8E6FA90B2CB084BE00DAAEA5 /* ICNumberSetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICNumberSetterView.swift; sourceTree = "<group>"; };
+		8E7C56162CB1CF6E006A56C9 /* ICToggleControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICToggleControlView.swift; sourceTree = "<group>"; };
 		8E9E1BBA2CAF1875002B12E2 /* CreateCounterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCounterScreen.swift; sourceTree = "<group>"; };
 		8E9E1BBC2CAF188D002B12E2 /* CreateCounterScreenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCounterScreenStore.swift; sourceTree = "<group>"; };
 		8EBB73942C3AB14E00A0A899 /* ICounted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ICounted.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -195,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				8EBB73B92C3AD89900A0A899 /* CounterValueView.swift */,
+				8E7C56162CB1CF6E006A56C9 /* ICToggleControlView.swift */,
 				8E6FA9032CAF23F600DAAEA5 /* ICHeaderView.swift */,
 				8E6FA9052CAF27C200DAAEA5 /* ICTextField.swift */,
 				8E6FA9072CAF447800DAAEA5 /* ICTextProgressBar.swift */,
@@ -285,6 +288,7 @@
 				8EBB73AD2C3AB34300A0A899 /* AppAction.swift in Sources */,
 				8E6FA9042CAF23F600DAAEA5 /* ICHeaderView.swift in Sources */,
 				8E6FA9062CAF27C200DAAEA5 /* ICTextField.swift in Sources */,
+				8E7C56172CB1CF6E006A56C9 /* ICToggleControlView.swift in Sources */,
 				8E2BDA862CA84E8800941DE1 /* Counter.swift in Sources */,
 				8EBB73AF2C3AB35800A0A899 /* AppState.swift in Sources */,
 				8EBB73B52C3ABFE300A0A899 /* ShadowModifier.swift in Sources */,

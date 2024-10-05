@@ -78,5 +78,5 @@ struct ICTextField: View {
 
 
 #Preview {
-    CreateCounterScreen()
+    CreateCounterScreen(isShow: .constant(true))
 }

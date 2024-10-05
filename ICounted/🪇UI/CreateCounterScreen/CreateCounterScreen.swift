@@ -11,6 +11,7 @@ struct CreateCounterScreen: View {
     
     @EnvironmentObject var store: AppStore
     @StateObject var localStore = CreateCounterScreenStore()
+    @Binding var isShow: Bool
     
     var body: some View {
         VStack {
@@ -24,24 +25,76 @@ struct CreateCounterScreen: View {
                     ICTextField(text: $localStore.description, name: "Description", placeholder: "counter description", lineLimit: 2...6, maxLength: 200)
                     colorPicker()
                 }.padding(.top, 10)
-                
+                                
                 HStack {
                     ICNumberSetterView(number: $localStore.startValue)
                     Spacer()
                     Text("starting value")
                         .font(.system(size: 14))
                         .foregroundStyle(.textInfo)
-                }.padding(.top , 20)
+                }.padding(.vertical , 20)
                 
-                Rectangle()
-                    .foregroundStyle(.separatorColor1)
-                    .frame(height: 1)
+                separator()
+                
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text("use target value")
+                            .font(.system(size: 14))
+                            .foregroundStyle(.textInfo)
+                        ICToggleControlView(isOn: $localStore.isUseTargetValue, color: localStore.color)
+                    }.padding(.vertical, 2)
+                   
+                   
+                    Spacer()
+                    if localStore.isUseTargetValue {
+                        ICNumberSetterView(number: $localStore.targetCount)
+                    }
+                }.padding(.vertical , 20)
+                
+                separator()
+                
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text("add to widget")
+                            .font(.system(size: 14))
+                            .foregroundStyle(.textInfo)
+                        ICToggleControlView(isOn: $localStore.isAddToWidget, color: localStore.color)
+                    }
+                    Spacer()
+                }.padding(.vertical , 20)
                 
             }.padding(.horizontal, 16)
             
+            
             Spacer()
+            saveButton()
+            
         }
         .background(.background1)
+    }
+    
+    @ViewBuilder
+    private func saveButton() -> some View {
+        RoundedRectangle(cornerRadius: 20)
+            .fill(localStore.color)
+            .modifier(ShadowModifier(foregroundColor: .black, cornerRadius: 20))
+            .frame(width: 220, height: 48)
+            .overlay {
+                Text("SAVE")
+                    .font(.system(size: 18, weight: .bold))
+                    .foregroundStyle(.textDark)
+            }
+            .onTapGesture {
+                store.dispatch(action: .addCounter(counter: localStore.createCounter()))
+                isShow = false
+            }
+    }
+    
+    @ViewBuilder
+    private func separator() -> some View {
+        Rectangle()
+            .foregroundStyle(.separatorColor1)
+            .frame(height: 1)
     }
     
     @ViewBuilder
@@ -50,13 +103,19 @@ struct CreateCounterScreen: View {
             Text("Color")
                 .font(.system(size: 14))
                 .foregroundStyle(.textInfo)
-            ICIconNameView(name: localStore.name, color: localStore.color)
-                .modifier(ShadowModifier(foregroundColor: .background1, cornerRadius: 15, lineWidth: 1))
-                .frame(width: 68, height: 68)
+            
+            ZStack(alignment: .topTrailing) {
+                ICIconNameView(name: localStore.name, color: localStore.color)
+                    .modifier(ShadowModifier(foregroundColor: .background1, cornerRadius: 15, lineWidth: 1))
+                    .frame(width: 68, height: 68)
+                ColorPicker("", selection: $localStore.color, supportsOpacity: false)
+                    .frame(width: 25, height: 25)
+            }
+            
         }
     }
 }
 
 #Preview {
-    CreateCounterScreen()
+    CreateCounterScreen(isShow: .constant(true))
 }

@@ -29,7 +29,7 @@ struct CountersListScreen: View {
                 .padding(.trailing, 16)
             
         }.sheet(isPresented: $localStore.isCreateCounter, content: {
-            CreateCounterScreen()
+            CreateCounterScreen(isShow: $localStore.isCreateCounter)
                 .environmentObject(store)
         })
     }

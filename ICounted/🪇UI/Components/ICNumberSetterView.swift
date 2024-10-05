@@ -98,7 +98,11 @@ struct ICNumberSetterView: View {
             numbString[position] =  numbString[position] != "0" ?  String(Int(numbString[position])! - 1) : "9"
             number = Int(numbString.joined())!
         case .multiply:
-            number = number * 10
+            if number == 0 {
+                number = 10
+            } else {
+                number = number * 10
+            }
         case .divide:
             number = number / 10
         }
@@ -135,5 +139,5 @@ struct ICNumberSetterView: View {
 }
 
 #Preview {
-    CreateCounterScreen()
+    CreateCounterScreen(isShow: .constant(true))
 }
