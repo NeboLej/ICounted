@@ -18,6 +18,8 @@
 		8E6FA9082CAF447800DAAEA5 /* ICTextProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6FA9072CAF447800DAAEA5 /* ICTextProgressBar.swift */; };
 		8E6FA90C2CB084BE00DAAEA5 /* ICNumberSetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6FA90B2CB084BE00DAAEA5 /* ICNumberSetterView.swift */; };
 		8E7C56172CB1CF6E006A56C9 /* ICToggleControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C56162CB1CF6E006A56C9 /* ICToggleControlView.swift */; };
+		8E7C561A2CB29001006A56C9 /* CounterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C56192CB29001006A56C9 /* CounterScreen.swift */; };
+		8E7C561C2CB29011006A56C9 /* CounterScreenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C561B2CB29011006A56C9 /* CounterScreenStore.swift */; };
 		8E9E1BBB2CAF1875002B12E2 /* CreateCounterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9E1BBA2CAF1875002B12E2 /* CreateCounterScreen.swift */; };
 		8E9E1BBD2CAF188D002B12E2 /* CreateCounterScreenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9E1BBC2CAF188D002B12E2 /* CreateCounterScreenStore.swift */; };
 		8EBB73982C3AB14E00A0A899 /* ICountedApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB73972C3AB14E00A0A899 /* ICountedApp.swift */; };
@@ -45,6 +47,8 @@
 		8E6FA9072CAF447800DAAEA5 /* ICTextProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICTextProgressBar.swift; sourceTree = "<group>"; };
 		8E6FA90B2CB084BE00DAAEA5 /* ICNumberSetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICNumberSetterView.swift; sourceTree = "<group>"; };
 		8E7C56162CB1CF6E006A56C9 /* ICToggleControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICToggleControlView.swift; sourceTree = "<group>"; };
+		8E7C56192CB29001006A56C9 /* CounterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterScreen.swift; sourceTree = "<group>"; };
+		8E7C561B2CB29011006A56C9 /* CounterScreenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterScreenStore.swift; sourceTree = "<group>"; };
 		8E9E1BBA2CAF1875002B12E2 /* CreateCounterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCounterScreen.swift; sourceTree = "<group>"; };
 		8E9E1BBC2CAF188D002B12E2 /* CreateCounterScreenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCounterScreenStore.swift; sourceTree = "<group>"; };
 		8EBB73942C3AB14E00A0A899 /* ICounted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ICounted.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +101,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		8E7C56182CB28FEC006A56C9 /* CounterScreen */ = {
+			isa = PBXGroup;
+			children = (
+				8E7C56192CB29001006A56C9 /* CounterScreen.swift */,
+				8E7C561B2CB29011006A56C9 /* CounterScreenStore.swift */,
+			);
+			path = CounterScreen;
+			sourceTree = "<group>";
+		};
 		8E9E1BB92CAF1849002B12E2 /* CreateCounterScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +158,7 @@
 		8EBB73A52C3AB23D00A0A899 /* 🪇UI */ = {
 			isa = PBXGroup;
 			children = (
+				8E7C56182CB28FEC006A56C9 /* CounterScreen */,
 				8E9E1BB92CAF1849002B12E2 /* CreateCounterScreen */,
 				8EBB73B82C3AD87000A0A899 /* Components */,
 				8EBB73B62C3AC21900A0A899 /* 🐣Modifiers */,
@@ -278,6 +292,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E7C561A2CB29001006A56C9 /* CounterScreen.swift in Sources */,
+				8E7C561C2CB29011006A56C9 /* CounterScreenStore.swift in Sources */,
 				8E6FA9082CAF447800DAAEA5 /* ICTextProgressBar.swift in Sources */,
 				8E2BDA772CA80E8300941DE1 /* CounterCell.swift in Sources */,
 				8E6FA90C2CB084BE00DAAEA5 /* ICNumberSetterView.swift in Sources */,

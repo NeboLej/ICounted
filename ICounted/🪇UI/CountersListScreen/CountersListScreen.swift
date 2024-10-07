@@ -32,6 +32,10 @@ struct CountersListScreen: View {
             CreateCounterScreen(isShow: $localStore.isCreateCounter)
                 .environmentObject(store)
         })
+        .sheet(isPresented: $localStore.isShowCounter, content: {
+            CounterScreen(isShow: $localStore.isShowCounter, counter: localStore.selectedCounter)
+                .environmentObject(store)
+        })
     }
     
     @ViewBuilder
@@ -55,16 +59,24 @@ struct CountersListScreen: View {
             .onTapGesture {
                 localStore.createCounter()
             }
-
+        
     }
     
     
     @ViewBuilder
     private func counterList() -> some View {
-        ForEach(store.state.counters) {
-            CounterCell(counter: $0)
+        ForEach(store.state.counters) { counter in
+            CounterCell(counter: counter)
                 .environmentObject(store)
+                .onTapGesture {
+                    //                    localStore.isShowCounter = true
+                    localStore.showCounter(counter: counter)
+                }
         }
+        //        .sheet(isPresented: $localStore.isShowCounter, content: {
+        //            CounterScreen(isShow: $localStore.isShowCounter, counter: counter)
+        //                .environmentObject(store)
+        //        })
     }
     
     @ViewBuilder

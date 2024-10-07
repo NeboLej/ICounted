@@ -14,15 +14,17 @@ struct ICTextField: View {
     private let maxLength: Int
     private let lineLimit: ClosedRange<Int>
     private let placeholder: String
+    private let isEnabled: Bool
     
     @State private var progress: Double = 0
     
     init(text: Binding<String>, name: String = "", placeholder: String = "",
-         lineLimit: ClosedRange<Int> = 1...1, maxLength: Int = 100) {
+         lineLimit: ClosedRange<Int> = 1...1, maxLength: Int = 100, isEnabled: Bool = true) {
         self.name = name
         self.maxLength = maxLength
         self.lineLimit = lineLimit
         self.placeholder = placeholder
+        self.isEnabled = isEnabled
         self._text = text
     }
     
@@ -48,6 +50,7 @@ struct ICTextField: View {
                 .background(.white)
                 .tint(.blue)
                 .foregroundStyle(.black)
+                .disabled(!isEnabled)
                 .onChange(of: text, { oldValue, newValue in
                     if newValue.count > maxLength {
                         text = oldValue
