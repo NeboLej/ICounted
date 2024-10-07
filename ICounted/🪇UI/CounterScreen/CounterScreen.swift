@@ -20,11 +20,11 @@ struct CounterScreen: View {
             ICHeaderView(name: localStore.name, color: localStore.color)
             
             Group {
-                 ICTextField(text: $localStore.name, name: "Name", placeholder: "counter name", maxLength: 30)
+                 ICTextField(text: $localStore.name, name: "Name", placeholder: "counter name", maxLength: 30, isEnabled: false)
                      .padding(.top, 10)
                  
                  HStack(alignment: .top, spacing: 24) {
-                     ICTextField(text: $localStore.description, name: "Description", placeholder: "counter description", lineLimit: 2...6, maxLength: 200)
+                     ICTextField(text: $localStore.description, name: "Description", placeholder: "counter description", lineLimit: 2...6, maxLength: 200, isEnabled: false)
                      colorPicker()
                  }.padding(.top, 10)
                  
@@ -54,7 +54,7 @@ struct CounterScreen: View {
                  }
                  
                  HStack {
-                     ICToggleControlView(isOn: $localStore.isAddToWidget, color: localStore.color)
+                     ICToggleControlView(isOn: $localStore.isAddToWidget, color: localStore.color, isEnabled: false)
                      Text("add to widget")
                      Spacer()
                  }.padding(.top, 16)

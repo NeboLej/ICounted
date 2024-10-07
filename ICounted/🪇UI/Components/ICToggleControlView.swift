@@ -11,6 +11,13 @@ struct ICToggleControlView: View {
     
     @Binding var isOn: Bool
     let color: Color
+    let isEnabled: Bool
+    
+    init(isOn: Binding<Bool>, color: Color, isEnabled: Bool = true) {
+        self._isOn = isOn
+        self.color = color
+        self.isEnabled = isEnabled
+    }
     
     var body: some View {
         ZStack(alignment: isOn ? .trailing : .leading) {
@@ -32,7 +39,9 @@ struct ICToggleControlView: View {
         }
         .animation(.easeInOut(duration: 0.3), value: isOn)
         .onTapGesture {
-            isOn.toggle()
+            if isEnabled {
+                isOn.toggle()
+            }
         }
         
     }
