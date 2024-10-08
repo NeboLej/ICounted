@@ -30,7 +30,6 @@ func reducer(state: AppState, action: AppAction) -> AppState {
     case .toggleIsFavorite(counterId: let id):
         if let counterIndex = counters.firstIndex(where: { $0.id == id }) {
             let counter = counters[counterIndex]
-            let newCount = counter.count - 1
             counters[counterIndex] = counter.copy(isFavorite: !counter.isFavorite)
             state.counters = counters
         }
