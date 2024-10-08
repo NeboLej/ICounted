@@ -155,10 +155,18 @@ struct CounterScreen: View {
                     .font(.system(size: 14))
                     .foregroundStyle(.textInfo)
                 Spacer()
-                Text("edit history")
-                    .font(.system(size: 14))
-                    .foregroundStyle(.textDark)
+                Group {
+                    Image(systemName: "pencil.line")
+                        .foregroundStyle(.black)
+                    Text("edit history")
+                        .font(.system(size: 14))
+                        .foregroundStyle(.textDark)
+                        .padding(.trailing, 4)
+                }.onTapGesture {
+                    print("EDIT HISTORY")
+                }
             }
+            
             RoundedRectangle(cornerRadius: 16)
                 .fill(localStore.color.opacity(0.1))
                 .frame(height: 200)

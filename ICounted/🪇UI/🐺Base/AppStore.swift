@@ -36,7 +36,7 @@ var TEST: AppStore = AppStore(state: AppState(counters: [
             lastRecord: Date(),
             colorHex: "ea9171",
             isFavorite: false,
-            taggetCount: nil),
+            taggetCount: 180),
     
     Counter(name: "Jog in the mornings",
             description: "run 30 times and evaluate the result",
