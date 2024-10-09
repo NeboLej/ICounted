@@ -204,6 +204,6 @@ struct CounterScreen: View {
 }
 
 #Preview {
-    CounterScreen(isShow: .constant(true), counter: Counter(name: "Counter", description: "bla bla bla jsadk jjda kdjnak sjdkas ndkjasndk anskdj akjsdnaskj dnashb dhasdb jasdl asd;am lsdjk na", count: 123, lastRecord: Date(), colorHex: "043464", isFavorite: true, taggetCount: 500))
+    CounterScreen(isShow: .constant(true), counter: Counter(name: "Counter", description: "bla bla bla jsadk jjda kdjnak sjdkas ndkjasndk anskdj akjsdnaskj dnashb dhasdb jasdl asd;am lsdjk na", count: 123, lastRecord: Date(), colorHex: "043464", isFavorite: true, targetCount: 500))
         .environmentObject(TEST)
 }

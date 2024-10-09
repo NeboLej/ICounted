@@ -40,41 +40,67 @@ struct CounterCell: View {
                     }
                 }
                 
-                HStack() {
+                if counter.targetCount != nil {
+                    progressBar()
+                        .padding(.top, 16)
+                        .padding(.bottom, 8)
+                }
+
+                HStack {
                     CounterValueView(count: .constant(counter.count))
-                    VStack(alignment: .leading)  {
-                        Text("last record")
-                            .foregroundStyle(.textDark)
-                            .font(.system(size: 14))
-                            .fontWeight(.regular)
-                        Text(counter.lastRecord.toSimpleDate())
-                            .foregroundStyle(.textInfo)
-                            .font(.system(size: 14))
-                            .fontWeight(.regular)
+                    if let lastRecord = counter.lastRecord {
+                        VStack(alignment: .leading)  {
+                            Text("last record")
+                                .foregroundStyle(.textDark)
+                                .font(.system(size: 14))
+                                .fontWeight(.regular)
+                            Text(lastRecord.toSimpleDate())
+                                .foregroundStyle(.textInfo)
+                                .font(.system(size: 14))
+                                .fontWeight(.regular)
+                        }
                     }
+
                     Spacer()
-                    VStack {
-                        Spacer()
-                        Image(systemName: "arrow.2.squarepath")
-                            .foregroundStyle(.textInfo)
-                            .onTapGesture {
-                                store.dispatch(action: .countMinus(counterId: counter.id))
-                            }
-                    }
                     
-                    RoundedRectangle(cornerRadius: 10)
+                    RoundedRectangle(cornerRadius: 16)
                         .foregroundStyle(Color(hex: counter.colorHex))
-                        .frame(width: 45)
+                        .frame(width: 80, height: 32)
+                        .overlay {
+                            Text("count")
+                                .font(.system(size: 14))
+                        }
                         .onTapGesture {
                             store.dispatch(action: .countPlus(counterId: counter.id))
                         }
                         
                 }.frame(height: 45)
             }
-            .padding(16)
+            .padding([.top, .horizontal], 16)
+            .padding(.bottom, 12)
         }
         .background(Color(hex: counter.colorHex).opacity(0.2))
         .modifier(ShadowModifier(foregroundColor: .background1, cornerRadius: 15))
+    }
+    
+    
+    private func progressBar() -> some View {
+        VStack(spacing: 4) {
+            HStack {
+                Text(String(Int(counter.progress ?? 0)) + "%")
+                    .foregroundStyle(.textInfo)
+                    .font(.system(size: 12))
+                    .fontWeight(.regular)
+                Spacer()
+                Text(String(counter.targetCount ?? 0))
+                    .foregroundStyle(.textInfo)
+                    .font(.system(size: 12))
+                    .fontWeight(.regular)
+            }
+            
+            ICTextProgressBar(progress: .constant(counter.progress ?? 0))
+                .frame(height: 5)
+        }
     }
 }
 

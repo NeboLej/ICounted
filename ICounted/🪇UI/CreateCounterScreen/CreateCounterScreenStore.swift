@@ -22,6 +22,6 @@ class CreateCounterScreenStore: ObservableObject {
                 count: startValue, lastRecord: Date(),
                 colorHex: color.toHex() ?? "",
                 isFavorite: isAddToWidget,
-                taggetCount: isUseTargetValue ? targetCount : nil)
+                targetCount: isUseTargetValue ? targetCount : nil)
     }
 }

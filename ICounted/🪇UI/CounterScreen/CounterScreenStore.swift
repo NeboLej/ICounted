@@ -25,8 +25,8 @@ class CounterScreenStore: ObservableObject {
         description = counter.description
         color = Color(hex: counter.colorHex)
         count = counter.count
-        isUseTargetValue = counter.taggetCount != nil
-        targetCount =  counter.taggetCount != nil ?  counter.taggetCount! : 0
+        isUseTargetValue = counter.targetCount != nil
+        targetCount =  counter.targetCount != nil ?  counter.targetCount! : 0
         isAddToWidget = counter.isFavorite
         
         progress = getProgress()
