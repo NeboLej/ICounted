@@ -46,4 +46,20 @@ var TEST: AppStore = AppStore(state: AppState(counters: [
             isFavorite: true,
             taggetCount: nil),
     
+    Counter(name: "Eat some pies",
+            description: "eat 100 pies to become very big and prove to everyone that I am a big person",
+            count: 5,
+            lastRecord: Date(),
+            colorHex: "ec5c8c",
+            isFavorite: true,
+            taggetCount: 100),
+    
+    Counter(name: "Headache",
+            description: "how many times did you have a headache. Need statistics",
+            count: 11,
+            lastRecord: Date(),
+            colorHex: "74ab63",
+            isFavorite: true,
+            taggetCount: nil),
+    
 ]))
