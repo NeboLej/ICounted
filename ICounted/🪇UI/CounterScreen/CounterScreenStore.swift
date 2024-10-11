@@ -17,14 +17,16 @@ class CounterScreenStore: ObservableObject {
     @Published var targetCount: Int = 0
     @Published var isAddToWidget = false
     @Published var progress: Double = 0
+    var id: UUID?
     
     func bindCounter(counter: Counter) {
+        id = counter.id
         name = counter.name
         description = counter.description
         color = Color(hex: counter.colorHex)
         count = counter.count
-        isUseTargetValue = counter.taggetCount != nil
-        targetCount =  counter.taggetCount != nil ?  counter.taggetCount! : 0
+        isUseTargetValue = counter.targetCount != nil
+        targetCount =  counter.targetCount != nil ?  counter.targetCount! : 0
         isAddToWidget = counter.isFavorite
         
         progress = getProgress()

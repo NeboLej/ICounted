@@ -69,14 +69,9 @@ struct CountersListScreen: View {
             CounterCell(counter: counter)
                 .environmentObject(store)
                 .onTapGesture {
-                    //                    localStore.isShowCounter = true
                     localStore.showCounter(counter: counter)
                 }
         }
-        //        .sheet(isPresented: $localStore.isShowCounter, content: {
-        //            CounterScreen(isShow: $localStore.isShowCounter, counter: counter)
-        //                .environmentObject(store)
-        //        })
     }
     
     @ViewBuilder
