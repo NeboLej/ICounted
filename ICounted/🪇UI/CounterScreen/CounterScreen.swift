@@ -59,7 +59,6 @@ struct CounterScreen: View {
         }
     }
     
-    
     @ViewBuilder
     private func descriptionView() -> some View {
         HStack {
@@ -101,7 +100,6 @@ struct CounterScreen: View {
         }
     }
     
-    
     @ViewBuilder
     private func countButton() -> some View {
         RoundedRectangle(cornerRadius: 20)
@@ -141,11 +139,15 @@ struct CounterScreen: View {
                 Text("delete")
                     .font(.system(size: 14))
                     .foregroundStyle(.textDark)
+                    .onTapGesture {
+                        //TODO: Alert
+                        store.dispatch(action: .deleteCounter(counterId: counter.id))
+                        isShow = false
+                    }
             }.opacity(isShowMenu ? 1 : 0)
         }
         .animation(.easeOut(duration: 0.3), value: isShowMenu)
     }
-    
     
     @ViewBuilder 
     private func graph() -> some View {
@@ -186,7 +188,6 @@ struct CounterScreen: View {
             ICIconNameView(name: localStore.name, color: localStore.color)
                 .modifier(ShadowModifier(foregroundColor: .background1, cornerRadius: 15, lineWidth: 1))
                 .frame(width: 68, height: 68)
-            
         }
     }
     

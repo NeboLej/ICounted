@@ -36,7 +36,12 @@ func reducer(state: AppState, action: AppAction) -> AppState {
         
     case .addCounter(counter: let counter):
         state.counters.append(counter)
+        
+    case .deleteCounter(counterId: let id):
+        counters.removeAll(where: { $0.id == id })
+        state.counters = counters
     }
+    
     
     return state
 }

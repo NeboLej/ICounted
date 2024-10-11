@@ -12,4 +12,5 @@ enum AppAction {
     case countMinus(counterId: UUID)
     case toggleIsFavorite(counterId: UUID)
     case addCounter(counter: Counter)
+    case deleteCounter(counterId: UUID)
 }
