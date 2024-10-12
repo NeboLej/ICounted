@@ -13,6 +13,7 @@
 		8E2BDA7E2CA8368900941DE1 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E2BDA7D2CA8368900941DE1 /* Colors.xcassets */; };
 		8E2BDA802CA8378E00941DE1 /* ICIconNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2BDA7F2CA8378E00941DE1 /* ICIconNameView.swift */; };
 		8E2BDA862CA84E8800941DE1 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2BDA852CA84E8800941DE1 /* Counter.swift */; };
+		8E520B7C2CB9E9260076FB16 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E520B7B2CB9E9260076FB16 /* AlertView.swift */; };
 		8E6FA9042CAF23F600DAAEA5 /* ICHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6FA9032CAF23F600DAAEA5 /* ICHeaderView.swift */; };
 		8E6FA9062CAF27C200DAAEA5 /* ICTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6FA9052CAF27C200DAAEA5 /* ICTextField.swift */; };
 		8E6FA9082CAF447800DAAEA5 /* ICTextProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6FA9072CAF447800DAAEA5 /* ICTextProgressBar.swift */; };
@@ -42,6 +43,7 @@
 		8E2BDA7D2CA8368900941DE1 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		8E2BDA7F2CA8378E00941DE1 /* ICIconNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICIconNameView.swift; sourceTree = "<group>"; };
 		8E2BDA852CA84E8800941DE1 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
+		8E520B7B2CB9E9260076FB16 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		8E6FA9032CAF23F600DAAEA5 /* ICHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICHeaderView.swift; sourceTree = "<group>"; };
 		8E6FA9052CAF27C200DAAEA5 /* ICTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICTextField.swift; sourceTree = "<group>"; };
 		8E6FA9072CAF447800DAAEA5 /* ICTextProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICTextProgressBar.swift; sourceTree = "<group>"; };
@@ -99,6 +101,14 @@
 				8E2BDA852CA84E8800941DE1 /* Counter.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		8E520B7A2CB9E9150076FB16 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				8E520B7B2CB9E9260076FB16 /* AlertView.swift */,
+			);
+			path = Alerts;
 			sourceTree = "<group>";
 		};
 		8E7C56182CB28FEC006A56C9 /* CounterScreen */ = {
@@ -210,6 +220,7 @@
 		8EBB73B82C3AD87000A0A899 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				8E520B7A2CB9E9150076FB16 /* Alerts */,
 				8EBB73B92C3AD89900A0A899 /* CounterValueView.swift */,
 				8E7C56162CB1CF6E006A56C9 /* ICToggleControlView.swift */,
 				8E6FA9032CAF23F600DAAEA5 /* ICHeaderView.swift */,
@@ -297,6 +308,7 @@
 				8E6FA9082CAF447800DAAEA5 /* ICTextProgressBar.swift in Sources */,
 				8E2BDA772CA80E8300941DE1 /* CounterCell.swift in Sources */,
 				8E6FA90C2CB084BE00DAAEA5 /* ICNumberSetterView.swift in Sources */,
+				8E520B7C2CB9E9260076FB16 /* AlertView.swift in Sources */,
 				8EBB73B32C3AB55700A0A899 /* CounterListScreenStore.swift in Sources */,
 				8EBB73A92C3AB2D000A0A899 /* CountersListScreen.swift in Sources */,
 				8E2BDA7C2CA832FA00941DE1 /* Date+.swift in Sources */,
