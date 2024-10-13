@@ -7,53 +7,6 @@
 
 import SwiftUI
 
-enum AlertType: String {
-    case success = "Success", error = "Error", warning = "Warning"
-    
-    func getColor() -> Color {
-        switch self {
-        case .success:
-            Color.alertSuccess
-        case .error:
-            Color.alertError
-        case .warning:
-            Color.alertWarning
-        }
-    }
-    
-    func getImage() -> Image {
-        switch self {
-        case .success:
-            Image(.alertSuccess)
-        case .error:
-            Image(.alertError)
-        case .warning:
-            Image(.alertWarning)
-        }
-    }
-}
-
-struct AlertAction: Identifiable {
-    let id: UUID = UUID()
-    let name: String
-    let completion: () -> Void
-}
-
-struct AlertModel {
-    let type: AlertType
-    let title: String
-    let message: String
-    let actions: [AlertAction]
-    
-    static func getErrorModel(message: String) -> AlertModel {
-        AlertModel(type: .error, title: "", message: message, actions: [.init(name: "OK", completion: {})])
-    }
-    
-    static func getSuccessModel(message: String) -> AlertModel {
-        AlertModel(type: .success, title: "", message: message, actions: [.init(name: "OK", completion: {})])
-    }
-}
-
 struct AlertView: View {
     
     let model: AlertModel
@@ -62,7 +15,7 @@ struct AlertView: View {
     var body: some View {
         
         ZStack {
-            BackdropView().blur(radius: isShow ? 3 : 0)
+            ICBackBlurView().blur(radius: isShow ? 3 : 0)
             
             VStack(spacing: 0) {
                 Rectangle()
@@ -109,9 +62,7 @@ struct AlertView: View {
                 }
                 .padding(.horizontal, 16)
                 .offset(y: isShow ? 0 : 600)
-                .scaleEffect(CGSize(width: isShow ? 1.0 : 0.2, height: 1.0))
-
-                
+                .scaleEffect(CGSize(width: isShow ? 1.0 : 0.01, height: 1.0))
         }.ignoresSafeArea()
             .animation(.smooth(duration: 0.3), value: isShow)
             .onAppear(perform: {
@@ -138,44 +89,15 @@ struct AlertView: View {
                     .foregroundStyle(.textDark)
             }
             .onTapGesture {
-                action.completion()
+                withAnimation {
+                    isShow = false
+                }completion: {
+                    action.completion()
+                }
             }
     }
 }
 
-//#Preview {
-//    AlertView(model: .init(type: .warning, title: "WTF???", message: "ksdka aksdl m?", actions: [.init(name: "first", completion: {}), .init(name: "second", completion: {})]))
-//}
 #Preview {
-    CounterScreen(isShow: .constant(true), counter: Counter(name: "Counter", description: "bla bla bla jsadk jjda kdjnak sjdkas ndkjasndk anskdj akjsdnaskj dnashb dhasdb jasdl asd;am lsdjk na", count: 123, lastRecord: Date(), colorHex: "043464", isFavorite: true, targetCount: 500))
-        .environmentObject(TEST)
-}
-
-/// A View in which content reflects all behind it
-struct BackdropView: UIViewRepresentable {
-
-    func makeUIView(context: Context) -> UIVisualEffectView {
-        let view = UIVisualEffectView()
-        let blur = UIBlurEffect()
-        let animator = UIViewPropertyAnimator()
-        animator.addAnimations { view.effect = blur }
-        animator.fractionComplete = 0
-        animator.stopAnimation(false)
-        animator.finishAnimation(at: .current)
-        return view
-    }
-    
-    func updateUIView(_ uiView: UIVisualEffectView, context: Context) { }
-    
-}
-
-/// A transparent View that blurs its background
-struct BackdropBlurView: View {
-    
-    let radius: CGFloat
-    
-    @ViewBuilder
-    var body: some View {
-        BackdropView().blur(radius: radius)
-    }
+    AlertView(model: .init(type: .warning, title: "WTF???", message: "ksdka aksdl m?", actions: [.init(name: "first", completion: {}), .init(name: "second", completion: {})]))
 }

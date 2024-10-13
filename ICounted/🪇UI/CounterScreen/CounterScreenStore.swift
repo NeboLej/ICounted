@@ -39,7 +39,7 @@ class CounterScreenStore: ObservableObject {
     }
     
     func showAlert(positiveAction: @escaping ()->(), negativeAction: @escaping ()->()){
-        alert = AlertModel(type: .warning, title: "", message: "Удалить?", actions: [.init(name: "да", completion: positiveAction), .init(name: "нет", completion: negativeAction)])
+        alert = AlertModel(type: .warning, title: "", message: "Delete the counter \"\(name)\" and the entire history of records without the possibility of recovery??", actions: [.init(name: "delete", completion: positiveAction), .init(name: "cancel", completion: negativeAction)])
     }
     
     func dissmissAlert() {

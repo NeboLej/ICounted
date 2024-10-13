@@ -15,6 +15,9 @@
 		8E2BDA862CA84E8800941DE1 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2BDA852CA84E8800941DE1 /* Counter.swift */; };
 		8E520B7C2CB9E9260076FB16 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E520B7B2CB9E9260076FB16 /* AlertView.swift */; };
 		8E520B7E2CBB48AF0076FB16 /* AlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E520B7D2CBB48AF0076FB16 /* AlertModifier.swift */; };
+		8E520B802CBBE7500076FB16 /* ICBackBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E520B7F2CBBE7500076FB16 /* ICBackBlurView.swift */; };
+		8E520B822CBBE8900076FB16 /* AlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E520B812CBBE8900076FB16 /* AlertModel.swift */; };
+		8E520B842CBBE8B30076FB16 /* AlertType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E520B832CBBE8B30076FB16 /* AlertType+.swift */; };
 		8E6FA9042CAF23F600DAAEA5 /* ICHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6FA9032CAF23F600DAAEA5 /* ICHeaderView.swift */; };
 		8E6FA9062CAF27C200DAAEA5 /* ICTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6FA9052CAF27C200DAAEA5 /* ICTextField.swift */; };
 		8E6FA9082CAF447800DAAEA5 /* ICTextProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6FA9072CAF447800DAAEA5 /* ICTextProgressBar.swift */; };
@@ -46,6 +49,9 @@
 		8E2BDA852CA84E8800941DE1 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		8E520B7B2CB9E9260076FB16 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		8E520B7D2CBB48AF0076FB16 /* AlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModifier.swift; sourceTree = "<group>"; };
+		8E520B7F2CBBE7500076FB16 /* ICBackBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICBackBlurView.swift; sourceTree = "<group>"; };
+		8E520B812CBBE8900076FB16 /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModel.swift; sourceTree = "<group>"; };
+		8E520B832CBBE8B30076FB16 /* AlertType+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertType+.swift"; sourceTree = "<group>"; };
 		8E6FA9032CAF23F600DAAEA5 /* ICHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICHeaderView.swift; sourceTree = "<group>"; };
 		8E6FA9052CAF27C200DAAEA5 /* ICTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICTextField.swift; sourceTree = "<group>"; };
 		8E6FA9072CAF447800DAAEA5 /* ICTextProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICTextProgressBar.swift; sourceTree = "<group>"; };
@@ -84,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				8E2BDA792CA82E5B00941DE1 /* Color+.swift */,
+				8E520B832CBBE8B30076FB16 /* AlertType+.swift */,
 				8E2BDA7B2CA832FA00941DE1 /* Date+.swift */,
 			);
 			path = Extensioins;
@@ -109,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				8E520B7B2CB9E9260076FB16 /* AlertView.swift */,
+				8E520B812CBBE8900076FB16 /* AlertModel.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -231,6 +239,7 @@
 				8E6FA9072CAF447800DAAEA5 /* ICTextProgressBar.swift */,
 				8E2BDA7F2CA8378E00941DE1 /* ICIconNameView.swift */,
 				8E6FA90B2CB084BE00DAAEA5 /* ICNumberSetterView.swift */,
+				8E520B7F2CBBE7500076FB16 /* ICBackBlurView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -312,6 +321,7 @@
 				8E2BDA772CA80E8300941DE1 /* CounterCell.swift in Sources */,
 				8E520B7E2CBB48AF0076FB16 /* AlertModifier.swift in Sources */,
 				8E6FA90C2CB084BE00DAAEA5 /* ICNumberSetterView.swift in Sources */,
+				8E520B802CBBE7500076FB16 /* ICBackBlurView.swift in Sources */,
 				8E520B7C2CB9E9260076FB16 /* AlertView.swift in Sources */,
 				8EBB73B32C3AB55700A0A899 /* CounterListScreenStore.swift in Sources */,
 				8EBB73A92C3AB2D000A0A899 /* CountersListScreen.swift in Sources */,
@@ -321,9 +331,11 @@
 				8E6FA9042CAF23F600DAAEA5 /* ICHeaderView.swift in Sources */,
 				8E6FA9062CAF27C200DAAEA5 /* ICTextField.swift in Sources */,
 				8E7C56172CB1CF6E006A56C9 /* ICToggleControlView.swift in Sources */,
+				8E520B822CBBE8900076FB16 /* AlertModel.swift in Sources */,
 				8E2BDA862CA84E8800941DE1 /* Counter.swift in Sources */,
 				8EBB73AF2C3AB35800A0A899 /* AppState.swift in Sources */,
 				8EBB73B52C3ABFE300A0A899 /* ShadowModifier.swift in Sources */,
+				8E520B842CBBE8B30076FB16 /* AlertType+.swift in Sources */,
 				8E9E1BBB2CAF1875002B12E2 /* CreateCounterScreen.swift in Sources */,
 				8E9E1BBD2CAF188D002B12E2 /* CreateCounterScreenStore.swift in Sources */,
 				8EBB73AB2C3AB31A00A0A899 /* AppReducer.swift in Sources */,
