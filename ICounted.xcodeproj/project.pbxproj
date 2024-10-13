@@ -14,6 +14,7 @@
 		8E2BDA802CA8378E00941DE1 /* ICIconNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2BDA7F2CA8378E00941DE1 /* ICIconNameView.swift */; };
 		8E2BDA862CA84E8800941DE1 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2BDA852CA84E8800941DE1 /* Counter.swift */; };
 		8E520B7C2CB9E9260076FB16 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E520B7B2CB9E9260076FB16 /* AlertView.swift */; };
+		8E520B7E2CBB48AF0076FB16 /* AlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E520B7D2CBB48AF0076FB16 /* AlertModifier.swift */; };
 		8E6FA9042CAF23F600DAAEA5 /* ICHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6FA9032CAF23F600DAAEA5 /* ICHeaderView.swift */; };
 		8E6FA9062CAF27C200DAAEA5 /* ICTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6FA9052CAF27C200DAAEA5 /* ICTextField.swift */; };
 		8E6FA9082CAF447800DAAEA5 /* ICTextProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6FA9072CAF447800DAAEA5 /* ICTextProgressBar.swift */; };
@@ -44,6 +45,7 @@
 		8E2BDA7F2CA8378E00941DE1 /* ICIconNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICIconNameView.swift; sourceTree = "<group>"; };
 		8E2BDA852CA84E8800941DE1 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		8E520B7B2CB9E9260076FB16 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		8E520B7D2CBB48AF0076FB16 /* AlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModifier.swift; sourceTree = "<group>"; };
 		8E6FA9032CAF23F600DAAEA5 /* ICHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICHeaderView.swift; sourceTree = "<group>"; };
 		8E6FA9052CAF27C200DAAEA5 /* ICTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICTextField.swift; sourceTree = "<group>"; };
 		8E6FA9072CAF447800DAAEA5 /* ICTextProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICTextProgressBar.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				8EBB73B42C3ABFE300A0A899 /* ShadowModifier.swift */,
+				8E520B7D2CBB48AF0076FB16 /* AlertModifier.swift */,
 			);
 			path = "🐣Modifiers";
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				8E7C561C2CB29011006A56C9 /* CounterScreenStore.swift in Sources */,
 				8E6FA9082CAF447800DAAEA5 /* ICTextProgressBar.swift in Sources */,
 				8E2BDA772CA80E8300941DE1 /* CounterCell.swift in Sources */,
+				8E520B7E2CBB48AF0076FB16 /* AlertModifier.swift in Sources */,
 				8E6FA90C2CB084BE00DAAEA5 /* ICNumberSetterView.swift in Sources */,
 				8E520B7C2CB9E9260076FB16 /* AlertView.swift in Sources */,
 				8EBB73B32C3AB55700A0A899 /* CounterListScreenStore.swift in Sources */,

@@ -57,58 +57,59 @@ struct AlertModel {
 struct AlertView: View {
     
     let model: AlertModel
+    @State private var isShow = false
     
     var body: some View {
         
-        GeometryReader { proxy in
-            ZStack {
+        ZStack {
+            BackdropView().blur(radius: 3)
+            
+            VStack(spacing: 0) {
                 Rectangle()
-                    .background(.green)
-                VStack(spacing: 0) {
-                    Rectangle()
-                        .foregroundStyle(model.type.getColor())
-                        .frame(height: 40)
-                        .overlay {
-                            Text((!model.title.isEmpty ? model.title : model.type.rawValue).uppercased())
-                        }
-                    Rectangle()
-                        .frame(height: 2)
-                        .foregroundStyle(.black)
-                    
-                    model.type.getImage()
-                        .padding(.top, 10)
-                    
-                    Text(model.message)
-                        .font(.system(size: 14))
-                        .foregroundStyle(.textInfo)
-                        .padding(16)
-                    
-                    
-                    if model.actions.isEmpty {
-                        getAction(action: .init(name: "OK", completion: {}))
-                            .padding([.horizontal, .bottom], 16)
-                            .padding(.bottom, 26)
-                    } else if model.actions.count > 2 {
-                        VStack(spacing: 10) {
-                            getActions()
-                        }.padding([.horizontal, .bottom], 16)
-                            .padding(.bottom, 26)
-                    } else {
-                        HStack(spacing: 14) {
-                            getActions()
-                        }.padding(.horizontal, 16)
-                            .padding(.bottom, 26)
-                    }
-                }.background(.background1)
-                    .frame(width: proxy.size.width * 0.9)
-                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                    .foregroundStyle(model.type.getColor())
+                    .frame(height: 40)
                     .overlay {
-                        RoundedRectangle(cornerRadius: 15)
-                            .stroke(.black, lineWidth: 1)
+                        Text((!model.title.isEmpty ? model.title : model.type.rawValue).uppercased())
                     }
+                Rectangle()
+                    .frame(height: 2)
+                    .foregroundStyle(.black)
+                
+                model.type.getImage()
+                    .padding(.top, 10)
+                
+                Text(model.message)
+                    .font(.system(size: 14))
+                    .foregroundStyle(.textInfo)
+                    .padding(16)
+                
+                
+                if model.actions.isEmpty {
+                    getAction(action: .init(name: "OK", completion: {}))
+                        .padding([.horizontal, .bottom], 16)
+                        .padding(.bottom, 26)
+                } else if model.actions.count > 2 {
+                    VStack(spacing: 10) {
+                        getActions()
+                    }.padding([.horizontal, .bottom], 16)
+                        .padding(.bottom, 26)
+                } else {
+                    HStack(spacing: 14) {
+                        getActions()
+                    }.padding(.horizontal, 16)
+                        .padding(.bottom, 26)
+                }
             }
-        }
-        
+
+            .background(.background1)
+                .clipShape(RoundedRectangle(cornerRadius: 15))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 15)
+                        .stroke(.black, lineWidth: 1)
+                }
+                .padding(.horizontal, 16)
+                
+        }.ignoresSafeArea()
     }
     
     @ViewBuilder
@@ -135,6 +136,39 @@ struct AlertView: View {
     }
 }
 
+//#Preview {
+//    AlertView(model: .init(type: .warning, title: "WTF???", message: "ksdka aksdl m?", actions: [.init(name: "first", completion: {}), .init(name: "second", completion: {})]))
+//}
 #Preview {
-    AlertView(model: .init(type: .warning, title: "WTF???", message: "ksdka aksdl m?", actions: [.init(name: "first", completion: {}), .init(name: "second", completion: {})]))
+    CounterScreen(isShow: .constant(true), counter: Counter(name: "Counter", description: "bla bla bla jsadk jjda kdjnak sjdkas ndkjasndk anskdj akjsdnaskj dnashb dhasdb jasdl asd;am lsdjk na", count: 123, lastRecord: Date(), colorHex: "043464", isFavorite: true, targetCount: 500))
+        .environmentObject(TEST)
+}
+
+/// A View in which content reflects all behind it
+struct BackdropView: UIViewRepresentable {
+
+    func makeUIView(context: Context) -> UIVisualEffectView {
+        let view = UIVisualEffectView()
+        let blur = UIBlurEffect()
+        let animator = UIViewPropertyAnimator()
+        animator.addAnimations { view.effect = blur }
+        animator.fractionComplete = 0
+        animator.stopAnimation(false)
+        animator.finishAnimation(at: .current)
+        return view
+    }
+    
+    func updateUIView(_ uiView: UIVisualEffectView, context: Context) { }
+    
+}
+
+/// A transparent View that blurs its background
+struct BackdropBlurView: View {
+    
+    let radius: CGFloat
+    
+    @ViewBuilder
+    var body: some View {
+        BackdropView().blur(radius: radius)
+    }
 }
