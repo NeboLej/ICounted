@@ -62,7 +62,7 @@ struct AlertView: View {
     var body: some View {
         
         ZStack {
-            BackdropView().blur(radius: 3)
+            BackdropView().blur(radius: isShow ? 3 : 0)
             
             VStack(spacing: 0) {
                 Rectangle()
@@ -108,8 +108,15 @@ struct AlertView: View {
                         .stroke(.black, lineWidth: 1)
                 }
                 .padding(.horizontal, 16)
+                .offset(y: isShow ? 0 : 600)
+                .scaleEffect(CGSize(width: isShow ? 1.0 : 0.2, height: 1.0))
+
                 
         }.ignoresSafeArea()
+            .animation(.smooth(duration: 0.3), value: isShow)
+            .onAppear(perform: {
+                isShow = true
+            })
     }
     
     @ViewBuilder
