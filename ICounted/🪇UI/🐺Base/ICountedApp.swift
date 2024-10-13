@@ -10,11 +10,16 @@ import SwiftUI
 @main
 struct ICountedApp: App {
     
-    let store = AppStore()
+    @StateObject var store = AppStore()
     
     var body: some Scene {
         WindowGroup {
             CountersListScreen().environmentObject(store)
+                .overlay {
+                    if store.state.alert != nil {
+                        AlertView(model: store.state.alert!)
+                    }
+                }
         }
     }
 }

@@ -9,4 +9,5 @@ import Foundation
 
 struct AppState {
     var counters: [Counter]
+    var alert: AlertModel?
 }

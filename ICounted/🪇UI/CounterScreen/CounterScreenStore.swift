@@ -17,6 +17,7 @@ class CounterScreenStore: ObservableObject {
     @Published var targetCount: Int = 0
     @Published var isAddToWidget = false
     @Published var progress: Double = 0
+    @Published var alert: AlertModel? = nil
     var id: UUID?
     
     func bindCounter(counter: Counter) {
@@ -35,5 +36,13 @@ class CounterScreenStore: ObservableObject {
     private func getProgress() -> Double {
         if targetCount == 0 { return 1 }
         return (100 / Double(targetCount)) * Double(count)
+    }
+    
+    func showAlert(positiveAction: @escaping ()->(), negativeAction: @escaping ()->()){
+        alert = AlertModel(type: .warning, title: "", message: "Delete the counter \"\(name)\" and the entire history of records without the possibility of recovery??", actions: [.init(name: "delete", completion: positiveAction), .init(name: "cancel", completion: negativeAction)])
+    }
+    
+    func dissmissAlert() {
+        alert = nil
     }
 }
