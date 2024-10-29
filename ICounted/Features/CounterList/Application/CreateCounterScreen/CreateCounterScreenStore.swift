@@ -1,0 +1,27 @@
+//
+//  CreateCounterScreenStore.swift
+//  ICounted
+//
+//  Created by Nebo on 03.10.2024.
+//
+
+import SwiftUI
+
+class CreateCounterScreenStore: ObservableObject {
+    
+    @Published var name: String = ""
+    @Published var description: String = ""
+    @Published var color: Color = .blue
+    @Published var startValue: Int = 0
+    @Published var isUseTargetValue = false
+    @Published var targetCount: Int = 100
+    @Published var isAddToWidget = false
+    
+    func createCounter() -> Counter {
+        Counter(name: name, desc: description,
+                count: startValue, lastRecord: Date(),
+                colorHex: color.toHex() ?? "",
+                isFavorite: isAddToWidget,
+                targetCount: isUseTargetValue ? targetCount : nil)
+    }
+}
