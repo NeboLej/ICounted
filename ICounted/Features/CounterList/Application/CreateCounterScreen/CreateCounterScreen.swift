@@ -9,9 +9,8 @@ import SwiftUI
 
 struct CreateCounterScreen: View {
     
-//    @EnvironmentObject var store: AppStore
     @StateObject var store: Store<CounterListState, CounterListAction>
-    @StateObject var localStore = CreateCounterScreenStore()
+    @StateObject private var localStore = CreateCounterScreenStore()
     @Binding var isShow: Bool
     
     var body: some View {

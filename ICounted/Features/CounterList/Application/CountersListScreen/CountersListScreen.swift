@@ -31,6 +31,7 @@ struct CountersListScreen: View {
         }
         .onAppear {
             store.subscribe(observer: Observer { newState in
+                localStore.updateCountersValue(counters: newState.counters)
                 switch newState.screen {
                 case .counter:
                     localStore.isShowCounter = true
@@ -45,13 +46,11 @@ struct CountersListScreen: View {
             store.dispatch(.moveToScreen(screen: .counterList))
         }, content: {
             CreateCounterScreen(store: store, isShow: $localStore.isCreateCounter)
-                .environmentObject(store)
         })
         .sheet(isPresented: $localStore.isShowCounter, onDismiss: {
             store.dispatch(.moveToScreen(screen: .counterList))
         }, content: {
             CounterScreen(store: store, isShow: $localStore.isShowCounter, counter: localStore.selectedCounter)
-                .environmentObject(store)
         })
     }
     
@@ -84,11 +83,9 @@ struct CountersListScreen: View {
     private func counterList() -> some View {
         ForEach(store.state.counters) { counter in
             CounterCell(store: store, counter: counter)
-//                .environmentObject(store)
                 .onTapGesture {
                     localStore.selectedCounter = counter
                     store.dispatch(.moveToScreen(screen: .counter))
-//                    localStore.showCounter(counter: counter)
                 }
         }
     }
@@ -103,6 +100,7 @@ struct CountersListScreen: View {
                 .frame(height: 1)
                 .padding(.horizontal, 16)
             CounterValueView(count: $localStore.count)
+                .padding(.bottom, 2)
         }
     }
     @ViewBuilder
@@ -119,6 +117,7 @@ struct CountersListScreen: View {
                 .frame(height: 1)
                 .padding(.horizontal, 16)
             CounterValueView(count: $localStore.allCount)
+                .padding(.bottom, 2)
         }
     }
     
@@ -142,5 +141,4 @@ struct CountersListScreen: View {
                                                                  .init(name: "assssssOO", desc: "sdasdsddsdsdsd sdasd ", count: 10, lastRecord: Date(), colorHex: "95D385", isFavorite: false, targetCount: 100)
                                                                         ]),
                                     reducer: counterListReducer))
-//        .environmentObject(TEST)
 }
