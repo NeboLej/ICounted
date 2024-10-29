@@ -41,6 +41,10 @@ struct CounterScreen: View {
             localStore.bindCounter(counter: counter)
             
             store.subscribe(observer: Observer { newState in
+                if let counter = newState.counters.first(where: { $0.id == counter.id }) {
+                    localStore.bindCounter(counter: counter)
+                }
+                
                 switch newState.screen {
                 case .counterList: isShow = false
                 default: break

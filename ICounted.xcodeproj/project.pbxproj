@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E1312162CD193FA00A517C3 /* CounterRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1312152CD193F900A517C3 /* CounterRecord.swift */; };
 		8E23F4292CD032A70018185D /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E23F4282CD032A70018185D /* Store.swift */; };
 		8E23F42E2CD033F90018185D /* ConuterListAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E23F42D2CD033F90018185D /* ConuterListAction.swift */; };
 		8E23F4302CD0342C0018185D /* CounterListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E23F42F2CD0342C0018185D /* CounterListState.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8E1312152CD193F900A517C3 /* CounterRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterRecord.swift; sourceTree = "<group>"; };
 		8E23F4282CD032A70018185D /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		8E23F42D2CD033F90018185D /* ConuterListAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConuterListAction.swift; sourceTree = "<group>"; };
 		8E23F42F2CD0342C0018185D /* CounterListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterListState.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				8E2BDA852CA84E8800941DE1 /* Counter.swift */,
+				8E1312152CD193F900A517C3 /* CounterRecord.swift */,
 				8E23F42D2CD033F90018185D /* ConuterListAction.swift */,
 				8E23F42F2CD0342C0018185D /* CounterListState.swift */,
 			);
@@ -380,6 +383,7 @@
 				8E2BDA862CA84E8800941DE1 /* Counter.swift in Sources */,
 				8E23F4342CD03FBA0018185D /* Observer.swift in Sources */,
 				8EBB73B52C3ABFE300A0A899 /* ShadowModifier.swift in Sources */,
+				8E1312162CD193FA00A517C3 /* CounterRecord.swift in Sources */,
 				8E520B842CBBE8B30076FB16 /* AlertType+.swift in Sources */,
 				8E9E1BBB2CAF1875002B12E2 /* CreateCounterScreen.swift in Sources */,
 				8E9E1BBD2CAF188D002B12E2 /* CreateCounterScreenStore.swift in Sources */,

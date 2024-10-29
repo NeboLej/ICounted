@@ -15,7 +15,22 @@ struct ICountedApp: App {
     let store: Store<CounterListState, CounterListAction>
     
     init() {
-        self.container = try! ModelContainer(for: Counter.self)
+//        let storeURL = URL.documentsDirectory.appending(path: "database.sqlite")
+        let schema = Schema([Counter.self, CounterRecord.self])
+        let config = ModelConfiguration(schema: schema, cloudKitDatabase: .automatic)
+        container = try! ModelContainer(for: schema, configurations: config)
+        
+        
+//        let container: ModelContainer = {
+//            // Don't force unwrap for real 👀
+//            try! ModelContainer(
+//                for: [Brew.self],
+//                .init(cloudKitContainerIdentifier: "icloud.uk.co.alexanderlogan.samples.Brew-Book") // we'll come back to this one
+//            )
+//        }()
+//        
+        
+//        self.container = try! ModelContainer(for: [Counter.self, CounterRecord.self])
         self.store = Store(
             initial: CounterListState(),
             reducer: counterListReducer,

@@ -10,14 +10,16 @@ import SwiftData
 
 @Model
 class Counter: Identifiable, Equatable {
-    @Attribute(.unique) var id: UUID
-    let name: String
-    let desc: String
-    let count: Int
+    let id: UUID = UUID.init()
+    let name: String = "def"
+    let desc: String = "def"
+    var count: Int = 0
     let lastRecord: Date?
-    let colorHex: String
-    let isFavorite: Bool
+    let colorHex: String = "def"
+    var isFavorite: Bool = false
     let targetCount: Int?
+    
+    @Relationship(deleteRule: .cascade, inverse: \CounterRecord.counter) var records: [CounterRecord]? = []
     
     init(id: UUID = .init(), name: String, desc: String, count: Int, lastRecord: Date?, colorHex: String, isFavorite: Bool, targetCount: Int?) {
         self.id = id
@@ -31,7 +33,18 @@ class Counter: Identifiable, Equatable {
     }
     
     func copy(count: Int? = nil, isFavorite: Bool? = nil) -> Counter {
-        Counter(id: id, name: name, desc: desc, count: count ?? self.count, lastRecord: lastRecord, colorHex: colorHex, isFavorite: isFavorite ?? self.isFavorite, targetCount: targetCount)
+        self.count = count ?? self.count
+        self.isFavorite = isFavorite ?? self.isFavorite
+        return self
+    }
+    
+    func modify(count: Int? = nil, isFavorite: Bool? = nil) {
+        self.count = count ?? self.count
+        self.isFavorite = isFavorite ?? self.isFavorite
+    }
+    
+    func addRecord(record: CounterRecord) {
+        records?.append(record)
     }
 }
 
