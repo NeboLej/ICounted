@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CounterScreen: View {
-//    @EnvironmentObject var store: AppStore
+    
     @StateObject var store: Store<CounterListState, CounterListAction>
     @StateObject var localStore = CounterScreenStore()
     @Binding var isShow: Bool
@@ -41,13 +41,20 @@ struct CounterScreen: View {
         .background(.background1)
         .onAppear {
             localStore.bindCounter(counter: counter)
+            
+            store.subscribe(observer: Observer { newState in
+                switch newState.screen {
+                case .counterList: isShow = false
+                default: break
+                }
+                return .alive
+            })
         }
         .onChange(of: store.state.counters) {
             guard let counter = store.state.counters.first(where: { $0.id == counter.id }) else { return }
             localStore.bindCounter(counter: counter)
         }
-        .modifier(AlertModifier(alert: store.state.alert))
-        .modifier(AlertModifier(alert: localStore.alert))
+        .modifier(AlertModifier(store: store))
     }
     
     @ViewBuilder
@@ -141,13 +148,12 @@ struct CounterScreen: View {
                     .font(.system(size: 14))
                     .foregroundStyle(.textDark)
                     .onTapGesture {
-                        localStore.showAlert {
+                        let alertModel = localStore.showAlert {
                             store.dispatch(.deleteCounter(counterId: counter.id))
-                            localStore.dissmissAlert()
-                            isShow = false
-                        } negativeAction: {
-                            localStore.dissmissAlert()
-                        }
+                            store.dispatch(.moveToScreen(screen: .counterList))
+                        } negativeAction: { }
+                        
+                        store.dispatch(.showAlert(alert: alertModel))
                     }
             }.opacity(isShowMenu ? 1 : 0)
         }

@@ -33,7 +33,7 @@ struct ICountedApp: App {
             CountersListScreen(store: store)
                 .overlay {
                     if store.state.alert != nil {
-                        AlertView(model: store.state.alert!)
+                        AlertView(model: store.state.alert!, store: store)
                     }
                 }
         }

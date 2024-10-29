@@ -72,7 +72,7 @@ struct CreateCounterScreen: View {
             
         }
         .background(.background1)
-        .modifier(AlertModifier(alert: store.state.alert))
+        .modifier(AlertModifier(store: store))
         .onAppear {
             store.subscribe(observer: Observer { newState in
                 switch newState.screen {

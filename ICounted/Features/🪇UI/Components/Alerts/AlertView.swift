@@ -10,6 +10,8 @@ import SwiftUI
 struct AlertView: View {
     
     let model: AlertModel
+    
+    @StateObject var store: Store<CounterListState, CounterListAction>
     @State private var isShow = false
     
     var body: some View {
@@ -91,13 +93,14 @@ struct AlertView: View {
             .onTapGesture {
                 withAnimation {
                     isShow = false
-                }completion: {
+                } completion: {
                     action.completion()
+                    store.dispatch(.dismissAlert)
                 }
             }
     }
 }
 
-#Preview {
-    AlertView(model: .init(type: .warning, title: "WTF???", message: "ksdka aksdl m?", actions: [.init(name: "first", completion: {}), .init(name: "second", completion: {})]))
-}
+//#Preview {
+//    AlertView(model: .init(type: .warning, title: "WTF???", message: "ksdka aksdl m?", actions: [.init(name: "first", completion: {}), .init(name: "second", completion: {})]))
+//}

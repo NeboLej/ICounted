@@ -19,10 +19,14 @@ struct ICTextProgressBar: View {
                     .border(.black)
                 Rectangle()
                     .fill(.red)
-                    .frame(width: metrics.size.width * progress / 100)
+                    .frame(width: getWidthByProgress(maxWidth: metrics.size.width))
                     .border(.black)
             }
         }
+    }
+    
+    func getWidthByProgress(maxWidth: CGFloat) -> CGFloat {
+        progress > 100 ? maxWidth : maxWidth * progress / 100
     }
 }
 

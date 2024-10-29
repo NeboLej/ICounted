@@ -17,4 +17,5 @@ enum CounterListAction {
     case loadCounters
     case showAlert(alert: AlertModel)
     case moveToScreen(screen: Screen)
+    case dismissAlert
 }

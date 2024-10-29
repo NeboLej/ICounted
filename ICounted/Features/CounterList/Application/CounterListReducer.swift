@@ -16,6 +16,8 @@ func counterListReducer(_ state: inout CounterListState, action: CounterListActi
         state.alert = alert
     case .moveToScreen(let screen):
         state.screen = screen
+    case .dismissAlert:
+        state.alert = nil
         
     //middleware
     case .loadCounters: break

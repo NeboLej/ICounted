@@ -10,7 +10,7 @@ import SwiftUI
 struct CounterCell: View {
     
     @StateObject var store: Store<CounterListState, CounterListAction>
-//    @EnvironmentObject var store: AppStore
+    
     let counter: Counter
     
     var body: some View {

@@ -12,9 +12,9 @@ struct NewCounterValidationMiddleware: Middleware {
         switch action {
         case .addCounter(let counter):
             if counter.name.isEmpty {
-                next(.showAlert(alert: .getErrorModel(message: "Название счетчика не может быть пустым")))
+                next(.showAlert(alert: .getErrorModel(message: "Counter name cannot be empty")))
             } else if counter.targetCount == 0 {
-                next(.showAlert(alert: .getErrorModel(message: "фоывлфыволфывол")))
+                next(.showAlert(alert: .getErrorModel(message: "The target value cannot be zero")))
             } else {
                 next(action)
             }

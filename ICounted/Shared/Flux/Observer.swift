@@ -13,7 +13,6 @@ enum ObserverStatus {
 }
 
 final class Observer<State> {
-//    private let observeBlock: (State) -> ObserverStatus
     let queue: DispatchQueue
     let observe: (State) -> ObserverStatus
 
@@ -22,10 +21,6 @@ final class Observer<State> {
         self.queue = queue
         self.observe = observe
     }
-
-//    func observe(_ state: State) -> ObserverStatus {
-//        return observeBlock(state)
-//    }
 }
 
 extension Observer: Hashable {

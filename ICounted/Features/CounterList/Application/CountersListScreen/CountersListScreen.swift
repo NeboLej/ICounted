@@ -41,11 +41,15 @@ struct CountersListScreen: View {
                 return .alive
             })
         }
-        .sheet(isPresented: $localStore.isCreateCounter, content: {
+        .sheet(isPresented: $localStore.isCreateCounter, onDismiss: {
+            store.dispatch(.moveToScreen(screen: .counterList))
+        }, content: {
             CreateCounterScreen(store: store, isShow: $localStore.isCreateCounter)
                 .environmentObject(store)
         })
-        .sheet(isPresented: $localStore.isShowCounter, content: {
+        .sheet(isPresented: $localStore.isShowCounter, onDismiss: {
+            store.dispatch(.moveToScreen(screen: .counterList))
+        }, content: {
             CounterScreen(store: store, isShow: $localStore.isShowCounter, counter: localStore.selectedCounter)
                 .environmentObject(store)
         })
