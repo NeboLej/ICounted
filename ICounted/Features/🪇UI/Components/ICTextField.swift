@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ICTextField: View {
     
-    @Binding var text: String
+    @Binding private var text: String
     private let name: String
     private let maxLength: Int
     private let lineLimit: ClosedRange<Int>

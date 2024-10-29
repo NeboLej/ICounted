@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ICToggleControlView: View {
     
-    @Binding var isOn: Bool
-    let color: Color
-    let isEnabled: Bool
+    @Binding private var isOn: Bool
+    private let color: Color
+    private let isEnabled: Bool
     
     init(isOn: Binding<Bool>, color: Color, isEnabled: Bool = true) {
         self._isOn = isOn

@@ -15,7 +15,6 @@ struct AlertView: View {
     @State private var isShow = false
     
     var body: some View {
-        
         ZStack {
             ICBackBlurView().blur(radius: isShow ? 3 : 0)
             
@@ -55,16 +54,16 @@ struct AlertView: View {
                         .padding(.bottom, 26)
                 }
             }
-
+            
             .background(.background1)
-                .clipShape(RoundedRectangle(cornerRadius: 15))
-                .overlay {
-                    RoundedRectangle(cornerRadius: 15)
-                        .stroke(.black, lineWidth: 1)
-                }
-                .padding(.horizontal, 16)
-                .offset(y: isShow ? 0 : 600)
-                .scaleEffect(CGSize(width: isShow ? 1.0 : 0.01, height: 1.0))
+            .clipShape(RoundedRectangle(cornerRadius: 15))
+            .overlay {
+                RoundedRectangle(cornerRadius: 15)
+                    .stroke(.black, lineWidth: 1)
+            }
+            .padding(.horizontal, 16)
+            .offset(y: isShow ? 0 : 600)
+            .scaleEffect(CGSize(width: isShow ? 1.0 : 0.01, height: 1.0))
         }.ignoresSafeArea()
             .animation(.smooth(duration: 0.3), value: isShow)
             .onAppear(perform: {

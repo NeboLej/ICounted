@@ -47,7 +47,7 @@ class Store<State, Action>: ObservableObject where State: Equatable {
             notify(observer)
         }
     }
-
+    
     private func notify(_ observer: Observer<State>) {
         let state = self.state
         observer.queue.async {

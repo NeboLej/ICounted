@@ -22,6 +22,4 @@ struct NewCounterValidationMiddleware: Middleware {
             next(action)
         }
     }
-    
-    
 }

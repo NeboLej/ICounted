@@ -14,7 +14,6 @@ struct CounterCell: View {
     let counter: Counter
     
     var body: some View {
-        
         ZStack {
             VStack {
                 HStack {
@@ -46,7 +45,7 @@ struct CounterCell: View {
                         .padding(.top, 16)
                         .padding(.bottom, 8)
                 }
-
+                
                 HStack {
                     CounterValueView(count: .constant(counter.count))
                     if let lastRecord = counter.lastRecord {
@@ -61,7 +60,7 @@ struct CounterCell: View {
                                 .fontWeight(.regular)
                         }
                     }
-
+                    
                     Spacer()
                     
                     RoundedRectangle(cornerRadius: 16)
@@ -74,7 +73,7 @@ struct CounterCell: View {
                         .onTapGesture {
                             store.dispatch(.countPlus(counterId: counter.id))
                         }
-                        
+                    
                 }.frame(height: 45)
             }
             .padding([.top, .horizontal], 16)
@@ -109,8 +108,8 @@ struct CounterCell: View {
     CountersListScreen(store: .init(initial: CounterListState(counters:
                                                                 [.init(name: "asdsd", desc: "asdasdsd", count: 123, lastRecord: nil, colorHex: "95D385", isFavorite: true, targetCount: nil),
                                                                  .init(name: "assssssOO", desc: "sdasdsddsdsdsd sdasd ", count: 10, lastRecord: Date(), colorHex: "95D385", isFavorite: false, targetCount: 100)
-                                                                        ]),
+                                                                ]),
                                     reducer: counterListReducer))
-//        .environmentObject(TEST)
+    //        .environmentObject(TEST)
 }
 

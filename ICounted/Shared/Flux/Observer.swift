@@ -15,7 +15,7 @@ enum ObserverStatus {
 final class Observer<State> {
     let queue: DispatchQueue
     let observe: (State) -> ObserverStatus
-
+    
     init(queue: DispatchQueue = .main,
          observe: @escaping (State) -> ObserverStatus) {
         self.queue = queue
@@ -27,7 +27,7 @@ extension Observer: Hashable {
     static func == (lhs: Observer<State>, rhs: Observer<State>) -> Bool {
         return lhs === rhs
     }
-
+    
     func hash(into hasher: inout Hasher) {
         hasher.combine(ObjectIdentifier(self))
     }

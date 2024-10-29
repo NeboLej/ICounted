@@ -25,7 +25,7 @@ struct CreateCounterScreen: View {
                     ICTextField(text: $localStore.description, name: "Description", placeholder: "counter description", lineLimit: 2...6, maxLength: 200)
                     colorPicker()
                 }.padding(.top, 10)
-                                
+                
                 HStack {
                     ICNumberSetterView(number: $localStore.startValue)
                     Spacer()
@@ -43,8 +43,7 @@ struct CreateCounterScreen: View {
                             .foregroundStyle(.textInfo)
                         ICToggleControlView(isOn: $localStore.isUseTargetValue, color: localStore.color)
                     }.padding(.vertical, 2)
-                   
-                   
+                    
                     Spacer()
                     if localStore.isUseTargetValue {
                         ICNumberSetterView(number: $localStore.targetCount)

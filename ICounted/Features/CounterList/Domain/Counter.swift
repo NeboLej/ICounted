@@ -36,10 +36,8 @@ class Counter: Identifiable, Equatable {
 }
 
 extension Counter {
-    
     var progress: Double? {
         guard let targetCount, targetCount > 0 else { return nil }
         return (100 / Double(targetCount)) * Double(count)
     }
-    
 }

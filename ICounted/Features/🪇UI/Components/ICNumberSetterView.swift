@@ -70,7 +70,7 @@ struct ICNumberSetterView: View {
                 changedNumber(operation: .minus(position))
             }
     }
-
+    
     @ViewBuilder
     private func number(numb: String, color: Color, lineWidth: CGFloat = 1) -> some View {
         Text(numb)
@@ -85,7 +85,6 @@ struct ICNumberSetterView: View {
                     .foregroundStyle(.textDark)
             }
     }
-    
     
     private func changedNumber(operation: NumberOperations) {
         switch operation {

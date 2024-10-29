@@ -15,9 +15,8 @@ struct CounterScreen: View {
     var counter: Counter
     
     @State private var isShowMenu: Bool = false
- 
+    
     var body: some View {
-        
         VStack(spacing: 16) {
             ICHeaderView(name: localStore.name, color: localStore.color)
             
@@ -28,7 +27,6 @@ struct CounterScreen: View {
                     counterProgressView()
                     graph()
                         .padding(.top, 30)
-                    
                 }.padding(.horizontal, 16)
             }
             
@@ -160,7 +158,7 @@ struct CounterScreen: View {
         .animation(.easeOut(duration: 0.3), value: isShowMenu)
     }
     
-    @ViewBuilder 
+    @ViewBuilder
     private func graph() -> some View {
         VStack {
             HStack {

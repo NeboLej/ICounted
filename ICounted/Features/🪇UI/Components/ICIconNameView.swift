@@ -13,7 +13,6 @@ struct ICIconNameView: View {
     let color: Color
     
     var body: some View {
-        
         ZStack {
             Rectangle()
                 .foregroundStyle(color)
@@ -27,7 +26,6 @@ struct ICIconNameView: View {
                 .stroke(lineWidth: 2)
                 .foregroundStyle(.black)
         }.clipShape(RoundedRectangle(cornerRadius: 15))
-
     }
     
     

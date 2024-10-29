@@ -17,7 +17,6 @@ class CounterListScreenStore: ObservableObject {
     @Published var isShowCounter: Bool = false
     var selectedCounter: Counter!
     
-    
     func updateCountersValue(counters: [Counter]) {
         count = counters.count
         allCount = counters.reduce(0) { $0 + $1.count }
