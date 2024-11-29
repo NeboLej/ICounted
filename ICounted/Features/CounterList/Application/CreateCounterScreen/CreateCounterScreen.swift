@@ -76,6 +76,7 @@ struct CreateCounterScreen: View {
                 switch newState.screen {
                 case .counterList:
                     isShow = false
+                    return .dead
                 default: break
                 }
                 return .alive

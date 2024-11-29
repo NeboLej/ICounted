@@ -47,6 +47,7 @@ struct CounterScreen: View {
                 
                 switch newState.screen {
                 case .counterList: isShow = false
+                    return .dead
                 default: break
                 }
                 return .alive
@@ -181,13 +182,17 @@ struct CounterScreen: View {
                     print("EDIT HISTORY")
                 }
             }
-            
-            RoundedRectangle(cornerRadius: 16)
-                .fill(localStore.color.opacity(0.1))
+            ICRecordChart(records: $localStore.records1)
+                .background(localStore.color.opacity(0.1))
+                
+//            RoundedRectangle(cornerRadius: 16)
+//                .fill(localStore.color.opacity(0.1))
                 .frame(height: 200)
                 .overlay {
                     RoundedRectangle(cornerRadius: 16)
                         .stroke(localStore.color, lineWidth: 3)
+                    
+                   
                 }
         }
     }
@@ -217,7 +222,12 @@ struct CounterScreen: View {
     
 }
 
-//#Preview {
-//    CounterScreen(isShow: .constant(true), counter: Counter(name: "Counter", desc: "bla bla bla jsadk jjda kdjnak sjdkas ndkjasndk anskdj akjsdnaskj dnashb dhasdb jasdl asd;am lsdjk na", count: 123, lastRecord: Date(), colorHex: "043464", isFavorite: true, targetCount: 500))
-//        .environmentObject(TEST)
-//}
+#Preview {
+    CounterScreen(store:  Store(
+        initial: CounterListState(),
+        reducer: counterListReducer,
+        middleware: [
+            AnyMiddleware(NewCounterValidationMiddleware())
+        ]
+    ), isShow: .constant(true), counter: Counter(name: "asd", desc: "amsdmsak dam da ", count: 222, lastRecord: Date(), colorHex: "142941", isFavorite: true, targetCount: nil))
+}

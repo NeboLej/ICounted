@@ -18,6 +18,7 @@ class CounterScreenStore: ObservableObject {
     @Published var isAddToWidget = false
     @Published var progress: Double = 0
     @Published var records: [CounterRecord] = []
+    @Published var records1: [CounterStat] = []
     var id: UUID?
     
     func bindCounter(counter: Counter) {
@@ -30,6 +31,11 @@ class CounterScreenStore: ObservableObject {
         targetCount =  counter.targetCount != nil ?  counter.targetCount! : 0
         isAddToWidget = counter.isFavorite
         records = counter.records ?? []
+        var i = 0
+        records1 = records.sorted(by: { $0.date < $1.date } ).map {
+            i += 1
+            return CounterStat(date: $0.date, count: i)
+        }
         
         progress = getProgress()
     }

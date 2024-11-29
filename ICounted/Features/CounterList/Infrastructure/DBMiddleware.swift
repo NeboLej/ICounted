@@ -23,11 +23,11 @@ struct DBMiddleware: Middleware {
                 let counter = state.counters[counterIndex]
                 let newRecord = CounterRecord(counter: counter)
                 counter.modify(count: counter.count + 1)
-                context.insert(counter)
-                context.insert(newRecord)
-                
-                try? context.save()
-                next(.countersLoaded(loadCountersFromDB()))
+//                context.insert(counter)
+//                context.insert(newRecord)
+//                
+//                try? context.save()
+//                next(.countersLoaded(loadCountersFromDB()))
             }
         case .countMinus(let counterId):
             if let counterIndex = state.counters.firstIndex(where: { $0.id == counterId }) {
