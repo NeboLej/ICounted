@@ -9,8 +9,16 @@ import SwiftUI
 
 struct CountersListScreen: View {
     
-    @StateObject var store: Store<CounterListState, CounterListAction>
-    @StateObject var localStore = CounterListScreenStore()
+    @State var isShowCounter = false
+    @State var isShowCreateCounter = false
+    @State var conter: Counter? = nil
+    
+//    @StateObject var store: Store<CounterListState, CounterListAction>
+//    @StateObject var store: Store<CounterListState, CounterListAction>
+//    @StateObject var localStore = CounterListScreenStore()
+    
+    @Environment(CountersStore.self) var countersStore: CountersStore
+//    @Environment(\.countersStore) var countersStore
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
@@ -28,28 +36,36 @@ struct CountersListScreen: View {
                 .frame(width: 54, height: 54)
                 .padding(.trailing, 16)
         }
-        .onAppear {
-            store.subscribe(observer: Observer { newState in
-                localStore.updateCountersValue(counters: newState.counters)
-                switch newState.screen {
-                case .counter:
-                    localStore.isShowCounter = true
-                case .createCounter:
-                    localStore.isCreateCounter = true
-                default: break
-                }
-                return .alive
-            })
-        }
-        .sheet(isPresented: $localStore.isCreateCounter, onDismiss: {
-            store.dispatch(.moveToScreen(screen: .counterList))
+//        .onAppear {
+//            store.subscribe(observer: Observer { newState in
+//                localStore.updateCountersValue(counters: newState.counters)
+//                switch newState.screen {
+//                case .counter:
+//                    localStore.isShowCounter = true
+//                case .createCounter:
+//                    localStore.isCreateCounter = true
+//                default: break
+//                }
+//                return .alive
+//            })
+//        }
+        .sheet(isPresented: $isShowCreateCounter, onDismiss: {
+//            store.dispatch(.moveToScreen(screen: .counterList))
         }, content: {
-            CreateCounterScreen(store: store, isShow: $localStore.isCreateCounter)
+            CreateCounterScreen(isShow: $isShowCreateCounter)
+                .environment(countersStore)
         })
-        .sheet(isPresented: $localStore.isShowCounter, onDismiss: {
-            store.dispatch(.moveToScreen(screen: .counterList))
+        .sheet(isPresented: $isShowCounter, onDismiss: {
+//            store.dispatch(.moveToScreen(screen: .counterList))
         }, content: {
-            CounterScreen(store: store, isShow: $localStore.isShowCounter, counter: localStore.selectedCounter)
+//            CounterScreen(counter: localStore.selectedCounter)
+            if conter != nil {
+                CounterScreen(isShow: $isShowCounter, counter: conter!)
+                    .environment(countersStore)
+            } else {
+                EmptyView()
+            }
+            
         })
     }
     
@@ -72,7 +88,8 @@ struct CountersListScreen: View {
             .foregroundStyle(.background3)
             .modifier(ShadowModifier(foregroundColor: .black, cornerRadius: 27))
             .onTapGesture {
-                store.dispatch(.moveToScreen(screen: .createCounter))
+                isShowCreateCounter = true
+//                store.dispatch(.moveToScreen(screen: .createCounter))
             }
         
     }
@@ -80,11 +97,11 @@ struct CountersListScreen: View {
     
     @ViewBuilder
     private func counterList() -> some View {
-        ForEach(store.state.counters) { counter in
-            CounterCell(store: store, counter: counter)
+        ForEach(countersStore.counterList) { counter in
+            CounterCell(counter: counter)
                 .onTapGesture {
-                    localStore.selectedCounter = counter
-                    store.dispatch(.moveToScreen(screen: .counter))
+//                    localStore.selectedCounter = counter
+//                    store.dispatch(.moveToScreen(screen: .counter))
                 }
         }
     }
@@ -98,7 +115,7 @@ struct CountersListScreen: View {
             Rectangle()
                 .frame(height: 1)
                 .padding(.horizontal, 16)
-            CounterValueView(count: $localStore.count)
+            CounterValueView(count: countersStore.counterList.count)
                 .padding(.bottom, 2)
         }
     }
@@ -115,7 +132,7 @@ struct CountersListScreen: View {
                 .fill(.black)
                 .frame(height: 1)
                 .padding(.horizontal, 16)
-            CounterValueView(count: $localStore.allCount)
+            CounterValueView(count: countersStore.allCount)
                 .padding(.bottom, 2)
         }
     }
@@ -133,11 +150,12 @@ struct CountersListScreen: View {
     }
     
 }
-
-#Preview {
-    CountersListScreen(store: .init(initial: CounterListState(counters:
-                                                                [.init(name: "asdsd", desc: "asdasdsd", count: 123, lastRecord: nil, colorHex: "95D385", isFavorite: true, targetCount: nil),
-                                                                 .init(name: "assssssOO", desc: "sdasdsddsdsdsd sdasd ", count: 10, lastRecord: Date(), colorHex: "95D385", isFavorite: false, targetCount: 100)
-                                                                ]),
-                                    reducer: counterListReducer))
-}
+//
+//#Preview {
+//    CountersListScreen(store: .init(initial: CounterListState(counters:
+//                                                                [.init(name: "asdsd", desc: "asdasdsd", count: 123, lastRecord: nil, colorHex: "95D385", isFavorite: true, targetCount: nil),
+//                                                                 .init(name: "assssssOO", desc: "sdasdsddsdsdsd sdasd ", count: 10, lastRecord: Date(), colorHex: "95D385", isFavorite: false, targetCount: 100)
+//                                                                ]),
+//                                    reducer: counterListReducer))
+//}
+//

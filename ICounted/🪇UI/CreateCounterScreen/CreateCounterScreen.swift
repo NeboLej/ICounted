@@ -7,9 +7,12 @@
 
 import SwiftUI
 
+
 struct CreateCounterScreen: View {
     
-    @StateObject var store: Store<CounterListState, CounterListAction>
+//    @StateObject var store: Store<CounterListState, CounterListAction>
+//    @Environment(\.countersStore) var countersStore
+    @Environment(CountersStore.self) var countersStore: CountersStore
     @StateObject private var localStore = CreateCounterScreenStore()
     @Binding var isShow: Bool
     
@@ -70,16 +73,16 @@ struct CreateCounterScreen: View {
             
         }
         .background(.background1)
-        .modifier(AlertModifier(store: store))
+//        .modifier(AlertModifier(store: store))
         .onAppear {
-            store.subscribe(observer: Observer { newState in
-                switch newState.screen {
-                case .counterList:
-                    isShow = false
-                default: break
-                }
-                return .alive
-            })
+//            store.subscribe(observer: Observer { newState in
+//                switch newState.screen {
+//                case .counterList:
+//                    isShow = false
+//                default: break
+//                }
+//                return .alive
+//            })
         }
         
     }
@@ -96,7 +99,9 @@ struct CreateCounterScreen: View {
                     .foregroundStyle(.textDark)
             }
             .onTapGesture {
-                store.dispatch(.addCounter(counter: localStore.createCounter()))
+//                store.dispatch(.addCounter(counter: localStore.createCounter()))
+                countersStore.saveCounter(newCounter: localStore.createCounter())
+                
             }
     }
     

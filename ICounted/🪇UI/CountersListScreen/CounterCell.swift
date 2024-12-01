@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CounterCell: View {
     
-    @StateObject var store: Store<CounterListState, CounterListAction>
+//    @StateObject var store: Store<CounterListState, CounterListAction>
     
     let counter: Counter
     
@@ -34,7 +34,7 @@ struct CounterCell: View {
                     VStack {
                         Image(counter.isFavorite ? .starActive : .star)
                             .onTapGesture {
-                                store.dispatch(.toggleIsFavorite(counterId: counter.id))
+//                                store.dispatch(.toggleIsFavorite(counterId: counter.id))
                             }
                         Spacer()
                     }
@@ -47,7 +47,7 @@ struct CounterCell: View {
                 }
                 
                 HStack {
-                    CounterValueView(count: .constant(counter.count))
+                    CounterValueView(count: counter.count)
                     if let lastRecord = counter.lastRecord {
                         VStack(alignment: .leading)  {
                             Text("last record")
@@ -71,7 +71,7 @@ struct CounterCell: View {
                                 .font(.system(size: 14))
                         }
                         .onTapGesture {
-                            store.dispatch(.countPlus(counterId: counter.id))
+//                            store.dispatch(.countPlus(counterId: counter.id))
                         }
                     
                 }.frame(height: 45)
@@ -104,12 +104,12 @@ struct CounterCell: View {
     }
 }
 
-#Preview {
-    CountersListScreen(store: .init(initial: CounterListState(counters:
-                                                                [.init(name: "asdsd", desc: "asdasdsd", count: 123, lastRecord: nil, colorHex: "95D385", isFavorite: true, targetCount: nil),
-                                                                 .init(name: "assssssOO", desc: "sdasdsddsdsdsd sdasd ", count: 10, lastRecord: Date(), colorHex: "95D385", isFavorite: false, targetCount: 100)
-                                                                ]),
-                                    reducer: counterListReducer))
-    //        .environmentObject(TEST)
-}
-
+//#Preview {
+//    CountersListScreen(store: .init(initial: CounterListState(counters:
+//                                                                [.init(name: "asdsd", desc: "asdasdsd", count: 123, lastRecord: nil, colorHex: "95D385", isFavorite: true, targetCount: nil),
+//                                                                 .init(name: "assssssOO", desc: "sdasdsddsdsdsd sdasd ", count: 10, lastRecord: Date(), colorHex: "95D385", isFavorite: false, targetCount: 100)
+//                                                                ]),
+//                                    reducer: counterListReducer))
+//    //        .environmentObject(TEST)
+//}
+//

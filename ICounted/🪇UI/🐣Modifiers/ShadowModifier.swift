@@ -41,12 +41,12 @@ struct ShadowModifier: ViewModifier {
     }
 }
 
-
-#Preview {
-    CountersListScreen(store: .init(initial: CounterListState(counters:
-                                                                [.init(name: "asdsd", desc: "asdasdsd", count: 123, lastRecord: nil, colorHex: "95D385", isFavorite: true, targetCount: nil),
-                                                                 .init(name: "assssssOO", desc: "sdasdsddsdsdsd sdasd ", count: 10, lastRecord: Date(), colorHex: "95D385", isFavorite: false, targetCount: 100)
-                                                                        ]),
-                                    reducer: counterListReducer))
-//        .environmentObject(TEST)
-}
+//
+//#Preview {
+//    CountersListScreen(store: .init(initial: CounterListState(counters:
+//                                                                [.init(name: "asdsd", desc: "asdasdsd", count: 123, lastRecord: nil, colorHex: "95D385", isFavorite: true, targetCount: nil),
+//                                                                 .init(name: "assssssOO", desc: "sdasdsddsdsdsd sdasd ", count: 10, lastRecord: Date(), colorHex: "95D385", isFavorite: false, targetCount: 100)
+//                                                                        ]),
+//                                    reducer: counterListReducer))
+////        .environmentObject(TEST)
+//}

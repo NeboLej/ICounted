@@ -9,7 +9,8 @@ import SwiftUI
 
 struct CounterScreen: View {
     
-    @StateObject var store: Store<CounterListState, CounterListAction>
+//    @StateObject var store: Store<CounterListState, CounterListAction>
+    @Environment(\.countersStore) var countersStore
     @StateObject var localStore = CounterScreenStore()
     @Binding var isShow: Bool
     var counter: Counter
@@ -39,24 +40,24 @@ struct CounterScreen: View {
         .background(.background1)
         .onAppear {
             localStore.bindCounter(counter: counter)
-            
-            store.subscribe(observer: Observer { newState in
-                if let counter = newState.counters.first(where: { $0.id == counter.id }) {
-                    localStore.bindCounter(counter: counter)
-                }
-                
-                switch newState.screen {
-                case .counterList: isShow = false
-                default: break
-                }
-                return .alive
-            })
+//            
+//            store.subscribe(observer: Observer { newState in
+//                if let counter = newState.counters.first(where: { $0.id == counter.id }) {
+//                    localStore.bindCounter(counter: counter)
+//                }
+//                
+//                switch newState.screen {
+//                case .counterList: isShow = false
+//                default: break
+//                }
+//                return .alive
+//            })
         }
-        .onChange(of: store.state.counters) {
-            guard let counter = store.state.counters.first(where: { $0.id == counter.id }) else { return }
-            localStore.bindCounter(counter: counter)
-        }
-        .modifier(AlertModifier(store: store))
+//        .onChange(of: store.state.counters) {
+//            guard let counter = store.state.counters.first(where: { $0.id == counter.id }) else { return }
+//            localStore.bindCounter(counter: counter)
+//        }
+//        .modifier(AlertModifier(store: store))
     }
     
     @ViewBuilder
@@ -89,7 +90,7 @@ struct CounterScreen: View {
                 Text("value")
                     .font(.system(size: 14))
                     .foregroundStyle(.textInfo)
-                CounterValueView(count: $localStore.count, width: 20, height: 30)
+                CounterValueView(count: localStore.count, width: 20, height: 30)
             }
             
             Spacer()
@@ -99,7 +100,7 @@ struct CounterScreen: View {
                     Text("target value")
                         .font(.system(size: 14))
                         .foregroundStyle(.textInfo)
-                    CounterValueView(count: $localStore.targetCount, width: 20, height: 30)
+                    CounterValueView(count: localStore.targetCount, width: 20, height: 30)
                 }
             }
         }.padding(.top, 16)
@@ -121,9 +122,9 @@ struct CounterScreen: View {
                     .font(.system(size: 18, weight: .bold))
                     .foregroundStyle(.textDark)
             }
-            .onTapGesture {
-                store.dispatch(.countPlus(counterId: counter.id))
-            }
+//            .onTapGesture {
+//                store.dispatch(.countPlus(counterId: counter.id))
+//            }
     }
     
     @ViewBuilder
@@ -150,12 +151,12 @@ struct CounterScreen: View {
                     .font(.system(size: 14))
                     .foregroundStyle(.textDark)
                     .onTapGesture {
-                        let alertModel = localStore.showAlert {
-                            store.dispatch(.deleteCounter(counterId: counter.id))
-                            store.dispatch(.moveToScreen(screen: .counterList))
-                        } negativeAction: { }
-                        
-                        store.dispatch(.showAlert(alert: alertModel))
+//                        let alertModel = localStore.showAlert {
+//                            store.dispatch(.deleteCounter(counterId: counter.id))
+//                            store.dispatch(.moveToScreen(screen: .counterList))
+//                        } negativeAction: { }
+//                        
+//                        store.dispatch(.showAlert(alert: alertModel))
                     }
             }.opacity(isShowMenu ? 1 : 0)
         }
