@@ -10,7 +10,9 @@ import Foundation
 @Observable
 class CountersStore: BaseStore {
     
-    @ObservationIgnored let localRepository: DBRepositoryProtocol
+    @ObservationIgnored
+    private let localRepository: DBRepositoryProtocol
+    
     var counterList: [Counter] = []
     var allCount: Int {
         counterList.reduce(0) { $0 + $1.count }
@@ -32,24 +34,16 @@ class CountersStore: BaseStore {
         counterList = localRepository.getAllCounters()
     }
     
-}
-
-import SwiftUI
-
-struct StoreKey: EnvironmentKey {
-    static var defaultValue = CountersStore(localRepository: DBRepositoryMock())
-}
-
-extension EnvironmentValues {
-    var countersStore: CountersStore {
-        get { self[StoreKey.self] }
-        set { self[StoreKey.self] = newValue }
+    func countPlus(counter: Counter) {
+        localRepository.plusCount(counter: counter)
+    }
+    
+    func favoriteToggle(counter: Counter) {
+        localRepository.favoriteToggle(counter: counter)
+    }
+    
+    func deleteCounter(counter: Counter) {
+        localRepository.deleteCounter(counter: counter)
+        updateAllCounters()
     }
 }
-
-//struct ContentView: View {
-//    @Environment(\.store) var store // Внедряем через окружение в представлении
-//    var body: some View {
-//       ...
-//    }
-//}

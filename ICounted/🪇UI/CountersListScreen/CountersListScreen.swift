@@ -9,16 +9,11 @@ import SwiftUI
 
 struct CountersListScreen: View {
     
-    @State var isShowCounter = false
     @State var isShowCreateCounter = false
-    @State var conter: Counter? = nil
+    @State var selectedCounter: Counter? = nil
     
-//    @StateObject var store: Store<CounterListState, CounterListAction>
-//    @StateObject var store: Store<CounterListState, CounterListAction>
-//    @StateObject var localStore = CounterListScreenStore()
-    
-    @Environment(CountersStore.self) var countersStore: CountersStore
-//    @Environment(\.countersStore) var countersStore
+    @Environment(\.countersStore) var countersStore: CountersStore
+    @Environment(\.screenBuilder) var screenBuilder: ScreenBuilder
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
@@ -36,36 +31,15 @@ struct CountersListScreen: View {
                 .frame(width: 54, height: 54)
                 .padding(.trailing, 16)
         }
-//        .onAppear {
-//            store.subscribe(observer: Observer { newState in
-//                localStore.updateCountersValue(counters: newState.counters)
-//                switch newState.screen {
-//                case .counter:
-//                    localStore.isShowCounter = true
-//                case .createCounter:
-//                    localStore.isCreateCounter = true
-//                default: break
-//                }
-//                return .alive
-//            })
-//        }
-        .sheet(isPresented: $isShowCreateCounter, onDismiss: {
-//            store.dispatch(.moveToScreen(screen: .counterList))
+        .onAppear {
+        }
+        .sheet(isPresented: $isShowCreateCounter) {
+            screenBuilder.getScreen(screenType: .createCounter)
+        }
+        .sheet(isPresented: .constant(selectedCounter != nil) , onDismiss: {
+            selectedCounter = nil
         }, content: {
-            CreateCounterScreen(isShow: $isShowCreateCounter)
-                .environment(countersStore)
-        })
-        .sheet(isPresented: $isShowCounter, onDismiss: {
-//            store.dispatch(.moveToScreen(screen: .counterList))
-        }, content: {
-//            CounterScreen(counter: localStore.selectedCounter)
-            if conter != nil {
-                CounterScreen(isShow: $isShowCounter, counter: conter!)
-                    .environment(countersStore)
-            } else {
-                EmptyView()
-            }
-            
+            screenBuilder.getScreen(screenType: .counter(selectedCounter!))
         })
     }
     
@@ -89,19 +63,15 @@ struct CountersListScreen: View {
             .modifier(ShadowModifier(foregroundColor: .black, cornerRadius: 27))
             .onTapGesture {
                 isShowCreateCounter = true
-//                store.dispatch(.moveToScreen(screen: .createCounter))
             }
-        
     }
-    
     
     @ViewBuilder
     private func counterList() -> some View {
         ForEach(countersStore.counterList) { counter in
-            CounterCell(counter: counter)
+            screenBuilder.getComponent(componentType: .counterCell(counter))
                 .onTapGesture {
-//                    localStore.selectedCounter = counter
-//                    store.dispatch(.moveToScreen(screen: .counter))
+                    selectedCounter = counter
                 }
         }
     }
@@ -119,6 +89,7 @@ struct CountersListScreen: View {
                 .padding(.bottom, 2)
         }
     }
+    
     @ViewBuilder
     private func allCount() -> some View {
         VStack {
@@ -150,12 +121,7 @@ struct CountersListScreen: View {
     }
     
 }
-//
-//#Preview {
-//    CountersListScreen(store: .init(initial: CounterListState(counters:
-//                                                                [.init(name: "asdsd", desc: "asdasdsd", count: 123, lastRecord: nil, colorHex: "95D385", isFavorite: true, targetCount: nil),
-//                                                                 .init(name: "assssssOO", desc: "sdasdsddsdsdsd sdasd ", count: 10, lastRecord: Date(), colorHex: "95D385", isFavorite: false, targetCount: 100)
-//                                                                ]),
-//                                    reducer: counterListReducer))
-//}
-//
+
+#Preview {
+    ScreenBuilder.shared.getScreen(screenType: .counterList)
+}

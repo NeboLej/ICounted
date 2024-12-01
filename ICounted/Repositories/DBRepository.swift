@@ -2,60 +2,37 @@
 //  DBRepository.swift
 //  ICounted
 //
-//  Created by Nebo on 01.12.2024.
+//  Created by Nebo on 02.12.2024.
 //
 
 import Foundation
 import SwiftData
 
-protocol DBRepositoryProtocol {
-    func getAllCounters() -> [Counter]
-    func saveCounter(newCounter: Counter)
-}
-
-class DBRepository: DBRepositoryProtocol {
-
+class DBRepository {
     let context: ModelContext
     
     init(context: ModelContext) {
         self.context = context
     }
     
-    func getAllCounters() -> [Counter] {
-        loadCountersFromDB()
+    func getAll<T>() throws -> [T] where T: PersistentModel {
+        let fetchDescriptor = FetchDescriptor<T>()
+        return try context.fetch(fetchDescriptor)
     }
     
-    func saveCounter(newCounter: Counter) {
-        context.insert(newCounter)
-        do {
-            try context.save()
-        } catch {
-            print("Ошибка загрузки задач: \(error)")
-        }
+    func save<T>(model: T) throws where T: PersistentModel {
+        context.insert(model)
+        try context.save()
     }
     
-    private func loadCountersFromDB() -> [Counter] {
-        do {
-            let fetchDescriptor = FetchDescriptor<Counter>()
-            return try context.fetch(fetchDescriptor)
-        } catch {
-            print("Ошибка загрузки задач: \(error)")
-            return []
-        }
+    func getByID<T>(id: PersistentIdentifier) throws -> T? where T: PersistentModel {
+        var descriptor = FetchDescriptor<T>(predicate: #Predicate { $0.id == id })
+        descriptor.fetchLimit = 1
+        return try context.fetch(descriptor).first
     }
     
-
-}
-
-
-class DBRepositoryMock: DBRepositoryProtocol {
-    
-    func getAllCounters() -> [Counter] {
-        []
+    func delete<T>(model: T) throws where T: PersistentModel {
+        context.delete(model)
+        try context.save()
     }
-    
-    func saveCounter(newCounter: Counter) {
-        
-    }
-    
 }

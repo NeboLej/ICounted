@@ -13,8 +13,8 @@ struct ICountedApp: App {
     
     let container: ModelContainer
 //    let store: Store<CounterListState, CounterListAction>
-    @State var countersStore: CountersStore
-    
+    let countersStore: CountersStore
+    let screenBuilder: ScreenBuilder
     
     
     init() {
@@ -23,9 +23,12 @@ struct ICountedApp: App {
         let config = ModelConfiguration(schema: schema, cloudKitDatabase: .automatic)
         container = try! ModelContainer(for: schema, configurations: config)
         
-        let localRepository: DBRepositoryProtocol = DBRepository(context: container.mainContext)
+        let dataBase: DBRepository = DBRepository(context: container.mainContext)
+        let localRepository: DBRepositoryProtocol = DBCounterRepository(swiftDataDB: dataBase)
         
         countersStore = CountersStore(localRepository: localRepository)
+        screenBuilder = ScreenBuilder(countersStore: countersStore)
+        
         
 //        self.store = Store(
 //            initial: CounterListState(),
@@ -41,8 +44,9 @@ struct ICountedApp: App {
     
     var body: some Scene {
         WindowGroup {
-            CountersListScreen()
-                .environment(countersStore)
+            screenBuilder.getScreen(screenType: .counterList)
+//            CountersListScreen()
+//                .environment(\.countersStore, countersStore)
 //                .overlay {
 //                    if store.state.alert != nil {
 //                        AlertView(model: store.state.alert!, store: store)

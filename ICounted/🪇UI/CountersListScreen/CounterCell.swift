@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CounterCell: View {
     
-//    @StateObject var store: Store<CounterListState, CounterListAction>
+    @Environment(\.countersStore) var countersStore: CountersStore
     
     let counter: Counter
     
@@ -34,7 +34,7 @@ struct CounterCell: View {
                     VStack {
                         Image(counter.isFavorite ? .starActive : .star)
                             .onTapGesture {
-//                                store.dispatch(.toggleIsFavorite(counterId: counter.id))
+                                countersStore.favoriteToggle(counter: counter)
                             }
                         Spacer()
                     }
@@ -71,7 +71,7 @@ struct CounterCell: View {
                                 .font(.system(size: 14))
                         }
                         .onTapGesture {
-//                            store.dispatch(.countPlus(counterId: counter.id))
+                            countersStore.countPlus(counter: counter)
                         }
                     
                 }.frame(height: 45)
@@ -104,12 +104,6 @@ struct CounterCell: View {
     }
 }
 
-//#Preview {
-//    CountersListScreen(store: .init(initial: CounterListState(counters:
-//                                                                [.init(name: "asdsd", desc: "asdasdsd", count: 123, lastRecord: nil, colorHex: "95D385", isFavorite: true, targetCount: nil),
-//                                                                 .init(name: "assssssOO", desc: "sdasdsddsdsdsd sdasd ", count: 10, lastRecord: Date(), colorHex: "95D385", isFavorite: false, targetCount: 100)
-//                                                                ]),
-//                                    reducer: counterListReducer))
-//    //        .environmentObject(TEST)
-//}
-//
+#Preview {
+    ScreenBuilder.shared.getScreen(screenType: .counterList)
+}

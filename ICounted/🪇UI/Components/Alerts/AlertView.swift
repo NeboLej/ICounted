@@ -11,7 +11,7 @@ struct AlertView: View {
     
     let model: AlertModel
     
-    @StateObject var store: Store<CounterListState, CounterListAction>
+//    @StateObject var store: Store<CounterListState, CounterListAction>
     @State private var isShow = false
     
     var body: some View {
@@ -94,7 +94,7 @@ struct AlertView: View {
                     isShow = false
                 } completion: {
                     action.completion()
-                    store.dispatch(.dismissAlert)
+//                    store.dispatch(.dismissAlert)
                 }
             }
     }

@@ -7,18 +7,21 @@
 
 import SwiftUI
 
-class CounterScreenStore: ObservableObject {
+@Observable
+class CounterScreenStore {
     
-    @Published var name: String = ""
-    @Published var description: String = ""
-    @Published var color: Color = .blue
-    @Published var count: Int = 0
-    @Published var isUseTargetValue = false
-    @Published var targetCount: Int = 0
-    @Published var isAddToWidget = false
-    @Published var progress: Double = 0
-    @Published var records: [CounterRecord] = []
+    var name: String = ""
+    var description: String = ""
+    var color: Color = .blue
+    var count: Int = 0
+    var isUseTargetValue = false
+    var targetCount: Int = 0
+    var isAddToWidget = false
+    var progress: Double = 0
+    var records: [CounterRecord] = []
     var id: UUID?
+    
+    var alert: AlertModel?
     
     func bindCounter(counter: Counter) {
         id = counter.id
@@ -39,7 +42,7 @@ class CounterScreenStore: ObservableObject {
         return (100 / Double(targetCount)) * Double(count)
     }
     
-    func showAlert(positiveAction: @escaping ()->(), negativeAction: @escaping ()->()) -> AlertModel {
-        AlertModel(type: .warning, title: "", message: "Delete the counter \"\(name)\" and the entire history of records without the possibility of recovery??", actions: [.init(name: "delete", completion: positiveAction), .init(name: "cancel", completion: negativeAction)])
+    func showAlert(positiveAction: @escaping ()->(), negativeAction: @escaping ()->()) {
+        alert = AlertModel(type: .warning, title: "", message: "Delete the counter \"\(name)\" and the entire history of records without the possibility of recovery??", actions: [.init(name: "delete", completion: positiveAction), .init(name: "cancel", completion: negativeAction)])
     }
 }

@@ -10,12 +10,11 @@ import SwiftUI
 
 struct CreateCounterScreen: View {
     
-//    @StateObject var store: Store<CounterListState, CounterListAction>
-//    @Environment(\.countersStore) var countersStore
-    @Environment(CountersStore.self) var countersStore: CountersStore
-    @StateObject private var localStore = CreateCounterScreenStore()
-    @Binding var isShow: Bool
+    @Environment(\.countersStore) var countersStore: CountersStore
+    @Environment(\.dismiss) var dismiss
     
+    @State private var localStore = CreateCounterScreenStore()
+
     var body: some View {
         VStack {
             ICHeaderView(name: localStore.name.isEmpty ? "New counter" : localStore.name, color: localStore.color)
@@ -74,16 +73,6 @@ struct CreateCounterScreen: View {
         }
         .background(.background1)
 //        .modifier(AlertModifier(store: store))
-        .onAppear {
-//            store.subscribe(observer: Observer { newState in
-//                switch newState.screen {
-//                case .counterList:
-//                    isShow = false
-//                default: break
-//                }
-//                return .alive
-//            })
-        }
         
     }
     
@@ -99,9 +88,8 @@ struct CreateCounterScreen: View {
                     .foregroundStyle(.textDark)
             }
             .onTapGesture {
-//                store.dispatch(.addCounter(counter: localStore.createCounter()))
                 countersStore.saveCounter(newCounter: localStore.createCounter())
-                
+                dismiss()
             }
     }
     
@@ -131,6 +119,6 @@ struct CreateCounterScreen: View {
     }
 }
 
-//#Preview {
-//    CreateCounterScreen(isShow: .constant(true))
-//}
+#Preview {
+    ScreenBuilder.shared.getScreen(screenType: .createCounter)
+}

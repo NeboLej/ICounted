@@ -10,15 +10,15 @@ import Combine
 
 class CounterListScreenStore: ObservableObject {
     
-    @Published var count: Int = 0
-    @Published var allCount: Int = 0
-    
-    @Published var isCreateCounter: Bool = false
-    @Published var isShowCounter: Bool = false
+//    @Published var count: Int = 0
+//    @Published var allCount: Int = 0
+//    
+//    @Published var isCreateCounter: Bool = false
+//    @Published var isShowCounter: Bool = false
     var selectedCounter: Counter!
     
-    func updateCountersValue(counters: [Counter]) {
-        count = counters.count
-        allCount = counters.reduce(0) { $0 + $1.count }
-    }
+//    func updateCountersValue(counters: [Counter]) {
+//        count = counters.count
+//        allCount = counters.reduce(0) { $0 + $1.count }
+//    }
 }

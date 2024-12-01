@@ -9,11 +9,11 @@ import SwiftUI
 
 struct CounterScreen: View {
     
-//    @StateObject var store: Store<CounterListState, CounterListAction>
-    @Environment(\.countersStore) var countersStore
-    @StateObject var localStore = CounterScreenStore()
-    @Binding var isShow: Bool
-    var counter: Counter
+    @Environment(\.countersStore) var countersStore: CountersStore
+    @Environment(\.dismiss) var dismiss
+    
+    @State var localStore = CounterScreenStore()
+    @State var counter: Counter
     
     @State private var isShowMenu: Bool = false
     
@@ -40,24 +40,12 @@ struct CounterScreen: View {
         .background(.background1)
         .onAppear {
             localStore.bindCounter(counter: counter)
-//            
-//            store.subscribe(observer: Observer { newState in
-//                if let counter = newState.counters.first(where: { $0.id == counter.id }) {
-//                    localStore.bindCounter(counter: counter)
-//                }
-//                
-//                switch newState.screen {
-//                case .counterList: isShow = false
-//                default: break
-//                }
-//                return .alive
-//            })
         }
-//        .onChange(of: store.state.counters) {
-//            guard let counter = store.state.counters.first(where: { $0.id == counter.id }) else { return }
-//            localStore.bindCounter(counter: counter)
-//        }
-//        .modifier(AlertModifier(store: store))
+        .onChange(of: countersStore.allCount) {
+            guard let counter = countersStore.counterList.first(where: { $0.id == counter.id }) else { return }
+            localStore.bindCounter(counter: counter)
+        }
+        .modifier(AlertModifier(alert: localStore.alert))
     }
     
     @ViewBuilder
@@ -122,9 +110,9 @@ struct CounterScreen: View {
                     .font(.system(size: 18, weight: .bold))
                     .foregroundStyle(.textDark)
             }
-//            .onTapGesture {
-//                store.dispatch(.countPlus(counterId: counter.id))
-//            }
+            .onTapGesture {
+                countersStore.countPlus(counter: counter)
+            }
     }
     
     @ViewBuilder
@@ -151,12 +139,12 @@ struct CounterScreen: View {
                     .font(.system(size: 14))
                     .foregroundStyle(.textDark)
                     .onTapGesture {
-//                        let alertModel = localStore.showAlert {
-//                            store.dispatch(.deleteCounter(counterId: counter.id))
-//                            store.dispatch(.moveToScreen(screen: .counterList))
-//                        } negativeAction: { }
-//                        
-//                        store.dispatch(.showAlert(alert: alertModel))
+                        localStore.showAlert {
+                            countersStore.deleteCounter(counter: counter)
+                            dismiss()
+                        } negativeAction: { 
+                            localStore.alert = nil
+                        }
                     }
             }.opacity(isShowMenu ? 1 : 0)
         }
@@ -211,14 +199,13 @@ struct CounterScreen: View {
             Text(String(localStore.progress)+"%")
                 .font(.system(size: 14))
                 .foregroundStyle(.textInfo)
-            ICTextProgressBar(progress: $localStore.progress)
+            ICTextProgressBar(progress: .constant(localStore.progress))
                 .frame(height: 10)
         }
     }
     
 }
 
-//#Preview {
-//    CounterScreen(isShow: .constant(true), counter: Counter(name: "Counter", desc: "bla bla bla jsadk jjda kdjnak sjdkas ndkjasndk anskdj akjsdnaskj dnashb dhasdb jasdl asd;am lsdjk na", count: 123, lastRecord: Date(), colorHex: "043464", isFavorite: true, targetCount: 500))
-//        .environmentObject(TEST)
-//}
+#Preview {
+    ScreenBuilder.shared.getScreen(screenType: .counter(Counter(name: "Counter", desc: "bla bla bla jsadk jjda kdjnak sjdkas ndkjasndk anskdj akjsdnaskj dnashb dhasdb jasdl asd;am lsdjk na", count: 123, lastRecord: Date(), colorHex: "04d4f4", isFavorite: true, targetCount: 500)))
+}
