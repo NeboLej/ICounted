@@ -10,14 +10,14 @@ import SwiftData
 
 @Model
 class Counter: Identifiable, Equatable {
-    let id: UUID = UUID.init()
-    let name: String = "def"
-    let desc: String = "def"
+    var id: UUID = UUID.init()
+    var name: String = "def"
+    var desc: String = "def"
     var count: Int = 0
-    let lastRecord: Date?
-    let colorHex: String = "def"
+    var lastRecord: Date?
+    var colorHex: String = "def"
     var isFavorite: Bool = false
-    let targetCount: Int?
+    var targetCount: Int?
     
     @Relationship(deleteRule: .cascade, inverse: \CounterRecord.counter) var records: [CounterRecord]? = []
     

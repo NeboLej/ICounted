@@ -7,15 +7,16 @@
 
 import SwiftUI
 
-class CreateCounterScreenStore: ObservableObject {
+@Observable
+class CreateCounterScreenStore {
     
-    @Published var name: String = ""
-    @Published var description: String = ""
-    @Published var color: Color = .blue
-    @Published var startValue: Int = 0
-    @Published var isUseTargetValue = false
-    @Published var targetCount: Int = 100
-    @Published var isAddToWidget = false
+    var name: String = ""
+    var description: String = ""
+    var color: Color = .blue
+    var startValue: Int = 0
+    var isUseTargetValue = false
+    var targetCount: Int = 100
+    var isAddToWidget = false
     
     func createCounter() -> Counter {
         Counter(name: name, desc: description,

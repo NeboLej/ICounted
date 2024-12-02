@@ -1,0 +1,29 @@
+//
+//  EnvironmentValues.swift
+//  ICounted
+//
+//  Created by Nebo on 01.12.2024.
+//
+
+import Foundation
+import SwiftUI
+
+struct ScreenBuilderKey: EnvironmentKey {
+    static var defaultValue = ScreenBuilder(countersStore: CountersStore(localRepository: DBRepositoryMock()))
+}
+
+struct CountersStoreKey: EnvironmentKey {
+    static var defaultValue = CountersStore(localRepository: DBRepositoryMock())
+}
+
+extension EnvironmentValues {
+    var screenBuilder: ScreenBuilder {
+        get { self[ScreenBuilderKey.self] }
+        set { self[ScreenBuilderKey.self] = newValue }
+    }
+    
+    var countersStore: CountersStore {
+        get { self[CountersStoreKey.self] }
+        set { self[CountersStoreKey.self] = newValue }
+    }
+}

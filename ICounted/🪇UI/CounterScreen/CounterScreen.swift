@@ -9,10 +9,11 @@ import SwiftUI
 
 struct CounterScreen: View {
     
-    @StateObject var store: Store<CounterListState, CounterListAction>
-    @StateObject var localStore = CounterScreenStore()
-    @Binding var isShow: Bool
-    var counter: Counter
+    @Environment(\.countersStore) var countersStore: CountersStore
+    @Environment(\.dismiss) var dismiss
+    
+    @State var localStore = CounterScreenStore()
+    @State var counter: Counter
     
     @State private var isShowMenu: Bool = false
     
@@ -39,24 +40,12 @@ struct CounterScreen: View {
         .background(.background1)
         .onAppear {
             localStore.bindCounter(counter: counter)
-            
-            store.subscribe(observer: Observer { newState in
-                if let counter = newState.counters.first(where: { $0.id == counter.id }) {
-                    localStore.bindCounter(counter: counter)
-                }
-                
-                switch newState.screen {
-                case .counterList: isShow = false
-                default: break
-                }
-                return .alive
-            })
         }
-        .onChange(of: store.state.counters) {
-            guard let counter = store.state.counters.first(where: { $0.id == counter.id }) else { return }
+        .onChange(of: countersStore.allCount) {
+            guard let counter = countersStore.counterList.first(where: { $0.id == counter.id }) else { return }
             localStore.bindCounter(counter: counter)
         }
-        .modifier(AlertModifier(store: store))
+        .modifier(AlertModifier(alert: localStore.alert))
     }
     
     @ViewBuilder
@@ -89,7 +78,7 @@ struct CounterScreen: View {
                 Text("value")
                     .font(.system(size: 14))
                     .foregroundStyle(.textInfo)
-                CounterValueView(count: $localStore.count, width: 20, height: 30)
+                CounterValueView(count: localStore.count, width: 20, height: 30)
             }
             
             Spacer()
@@ -99,7 +88,7 @@ struct CounterScreen: View {
                     Text("target value")
                         .font(.system(size: 14))
                         .foregroundStyle(.textInfo)
-                    CounterValueView(count: $localStore.targetCount, width: 20, height: 30)
+                    CounterValueView(count: localStore.targetCount, width: 20, height: 30)
                 }
             }
         }.padding(.top, 16)
@@ -122,7 +111,7 @@ struct CounterScreen: View {
                     .foregroundStyle(.textDark)
             }
             .onTapGesture {
-                store.dispatch(.countPlus(counterId: counter.id))
+                countersStore.countPlus(counter: counter)
             }
     }
     
@@ -150,12 +139,12 @@ struct CounterScreen: View {
                     .font(.system(size: 14))
                     .foregroundStyle(.textDark)
                     .onTapGesture {
-                        let alertModel = localStore.showAlert {
-                            store.dispatch(.deleteCounter(counterId: counter.id))
-                            store.dispatch(.moveToScreen(screen: .counterList))
-                        } negativeAction: { }
-                        
-                        store.dispatch(.showAlert(alert: alertModel))
+                        localStore.showAlert {
+                            countersStore.deleteCounter(counter: counter)
+                            dismiss()
+                        } negativeAction: { 
+                            localStore.alert = nil
+                        }
                     }
             }.opacity(isShowMenu ? 1 : 0)
         }
@@ -182,8 +171,8 @@ struct CounterScreen: View {
                 }
             }
             
-            RoundedRectangle(cornerRadius: 16)
-                .fill(localStore.color.opacity(0.1))
+            ICRecordChart(records: .constant(localStore.countersStat))
+                .background(localStore.color.opacity(0.1))
                 .frame(height: 200)
                 .overlay {
                     RoundedRectangle(cornerRadius: 16)
@@ -210,14 +199,13 @@ struct CounterScreen: View {
             Text(String(localStore.progress)+"%")
                 .font(.system(size: 14))
                 .foregroundStyle(.textInfo)
-            ICTextProgressBar(progress: $localStore.progress)
+            ICTextProgressBar(progress: .constant(localStore.progress))
                 .frame(height: 10)
         }
     }
     
 }
 
-//#Preview {
-//    CounterScreen(isShow: .constant(true), counter: Counter(name: "Counter", desc: "bla bla bla jsadk jjda kdjnak sjdkas ndkjasndk anskdj akjsdnaskj dnashb dhasdb jasdl asd;am lsdjk na", count: 123, lastRecord: Date(), colorHex: "043464", isFavorite: true, targetCount: 500))
-//        .environmentObject(TEST)
-//}
+#Preview {
+    ScreenBuilder.shared.getScreen(screenType: .counter(Counter(name: "Counter", desc: "bla bla bla jsadk jjda kdjnak sjdkas ndkjasndk anskdj akjsdnaskj dnashb dhasdb jasdl asd;am lsdjk na", count: 123, lastRecord: Date(), colorHex: "04d4f4", isFavorite: true, targetCount: 500)))
+}
