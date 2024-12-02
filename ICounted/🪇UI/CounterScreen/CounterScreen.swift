@@ -171,8 +171,8 @@ struct CounterScreen: View {
                 }
             }
             
-            RoundedRectangle(cornerRadius: 16)
-                .fill(localStore.color.opacity(0.1))
+            ICRecordChart(records: .constant(localStore.countersStat))
+                .background(localStore.color.opacity(0.1))
                 .frame(height: 200)
                 .overlay {
                     RoundedRectangle(cornerRadius: 16)

@@ -30,6 +30,7 @@
 		8E7C561C2CB29011006A56C9 /* CounterScreenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C561B2CB29011006A56C9 /* CounterScreenStore.swift */; };
 		8E9E1BBB2CAF1875002B12E2 /* CreateCounterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9E1BBA2CAF1875002B12E2 /* CreateCounterScreen.swift */; };
 		8E9E1BBD2CAF188D002B12E2 /* CreateCounterScreenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9E1BBC2CAF188D002B12E2 /* CreateCounterScreenStore.swift */; };
+		8EB4A8CF2CFE28E600EA4E8C /* IRecordCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB4A8CE2CFE28E600EA4E8C /* IRecordCharts.swift */; };
 		8EBB73982C3AB14E00A0A899 /* ICountedApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB73972C3AB14E00A0A899 /* ICountedApp.swift */; };
 		8EBB739C2C3AB14F00A0A899 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EBB739B2C3AB14F00A0A899 /* Images.xcassets */; };
 		8EBB739F2C3AB14F00A0A899 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EBB739E2C3AB14F00A0A899 /* Preview Assets.xcassets */; };
@@ -69,6 +70,7 @@
 		8E7C561B2CB29011006A56C9 /* CounterScreenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterScreenStore.swift; sourceTree = "<group>"; };
 		8E9E1BBA2CAF1875002B12E2 /* CreateCounterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCounterScreen.swift; sourceTree = "<group>"; };
 		8E9E1BBC2CAF188D002B12E2 /* CreateCounterScreenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCounterScreenStore.swift; sourceTree = "<group>"; };
+		8EB4A8CE2CFE28E600EA4E8C /* IRecordCharts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRecordCharts.swift; sourceTree = "<group>"; };
 		8EBB73942C3AB14E00A0A899 /* ICounted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ICounted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EBB73972C3AB14E00A0A899 /* ICountedApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICountedApp.swift; sourceTree = "<group>"; };
 		8EBB739B2C3AB14F00A0A899 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				8E2BDA7F2CA8378E00941DE1 /* ICIconNameView.swift */,
 				8E6FA90B2CB084BE00DAAEA5 /* ICNumberSetterView.swift */,
 				8E520B7F2CBBE7500076FB16 /* ICBackBlurView.swift */,
+				8EB4A8CE2CFE28E600EA4E8C /* IRecordCharts.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				8E7C561A2CB29001006A56C9 /* CounterScreen.swift in Sources */,
 				8E7C561C2CB29011006A56C9 /* CounterScreenStore.swift in Sources */,
 				8EF9BEEF2CFCB91900C2E776 /* BaseStore.swift in Sources */,
+				8EB4A8CF2CFE28E600EA4E8C /* IRecordCharts.swift in Sources */,
 				8E6FA9082CAF447800DAAEA5 /* ICTextProgressBar.swift in Sources */,
 				8E2BDA772CA80E8300941DE1 /* CounterCell.swift in Sources */,
 				8E520B7E2CBB48AF0076FB16 /* AlertModifier.swift in Sources */,
@@ -542,6 +546,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				_EXPERIMENTAL_SWIFT_EXPLICIT_MODULES = YES;
 			};
 			name = Debug;
 		};
@@ -575,6 +580,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				_EXPERIMENTAL_SWIFT_EXPLICIT_MODULES = YES;
 			};
 			name = Release;
 		};

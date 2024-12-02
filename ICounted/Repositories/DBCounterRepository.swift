@@ -42,6 +42,7 @@ class DBCounterRepository: DBRepositoryProtocol {
     
     func plusCount(counter: Counter) {
         counter.modify(count: counter.count + 1)
+        counter.addRecord(record: CounterRecord(counter: counter))
     }
     
     func favoriteToggle(counter: Counter) {

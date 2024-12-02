@@ -12,7 +12,6 @@ import SwiftData
 struct ICountedApp: App {
     
     let container: ModelContainer
-//    let store: Store<CounterListState, CounterListAction>
     let countersStore: CountersStore
     let screenBuilder: ScreenBuilder
     
@@ -28,25 +27,12 @@ struct ICountedApp: App {
         
         countersStore = CountersStore(localRepository: localRepository)
         screenBuilder = ScreenBuilder(countersStore: countersStore)
-        
-        
-//        self.store = Store(
-//            initial: CounterListState(),
-//            reducer: counterListReducer,
-//            middleware: [
-//                AnyMiddleware(NewCounterValidationMiddleware()),
-//                AnyMiddleware(DBMiddleware(context: container.mainContext))
-//            ]
-//        )
-//        self.store.dispatch(.loadCounters)
     }
     
     
     var body: some Scene {
         WindowGroup {
             screenBuilder.getScreen(screenType: .counterList)
-//            CountersListScreen()
-//                .environment(\.countersStore, countersStore)
 //                .overlay {
 //                    if store.state.alert != nil {
 //                        AlertView(model: store.state.alert!, store: store)

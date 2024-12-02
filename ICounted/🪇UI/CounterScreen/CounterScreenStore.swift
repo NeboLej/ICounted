@@ -21,6 +21,15 @@ class CounterScreenStore {
     var records: [CounterRecord] = []
     var id: UUID?
     
+    var countersStat: [CounterStat] {
+        var i = 0
+        let stats = records.sorted(by: { $0.date < $1.date } ).map {
+            i += 1
+            return CounterStat(date: $0.date, count: i)
+        }
+        return stats
+    }
+    
     var alert: AlertModel?
     
     func bindCounter(counter: Counter) {
