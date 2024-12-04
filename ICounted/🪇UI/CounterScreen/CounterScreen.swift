@@ -26,8 +26,9 @@ struct CounterScreen: View {
                     isFavoriteView()
                     descriptionView()
                     counterProgressView()
-                    graph()
-                        .padding(.top, 30)
+                    ICCalendarChart(recordsDate: $localStore.records, selectedDate: $localStore.selectedDate, color: $localStore.color)
+                        .padding(.top, 16)
+                    selectedDateRecords()
                 }.padding(.horizontal, 16)
             }
             
@@ -100,6 +101,15 @@ struct CounterScreen: View {
     }
     
     @ViewBuilder
+    private func selectedDateRecords() -> some View {
+        VStack {
+            ForEach(localStore.selectedRecords) { record in
+                Text(record.date.description)
+            }
+        }
+    }
+    
+    @ViewBuilder
     private func countButton() -> some View {
         RoundedRectangle(cornerRadius: 20)
             .fill(localStore.color)
@@ -154,30 +164,33 @@ struct CounterScreen: View {
     @ViewBuilder
     private func graph() -> some View {
         VStack {
-            HStack {
-                Text("Count history")
-                    .font(.system(size: 14))
-                    .foregroundStyle(.textInfo)
-                Spacer()
-                Group {
-                    Image(systemName: "pencil.line")
-                        .foregroundStyle(.black)
-                    Text("edit history")
-                        .font(.system(size: 14))
-                        .foregroundStyle(.textDark)
-                        .padding(.trailing, 4)
-                }.onTapGesture {
-                    print("EDIT HISTORY")
-                }
-            }
+//            HStack {
+//                Text("Count history")
+//                    .font(.system(size: 14))
+//                    .foregroundStyle(.textInfo)
+//                Spacer()
+//                Group {
+//                    Image(systemName: "pencil.line")
+//                        .foregroundStyle(.black)
+//                    Text("edit history")
+//                        .font(.system(size: 14))
+//                        .foregroundStyle(.textDark)
+//                        .padding(.trailing, 4)
+//                }.onTapGesture {
+//                    print("EDIT HISTORY")
+//                }
+//            }
             
-            ICRecordChart(records: .constant(localStore.countersStat))
-                .background(localStore.color.opacity(0.1))
-                .frame(height: 200)
-                .overlay {
-                    RoundedRectangle(cornerRadius: 16)
-                        .stroke(localStore.color, lineWidth: 3)
-                }
+            
+//            ICCalendarChart(recordsDate: $localStore.records, selectedDate: $selectedDate, color: $localStore.color)
+            
+//            ICRecordChart(records: .constant(localStore.countersStat))
+//                .background(localStore.color.opacity(0.1))
+//                .frame(height: 200)
+//                .overlay {
+//                    RoundedRectangle(cornerRadius: 16)
+//                        .stroke(localStore.color, lineWidth: 3)
+//                }
         }
     }
     

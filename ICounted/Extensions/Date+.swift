@@ -43,19 +43,33 @@ extension Date {
     
     func toReadableDate() -> String {
         let date = Date()
-        if IsSameDay(with: date) { return "Сегодня" }
-        else if IsSameDay(with: date.nextDay) { return "Завтра" }
-        else if IsSameDay(with: date.prevDay) { return "Вчера" }
+        if isSameDay(date: date) { return "Сегодня" }
+        else if isSameDay(date: date.nextDay) { return "Завтра" }
+        else if isSameDay(date: date.prevDay) { return "Вчера" }
         else { return SIMPLE_FMT.string(from: self) }
     }
     
-    func IsSameDay(with: Date) -> Bool {
-        return Calendar.current.isDate(self, inSameDayAs: with)
+    func isSameDay(date: Date) -> Bool {
+        return Calendar.current.isDate(date, inSameDayAs: self)
     }
     
-    func IsSameYear(with: Date) -> Bool {
+    func isSameYear(with: Date) -> Bool {
         let comp0 = Calendar.current.dateComponents([.era, .year], from: self)
         let comp1 = Calendar.current.dateComponents([.era, .year], from: with)
         return comp0.era == comp1.era && comp0.year == comp1.year
+    }
+    
+    func getAllDatesForMonth() -> [Date] {
+        let calendar = Calendar.current
+        let startDate = calendar.date(from: calendar.dateComponents([.year, .month], from: self))!
+        let range = calendar.range(of: .day, in: .month, for: startDate)!
+        
+        return range.compactMap { calendar.date(byAdding: .day, value: $0 - 1, to: startDate)! }
+    }
+    
+    func monthNameShort() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "LLL"
+        return formatter.string(from: self)
     }
 }
