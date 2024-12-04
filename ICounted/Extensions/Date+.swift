@@ -30,6 +30,9 @@ extension Date {
     var nextDay: Date { Date(timeIntervalSince1970: timeIntervalSince1970 + 60*60*24) }
     var prevDay: Date { Date(timeIntervalSince1970: timeIntervalSince1970 - 60*60*24) }
     
+    var nextMonth: Date { Date(timeIntervalSince1970: timeIntervalSince1970 + 60*60*24*31) }
+    var prevMonth: Date { Date(timeIntervalSince1970: timeIntervalSince1970 - 60*60*24*31) }
+    
     func getOffsetDate(offset: Int) -> Date {
         Calendar.current.date(byAdding: .day, value: offset, to: self) ?? Date()
     }
