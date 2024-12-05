@@ -20,14 +20,12 @@ class CounterScreenStore {
     var progress: Double = 0
     var records: [CounterRecord] = []
     var id: UUID?
+    var selectedDate: Date?
+    var recordsDate: [Date] = []
     
-    var countersStat: [CounterStat] {
-        var i = 0
-        let stats = records.sorted(by: { $0.date < $1.date } ).map {
-            i += 1
-            return CounterStat(date: $0.date, count: i)
-        }
-        return stats
+    var selectedRecords: [CounterRecord] {
+        if selectedDate == nil { return [] }
+        return records.filter({ $0.date.isSameDay(date: selectedDate!) })
     }
     
     var alert: AlertModel?
@@ -41,6 +39,7 @@ class CounterScreenStore {
         isUseTargetValue = counter.targetCount != nil
         targetCount =  counter.targetCount != nil ?  counter.targetCount! : 0
         isAddToWidget = counter.isFavorite
+        recordsDate = counter.records?.map { $0.date } ?? []
         records = counter.records ?? []
         
         progress = getProgress()
