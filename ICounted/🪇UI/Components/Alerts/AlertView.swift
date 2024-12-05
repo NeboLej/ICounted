@@ -68,6 +68,7 @@ struct AlertView: View {
             .animation(.smooth(duration: 0.3), value: isShow)
             .onAppear(perform: {
                 isShow = true
+                Vibration.error.vibrate()
             })
     }
     
@@ -91,10 +92,10 @@ struct AlertView: View {
             }
             .onTapGesture {
                 withAnimation {
+                    Vibration.light.vibrate()
                     isShow = false
                 } completion: {
                     action.completion()
-//                    store.dispatch(.dismissAlert)
                 }
             }
     }

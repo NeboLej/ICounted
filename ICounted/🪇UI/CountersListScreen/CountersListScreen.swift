@@ -43,7 +43,7 @@ struct CountersListScreen: View {
         .sheet(isPresented: $isShowCreateCounter) {
             screenBuilder.getScreen(screenType: .createCounter)
         }
-        .sheet(isPresented: .constant(selectedCounter != nil) , onDismiss: {
+        .sheet(isPresented: .init(get: { selectedCounter != nil }, set: { _ in selectedCounter = nil }) , onDismiss: {
             selectedCounter = nil
         }, content: {
             screenBuilder.getScreen(screenType: .counter(selectedCounter!))
@@ -78,6 +78,7 @@ struct CountersListScreen: View {
         ForEach(countersStore.counterList) { counter in
             screenBuilder.getComponent(componentType: .counterCell(counter))
                 .onTapGesture {
+                    Vibration.light.vibrate()
                     selectedCounter = counter
                 }
                 .onLongPressGesture {

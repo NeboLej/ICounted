@@ -174,7 +174,7 @@ struct CounterScreen: View {
                         localStore.showAlert {
                             countersStore.deleteCounter(counter: counter)
                             dismiss()
-                        } negativeAction: { 
+                        } negativeAction: {
                             localStore.alert = nil
                         }
                     }
