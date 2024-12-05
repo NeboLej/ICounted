@@ -16,6 +16,7 @@ enum Screen {
 
 enum Component {
     case counterCell(Counter)
+    case messageRecordInput(Counter)
 }
 
 class ScreenBuilder {
@@ -49,6 +50,9 @@ class ScreenBuilder {
         switch componentType {
         case .counterCell(let counter):
             CounterCell(counter: counter)
+                .environment(\.countersStore, countersStore)
+        case .messageRecordInput(let counter):
+            ICMessageRecordInput(counter: counter)
                 .environment(\.countersStore, countersStore)
         }
     }

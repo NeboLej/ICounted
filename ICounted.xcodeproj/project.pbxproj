@@ -32,6 +32,7 @@
 		8E9E1BBD2CAF188D002B12E2 /* CreateCounterScreenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9E1BBC2CAF188D002B12E2 /* CreateCounterScreenStore.swift */; };
 		8EB4A8D12D00BE8800EA4E8C /* ICCalendarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB4A8D02D00BE8800EA4E8C /* ICCalendarChart.swift */; };
 		8EB4A8D32D0218FF00EA4E8C /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB4A8D22D0218FF00EA4E8C /* RecordCell.swift */; };
+		8EB4A8D52D022E9400EA4E8C /* ICMessageRecordInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB4A8D42D022E9400EA4E8C /* ICMessageRecordInput.swift */; };
 		8EBB73982C3AB14E00A0A899 /* ICountedApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB73972C3AB14E00A0A899 /* ICountedApp.swift */; };
 		8EBB739C2C3AB14F00A0A899 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EBB739B2C3AB14F00A0A899 /* Images.xcassets */; };
 		8EBB739F2C3AB14F00A0A899 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EBB739E2C3AB14F00A0A899 /* Preview Assets.xcassets */; };
@@ -73,6 +74,7 @@
 		8E9E1BBC2CAF188D002B12E2 /* CreateCounterScreenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCounterScreenStore.swift; sourceTree = "<group>"; };
 		8EB4A8D02D00BE8800EA4E8C /* ICCalendarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICCalendarChart.swift; sourceTree = "<group>"; };
 		8EB4A8D22D0218FF00EA4E8C /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
+		8EB4A8D42D022E9400EA4E8C /* ICMessageRecordInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICMessageRecordInput.swift; sourceTree = "<group>"; };
 		8EBB73942C3AB14E00A0A899 /* ICounted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ICounted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EBB73972C3AB14E00A0A899 /* ICountedApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICountedApp.swift; sourceTree = "<group>"; };
 		8EBB739B2C3AB14F00A0A899 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				8E6FA90B2CB084BE00DAAEA5 /* ICNumberSetterView.swift */,
 				8E520B7F2CBBE7500076FB16 /* ICBackBlurView.swift */,
 				8EB4A8D02D00BE8800EA4E8C /* ICCalendarChart.swift */,
+				8EB4A8D42D022E9400EA4E8C /* ICMessageRecordInput.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				8E520B7C2CB9E9260076FB16 /* AlertView.swift in Sources */,
 				8EBB73B32C3AB55700A0A899 /* CounterListScreenStore.swift in Sources */,
 				8EBB73A92C3AB2D000A0A899 /* CountersListScreen.swift in Sources */,
+				8EB4A8D52D022E9400EA4E8C /* ICMessageRecordInput.swift in Sources */,
 				8E2BDA7C2CA832FA00941DE1 /* Date+.swift in Sources */,
 				8E2BDA802CA8378E00941DE1 /* ICIconNameView.swift in Sources */,
 				8E6FA9042CAF23F600DAAEA5 /* ICHeaderView.swift in Sources */,
