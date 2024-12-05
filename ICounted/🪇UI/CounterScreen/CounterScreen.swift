@@ -105,13 +105,19 @@ struct CounterScreen: View {
         VStack {
             HStack {
                 Text(localStore.selectedDate?.toReadableDate() ?? "")
+                    .font(.system(size: 16))
+                    .foregroundStyle(.textDark)
                 Spacer()
                 Text(localStore.selectedDate != nil ? "\(localStore.selectedRecords.count) records" : "")
+                    .font(.system(size: 14))
+                    .foregroundStyle(.textInfo)
             }
-            .padding(.vertical, 16)
+            .padding(.top, 16)
+            .padding(.bottom, 4)
             ForEach(localStore.selectedRecords) { record in
                 RecordCell(record: record, color: localStore.color)
             }
+            .padding(.bottom, 8)
         }
     }
     

@@ -32,6 +32,7 @@ struct RecordCell: View {
         .overlay {
             RoundedRectangle(cornerRadius: 16)
                 .stroke(style: .init(lineWidth: 2))
+                .foregroundStyle(.black)
         }
     }
 }
