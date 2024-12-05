@@ -35,6 +35,7 @@ class CountersStore: BaseStore {
     }
     
     func countPlus(counter: Counter, message: String? = nil) {
+        Vibration.light.vibrate()
         localRepository.plusCount(counter: counter, message: message)
     }
     

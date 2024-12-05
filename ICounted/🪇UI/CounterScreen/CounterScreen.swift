@@ -10,10 +10,12 @@ import SwiftUI
 struct CounterScreen: View {
     
     @Environment(\.countersStore) var countersStore: CountersStore
+    @Environment(\.screenBuilder) var screenBuilder: ScreenBuilder
     @Environment(\.dismiss) var dismiss
     
     @State var localStore = CounterScreenStore()
     @State var counter: Counter
+    @State var isShowMessageInput: Bool = false
     
     @State private var isShowMenu: Bool = false
     
@@ -39,6 +41,11 @@ struct CounterScreen: View {
             }.padding(.horizontal, 16)
         }
         .background(.background1)
+        .overlay {
+            if isShowMessageInput {
+                screenBuilder.getComponent(componentType: .messageRecordInput(counter, $isShowMessageInput.animation()))
+            }
+        }
         .onAppear {
             localStore.bindCounter(counter: counter)
         }
@@ -117,8 +124,8 @@ struct CounterScreen: View {
             ForEach(localStore.selectedRecords) { record in
                 RecordCell(record: record, color: localStore.color)
             }
-            .padding(.bottom, 8)
         }
+        .padding(.bottom, 8)
     }
     
     @ViewBuilder
@@ -134,6 +141,9 @@ struct CounterScreen: View {
             }
             .onTapGesture {
                 countersStore.countPlus(counter: counter)
+            }
+            .onLongPressGesture {
+                isShowMessageInput = true
             }
     }
     

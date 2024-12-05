@@ -11,6 +11,8 @@ struct CountersListScreen: View {
     
     @State var isShowCreateCounter = false
     @State var selectedCounter: Counter? = nil
+    @State var longPressCounter: Counter? = nil
+    @State var isShowMessageInput = false
     
     @Environment(\.countersStore) var countersStore: CountersStore
     @Environment(\.screenBuilder) var screenBuilder: ScreenBuilder
@@ -30,6 +32,11 @@ struct CountersListScreen: View {
             createCounterButton()
                 .frame(width: 54, height: 54)
                 .padding(.trailing, 16)
+        }
+        .overlay {
+            if isShowMessageInput, longPressCounter != nil {
+                screenBuilder.getComponent(componentType: .messageRecordInput(longPressCounter!, $isShowMessageInput.animation()))
+            }
         }
         .onAppear {
         }
@@ -72,6 +79,10 @@ struct CountersListScreen: View {
             screenBuilder.getComponent(componentType: .counterCell(counter))
                 .onTapGesture {
                     selectedCounter = counter
+                }
+                .onLongPressGesture {
+                    longPressCounter = counter
+                    isShowMessageInput = true
                 }
         }
     }
