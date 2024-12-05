@@ -42,8 +42,6 @@ struct CounterValueView: View {
     }
 }
 
-//#Preview {
-//    CounterValueView(count: .init(get: {
-//        return 231
-//    }, set: { _ in }))
-//}
+#Preview {
+    CounterValueView(count: 204)
+}

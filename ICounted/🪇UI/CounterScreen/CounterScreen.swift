@@ -26,7 +26,7 @@ struct CounterScreen: View {
                     isFavoriteView()
                     descriptionView()
                     counterProgressView()
-                    ICCalendarChart(recordsDate: $localStore.records, selectedDate: $localStore.selectedDate, color: $localStore.color)
+                    ICCalendarChart(recordsDate: $localStore.recordsDate, selectedDate: $localStore.selectedDate, color: $localStore.color)
                         .padding(.top, 16)
                     selectedDateRecords()
                 }.padding(.horizontal, 16)
@@ -103,8 +103,14 @@ struct CounterScreen: View {
     @ViewBuilder
     private func selectedDateRecords() -> some View {
         VStack {
+            HStack {
+                Text(localStore.selectedDate?.toReadableDate() ?? "")
+                Spacer()
+                Text(localStore.selectedDate != nil ? "\(localStore.selectedRecords.count) records" : "")
+            }
+            .padding(.vertical, 16)
             ForEach(localStore.selectedRecords) { record in
-                Text(record.date.description)
+                RecordCell(record: record, color: localStore.color)
             }
         }
     }
@@ -159,39 +165,6 @@ struct CounterScreen: View {
             }.opacity(isShowMenu ? 1 : 0)
         }
         .animation(.easeOut(duration: 0.3), value: isShowMenu)
-    }
-    
-    @ViewBuilder
-    private func graph() -> some View {
-        VStack {
-//            HStack {
-//                Text("Count history")
-//                    .font(.system(size: 14))
-//                    .foregroundStyle(.textInfo)
-//                Spacer()
-//                Group {
-//                    Image(systemName: "pencil.line")
-//                        .foregroundStyle(.black)
-//                    Text("edit history")
-//                        .font(.system(size: 14))
-//                        .foregroundStyle(.textDark)
-//                        .padding(.trailing, 4)
-//                }.onTapGesture {
-//                    print("EDIT HISTORY")
-//                }
-//            }
-            
-            
-//            ICCalendarChart(recordsDate: $localStore.records, selectedDate: $selectedDate, color: $localStore.color)
-            
-//            ICRecordChart(records: .constant(localStore.countersStat))
-//                .background(localStore.color.opacity(0.1))
-//                .frame(height: 200)
-//                .overlay {
-//                    RoundedRectangle(cornerRadius: 16)
-//                        .stroke(localStore.color, lineWidth: 3)
-//                }
-        }
     }
     
     @ViewBuilder

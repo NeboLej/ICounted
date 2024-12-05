@@ -25,6 +25,12 @@ fileprivate let DATE_FULL_YEAR_FMT: DateFormatter = {
     return fmt
 }()
 
+fileprivate let TIME_FMT: DateFormatter = {
+    let fmt = DateFormatter()
+    fmt.dateFormat = "HH:mm"
+    return fmt
+}()
+
 extension Date {
     
     var nextDay: Date { Date(timeIntervalSince1970: timeIntervalSince1970 + 60*60*24) }
@@ -43,9 +49,9 @@ extension Date {
     
     func toReadableDate() -> String {
         let date = Date()
-        if isSameDay(date: date) { return "Сегодня" }
-        else if isSameDay(date: date.nextDay) { return "Завтра" }
-        else if isSameDay(date: date.prevDay) { return "Вчера" }
+        if isSameDay(date: date) { return "Today" }
+        else if isSameDay(date: date.nextDay) { return "Tomorrow" }
+        else if isSameDay(date: date.prevDay) { return "Yesterday" }
         else { return SIMPLE_FMT.string(from: self) }
     }
     
@@ -71,5 +77,9 @@ extension Date {
         let formatter = DateFormatter()
         formatter.dateFormat = "LLL"
         return formatter.string(from: self)
+    }
+    
+    func time() -> String {
+        TIME_FMT.string(from: self)
     }
 }

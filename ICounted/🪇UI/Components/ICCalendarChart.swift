@@ -83,7 +83,7 @@ struct ICCalendarChart: View {
         }
         .frame(width: 22, height: 22)
         .onTapGesture {
-            selectedDate = model.date
+            selectedDate = model.date != selectedDate ? model.date : nil
         }
     }
     
@@ -147,7 +147,7 @@ struct ICCalendarChart: View {
 //    ICCalendarChart(recordsDate: .constant([Date(), Date(), Date().prevMonth, Date().prevDay, Date().prevDay]),
 //                    selectedDate: $selectedDate, color: .constant(.green))
 //}
-
+//
 #Preview {
     ScreenBuilder.shared.getScreen(screenType: .counter(Counter(name: "Counter", desc: "bla bla bla jsadk jjda kdjnak sjdkas ndkjasndk anskdj akjsdnaskj dnashb dhasdb jasdl asd;am lsdjk na", count: 123, lastRecord: Date(), colorHex: "04d4f4", isFavorite: true, targetCount: 500)))
 }
