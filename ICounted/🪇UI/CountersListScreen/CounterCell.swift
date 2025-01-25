@@ -33,7 +33,8 @@ struct CounterCell: View {
                     Spacer()
                     VStack {
                         Image(counter.isFavorite ? .starActive : .star)
-                            .onTapGesture {
+                            .resizable()
+                            .frame(width: 34, height: 30).onTapGesture {
                                 countersStore.favoriteToggle(counter: counter)
                             }
                         Spacer()
@@ -47,7 +48,13 @@ struct CounterCell: View {
                 }
                 
                 HStack {
-                    CounterValueView(count: counter.count)
+                    ZStack {
+                        if let progress = counter.progress, progress >= 100 {
+                            fire()
+                                .offset(y: -20)
+                        }
+                        CounterValueView(count: counter.count)
+                    }
                     if let lastRecord = counter.records?.last?.date {
                         VStack(alignment: .leading)  {
                             Text("last record")
@@ -84,6 +91,21 @@ struct CounterCell: View {
     }
     
     
+    @ViewBuilder
+    private func fire() -> some View {
+        HStack(spacing: 0) {
+            ForEach(0...String(counter.count).count/2, id: \.self) { _ in
+                Image(.fire)
+                    .resizable()
+                    .frame(width: 30, height: 30)
+                    
+            }
+        }
+    }
+    
+    
+    
+    @ViewBuilder
     private func progressBar() -> some View {
         VStack(spacing: 4) {
             HStack {
@@ -98,12 +120,14 @@ struct CounterCell: View {
                     .fontWeight(.regular)
             }
             
-            ICTextProgressBar(progress: .constant(counter.progress ?? 0))
+            ICTextProgressBar(progress: .constant(counter.progress ?? 0), color: Color(hex: counter.colorHex))
                 .frame(height: 5)
         }
     }
 }
 
 #Preview {
-    ScreenBuilder.shared.getScreen(screenType: .counterList)
+//    ScreenBuilder.shared.getScreen(screenType: .counterList)
+    ScreenBuilder.shared.getComponent(componentType: .counterCell(Counter(name: "wdsa", desc: "asdasd", count: 11222, lastRecord: Date(), colorHex: "FDC356", isFavorite: true, targetCount: 10)))
+        .frame(height: 200)
 }

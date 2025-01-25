@@ -27,6 +27,7 @@ struct CountersListScreen: View {
                 counterList()
                     .padding(.top, 8)
                     .padding(.horizontal, 16)
+                Spacer(minLength: 68)
             }.background(Color.background1)
             
             createCounterButton()

@@ -10,6 +10,7 @@ import SwiftUI
 struct ICTextProgressBar: View {
     
     @Binding var progress: Double
+    @State var color: Color
     
     var body: some View {
         GeometryReader { metrics in
@@ -18,7 +19,7 @@ struct ICTextProgressBar: View {
                     .fill(.background1)
                     .border(.black)
                 Rectangle()
-                    .fill(.red)
+                    .fill(color)
                     .frame(width: getWidthByProgress(maxWidth: metrics.size.width))
                     .border(.black)
             }
@@ -31,5 +32,5 @@ struct ICTextProgressBar: View {
 }
 
 #Preview {
-    ICTextProgressBar(progress: .init(get: { return 33 }, set: { _ in }))
+    ICTextProgressBar(progress: .init(get: { return 33 }, set: { _ in }), color: .red)
 }

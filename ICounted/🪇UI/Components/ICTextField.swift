@@ -76,7 +76,7 @@ struct ICTextField: View {
                 .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/, radius: 0, x: 3, y: 4)
                 .padding(.top, 2)
             
-            ICTextProgressBar(progress: $progress)
+            ICTextProgressBar(progress: $progress, color: .red)
                 .frame(height: 5)
                 .padding(.horizontal, 12)
         }
