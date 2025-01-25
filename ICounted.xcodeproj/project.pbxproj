@@ -25,6 +25,7 @@
 		8E6FA9062CAF27C200DAAEA5 /* ICTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6FA9052CAF27C200DAAEA5 /* ICTextField.swift */; };
 		8E6FA9082CAF447800DAAEA5 /* ICTextProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6FA9072CAF447800DAAEA5 /* ICTextProgressBar.swift */; };
 		8E6FA90C2CB084BE00DAAEA5 /* ICNumberSetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6FA90B2CB084BE00DAAEA5 /* ICNumberSetterView.swift */; };
+		8E736D572D4432C3005CB1A7 /* ICTagCloudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E736D562D4432C3005CB1A7 /* ICTagCloudView.swift */; };
 		8E7C56172CB1CF6E006A56C9 /* ICToggleControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C56162CB1CF6E006A56C9 /* ICToggleControlView.swift */; };
 		8E7C561A2CB29001006A56C9 /* CounterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C56192CB29001006A56C9 /* CounterScreen.swift */; };
 		8E7C561C2CB29011006A56C9 /* CounterScreenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C561B2CB29011006A56C9 /* CounterScreenStore.swift */; };
@@ -68,6 +69,7 @@
 		8E6FA9052CAF27C200DAAEA5 /* ICTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICTextField.swift; sourceTree = "<group>"; };
 		8E6FA9072CAF447800DAAEA5 /* ICTextProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICTextProgressBar.swift; sourceTree = "<group>"; };
 		8E6FA90B2CB084BE00DAAEA5 /* ICNumberSetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICNumberSetterView.swift; sourceTree = "<group>"; };
+		8E736D562D4432C3005CB1A7 /* ICTagCloudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICTagCloudView.swift; sourceTree = "<group>"; };
 		8E7C56162CB1CF6E006A56C9 /* ICToggleControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICToggleControlView.swift; sourceTree = "<group>"; };
 		8E7C56192CB29001006A56C9 /* CounterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterScreen.swift; sourceTree = "<group>"; };
 		8E7C561B2CB29011006A56C9 /* CounterScreenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterScreenStore.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				8E520B7F2CBBE7500076FB16 /* ICBackBlurView.swift */,
 				8EB4A8D02D00BE8800EA4E8C /* ICCalendarChart.swift */,
 				8EB4A8D42D022E9400EA4E8C /* ICMessageRecordInput.swift */,
+				8E736D562D4432C3005CB1A7 /* ICTagCloudView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 				8EBB73982C3AB14E00A0A899 /* ICountedApp.swift in Sources */,
 				8EF9BEF82CFD219700C2E776 /* DBRepository.swift in Sources */,
 				8EBB73BA2C3AD89900A0A899 /* CounterValueView.swift in Sources */,
+				8E736D572D4432C3005CB1A7 /* ICTagCloudView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
