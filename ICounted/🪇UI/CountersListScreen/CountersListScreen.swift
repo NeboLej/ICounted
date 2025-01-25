@@ -30,12 +30,18 @@ struct CountersListScreen: View {
             }.background(Color.background1)
             
             createCounterButton()
-                .frame(width: 54, height: 54)
                 .padding(.trailing, 16)
         }
         .overlay {
             if isShowMessageInput, longPressCounter != nil {
                 screenBuilder.getComponent(componentType: .messageRecordInput(longPressCounter!, $isShowMessageInput.animation()))
+            }
+        }
+        .overlay {
+            if countersStore.counterList.isEmpty {
+                EmptyStateView {
+                    isShowCreateCounter = true
+                }
             }
         }
         .onAppear {
@@ -68,6 +74,7 @@ struct CountersListScreen: View {
             .resizable()
             .foregroundStyle(.background3)
             .modifier(ShadowModifier(foregroundColor: .black, cornerRadius: 27))
+            .frame(width: 54, height: 54)
             .onTapGesture {
                 isShowCreateCounter = true
             }
@@ -85,6 +92,13 @@ struct CountersListScreen: View {
                     longPressCounter = counter
                     isShowMessageInput = true
                 }
+        }
+    }
+    
+    @ViewBuilder
+    private func emptyStateView() -> some View {
+        EmptyStateView {
+            isShowCreateCounter = true
         }
     }
     
