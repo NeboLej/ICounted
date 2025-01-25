@@ -201,7 +201,7 @@ struct CounterScreen: View {
             Text(String(localStore.progress)+"%")
                 .font(.system(size: 14))
                 .foregroundStyle(.textInfo)
-            ICTextProgressBar(progress: .constant(localStore.progress))
+            ICTextProgressBar(progress: .constant(localStore.progress), color: localStore.color)
                 .frame(height: 10)
         }
     }

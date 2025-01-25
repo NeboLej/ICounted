@@ -16,7 +16,9 @@ struct ICTextField: View {
     private let placeholder: String
     private let isEnabled: Bool
     
+    
     @State private var progress: Double = 0
+    @FocusState private var focusState: Bool
     
     init(text: Binding<String>, name: String = "", placeholder: String = "",
          lineLimit: ClosedRange<Int> = 1...1, maxLength: Int = 100, isEnabled: Bool = true) {
@@ -45,6 +47,8 @@ struct ICTextField: View {
     private func textField() -> some View {
         ZStack(alignment: .top) {
             TextField("", text: $text, prompt: Text(placeholder).foregroundStyle(.textInfo.opacity(0.5)), axis: .vertical)
+                .focused($focusState)
+                .submitLabel(.done)
                 .lineLimit(lineLimit)
                 .padding(EdgeInsets(top: 12, leading: 12, bottom: 10, trailing: 12))
                 .background(.white)
@@ -52,6 +56,10 @@ struct ICTextField: View {
                 .foregroundStyle(.black)
                 .disabled(!isEnabled)
                 .onChange(of: text, { oldValue, newValue in
+                    if newValue.contains("\n") {
+                        focusState = false
+                        text = oldValue
+                    }
                     if newValue.count > maxLength {
                         text = oldValue
                     } else {
@@ -68,7 +76,7 @@ struct ICTextField: View {
                 .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/, radius: 0, x: 3, y: 4)
                 .padding(.top, 2)
             
-            ICTextProgressBar(progress: $progress)
+            ICTextProgressBar(progress: $progress, color: .red)
                 .frame(height: 5)
                 .padding(.horizontal, 12)
         }

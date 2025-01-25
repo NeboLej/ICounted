@@ -16,60 +16,62 @@ struct CreateCounterScreen: View {
     @State private var localStore = CreateCounterScreenStore()
 
     var body: some View {
-        VStack {
-            ICHeaderView(name: localStore.name.isEmpty ? "New counter" : localStore.name, color: localStore.color)
-            
-            Group {
-                ICTextField(text: $localStore.name, name: "Name", placeholder: "counter name", maxLength: 30)
-                    .padding(.top, 10)
+        GeometryReader { _ in
+            VStack {
+                ICHeaderView(name: localStore.name.isEmpty ? "New counter" : localStore.name, color: localStore.color)
                 
-                HStack(alignment: .top, spacing: 24) {
-                    ICTextField(text: $localStore.description, name: "Description", placeholder: "counter description", lineLimit: 2...6, maxLength: 200)
-                    colorPicker()
-                }.padding(.top, 10)
-                
-                HStack {
-                    ICNumberSetterView(number: $localStore.startValue)
-                    Spacer()
-                    Text("starting value")
-                        .font(.system(size: 14))
-                        .foregroundStyle(.textInfo)
-                }.padding(.vertical , 20)
-                
-                separator()
-                
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text("use target value")
-                            .font(.system(size: 14))
-                            .foregroundStyle(.textInfo)
-                        ICToggleControlView(isOn: $localStore.isUseTargetValue, color: localStore.color)
-                    }.padding(.vertical, 2)
+                Group {
+                    ICTextField(text: $localStore.name, name: "Name", placeholder: "counter name", maxLength: 30)
+                        .padding(.top, 10)
                     
-                    Spacer()
-                    if localStore.isUseTargetValue {
-                        ICNumberSetterView(number: $localStore.targetCount)
-                    }
-                }.padding(.vertical , 20)
-                
-                separator()
-                
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text("add to widget")
+                    HStack(alignment: .top, spacing: 24) {
+                        ICTextField(text: $localStore.description, name: "Description", placeholder: "counter description", lineLimit: 2...6, maxLength: 200)
+                        colorPicker()
+                    }.padding(.top, 10)
+                    
+                    HStack {
+                        ICNumberSetterView(number: $localStore.startValue)
+                        Spacer()
+                        Text("starting value")
                             .font(.system(size: 14))
                             .foregroundStyle(.textInfo)
-                        ICToggleControlView(isOn: $localStore.isAddToWidget, color: localStore.color)
-                    }
-                    Spacer()
-                }.padding(.vertical , 20)
+                    }.padding(.vertical , 20)
+                    
+                    separator()
+                    
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("use target value")
+                                .font(.system(size: 14))
+                                .foregroundStyle(.textInfo)
+                            ICToggleControlView(isOn: $localStore.isUseTargetValue, color: localStore.color)
+                        }.padding(.vertical, 2)
+                        
+                        Spacer()
+                        if localStore.isUseTargetValue {
+                            ICNumberSetterView(number: $localStore.targetCount)
+                        }
+                    }.padding(.vertical , 20)
+                    
+                    separator()
+                    
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("add to widget")
+                                .font(.system(size: 14))
+                                .foregroundStyle(.textInfo)
+                            ICToggleControlView(isOn: $localStore.isAddToWidget, color: localStore.color)
+                        }
+                        Spacer()
+                    }.padding(.vertical , 20)
+                    
+                }.padding(.horizontal, 16)
                 
-            }.padding(.horizontal, 16)
-            
-            
-            Spacer()
-            saveButton()
-            
+                
+                Spacer()
+                saveButton()
+                
+            }
         }
         .background(.background1)
 //        .modifier(AlertModifier(store: store))
