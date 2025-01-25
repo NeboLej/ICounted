@@ -11,19 +11,15 @@ import SwiftUI
 struct EmptyStateView: View {
     
     var startCreate: () ->()
-    @State var scaleX: CGFloat = 1
-    @State var scaleY: CGFloat = 1
-    @State var offsetX: CGFloat = 0
-    @State var offsetY: CGFloat = 0
-    @State var degreesZ: CGFloat = 1
-    
-    init(startCreate: @escaping () -> Void) {
-        self.startCreate = startCreate
-    }
+    @State private var scaleX: CGFloat = 1
+    @State private var scaleY: CGFloat = 1
+    @State private var offsetX: CGFloat = 0
+    @State private var offsetY: CGFloat = 0
+    @State private var degreesZ: CGFloat = 1
     
     var body: some View {
         ZStack {
-                Image(.emptyStateBackground)
+            Image(.emptyStateBackground)
                 .resizable()
                 .opacity(0.4)
                 .scaleEffect(x: scaleX, y: scaleY)
@@ -39,7 +35,7 @@ struct EmptyStateView: View {
                         degreesZ = 10
                     }
                 }
-                
+            
             VStack {
                 ICTagCloudView(words: ["walking the dogs",
                                        "offer help to 20 people",
@@ -53,10 +49,8 @@ struct EmptyStateView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .clipped()
                 
-                
                 Spacer()
-                
-            }.ignoresSafeArea(edges: .bottom)
+            }.ignoresSafeArea()
             
             VStack {
                 Text("You don't have any counters yet")
@@ -71,7 +65,7 @@ struct EmptyStateView: View {
                 VStack(spacing: 0) {
                     Spacer()
                     createCounterButton()
-                        
+                    
                     Text("New counter")
                         .font(.system(size: 18, weight: .bold))
                         .foregroundColor(.textDark)
@@ -103,7 +97,7 @@ struct ICTagCloudView: View {
     @State var words: [String] = []
     
     var body: some View {
-        ZStack(alignment: .top) {
+        ZStack {
             ForEach(words, id: \.self) { word in
                 AnimationTagView(word: word)
             }
@@ -114,13 +108,13 @@ struct ICTagCloudView: View {
 struct AnimationTagView: View {
     
     @State var word: String
-    @State var startOffsetX: CGFloat = CGFloat.random(in: -150...150)
-    @State var startOffsetY: CGFloat = 0
+    @State var startOffsetX: CGFloat = 0
+    @State var startOffsetY: CGFloat = 100
     @State var opacity: CGFloat = 1
-    @State var duration: CGFloat = CGFloat.random(in: 8...15)
+    @State var duration: CGFloat = CGFloat.random(in: 10...20)
     @State var color: Color!
     @State var rotationEffectAngle: CGFloat = 5
-    @State var delay: CGFloat = CGFloat.random(in: 0...5)
+    @State var delay: CGFloat = CGFloat.random(in: 0...2)
     @State var colors: [Color] = ["#FDDD03", "#95D385", "#53A4F0", "#F58F8F", "D385BD", "58D4AF", "D45858"].map { Color(hex: $0)}
     
     var body: some View {
@@ -132,14 +126,14 @@ struct AnimationTagView: View {
             }
             .rotationEffect(.degrees(rotationEffectAngle))
             .onAppear {
-                startOffsetX = 10
+                startOffsetX = -1
             }
     }
     
     func animate2() {
         startOffsetX = CGFloat.random(in: -150...150)
         color = colors.randomElement()!
-        startOffsetY = 0
+        startOffsetY = -50
         opacity = 1
         
         withAnimation(Animation.easeInOut(duration: duration).delay(delay)) {
@@ -152,28 +146,28 @@ struct AnimationTagView: View {
             }
             
         } completion: {
-            color = colors.randomElement()!
             startOffsetX = CGFloat.random(in: -150...150)
+            delay = CGFloat.random(in: 0...5)
         }
     }
     
-//    func animate() {
-//        withAnimation(Animation.easeInOut(duration: duration).delay(delay)) {
-//            startOffsetX = -startOffsetX
-//            startOffsetY = -startOffsetY
-//            opacity = 1
-//            color = colors.randomElement()!
-//        } completion: {
-//            withAnimation(Animation.easeInOut(duration: 1)) {
-//                opacity = 0
-//            } completion: {
-//                color = colors.randomElement()!
-//                startOffsetX = CGFloat.random(in: -150...150)
-//                startOffsetY = CGFloat.random(in: -300...300)
-////                animate()
-//            }
-//        }
-//    }
+    //    func animate() {
+    //        withAnimation(Animation.easeInOut(duration: duration).delay(delay)) {
+    //            startOffsetX = -startOffsetX
+    //            startOffsetY = -startOffsetY
+    //            opacity = 1
+    //            color = colors.randomElement()!
+    //        } completion: {
+    //            withAnimation(Animation.easeInOut(duration: 1)) {
+    //                opacity = 0
+    //            } completion: {
+    //                color = colors.randomElement()!
+    //                startOffsetX = CGFloat.random(in: -150...150)
+    //                startOffsetY = CGFloat.random(in: -300...300)
+    ////                animate()
+    //            }
+    //        }
+    //    }
     
     @ViewBuilder func tagView(word: String) -> some View {
         ZStack {
