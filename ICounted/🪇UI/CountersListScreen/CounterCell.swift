@@ -48,7 +48,7 @@ struct CounterCell: View {
                 
                 HStack {
                     CounterValueView(count: counter.count)
-                    if let lastRecord = counter.lastRecord {
+                    if let lastRecord = counter.records?.last?.date {
                         VStack(alignment: .leading)  {
                             Text("last record")
                                 .foregroundStyle(.textDark)
