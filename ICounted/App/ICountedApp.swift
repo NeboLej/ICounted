@@ -6,21 +6,21 @@
 //
 
 import SwiftUI
-import SwiftData
+//import SwiftData
 
 @main
 struct ICountedApp: App {
     
-    let container: ModelContainer
+    let container = sharedModelContainer
     let countersStore: CountersStore
     let screenBuilder: ScreenBuilder
     
     
     init() {
         
-        let schema = Schema([Counter.self, CounterRecord.self])
-        let config = ModelConfiguration(schema: schema, cloudKitDatabase: .automatic)
-        container = try! ModelContainer(for: schema, configurations: config)
+//        let schema = Schema([Counter.self, CounterRecord.self])
+//        let config = ModelConfiguration(schema: schema, cloudKitDatabase: .automatic)
+//        container = try! ModelContainer(for: schema, configurations: config)
         
         let dataBase: DBRepository = DBRepository(context: container.mainContext)
         let localRepository: DBRepositoryProtocol = DBCounterRepository(swiftDataDB: dataBase)
