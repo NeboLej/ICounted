@@ -9,122 +9,60 @@ import WidgetKit
 import SwiftUI
 import SwiftData
 
+struct CountersEntry: TimelineEntry {
+    let date: Date
+    let counters: [Counter]
+}
 
 struct ICounterWidget: Widget {
     let kind: String = "ICounterWidget"
     
-    private let modelCountainer = sharedModelContainer
-    
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: ICounterProvider(modelContainer: modelCountainer)) { entry in
+        StaticConfiguration(kind: kind, provider: ICounterProvider()) { entry in
             if #available(iOS 17.0, *) {
-                ICounterWidgetEntryView(entry: entry)
+                ICounterWidgetView(entry: entry)
                     .containerBackground(.fill.tertiary, for: .widget)
             } else {
-                ICounterWidgetEntryView(entry: entry)
+                ICounterWidgetView(entry: entry)
                     .padding()
                     .background()
             }
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("ICounter Widget")
+        .description("Widget for quick recording in ICounter application")
     }
 }
 
 struct ICounterProvider: TimelineProvider {
     
-    private let modelContainer: ModelContainer
-    
-    init(modelContainer: ModelContainer) {
-        self.modelContainer = modelContainer
-    }
-    
-    func getSnapshot(in context: Context, completion: @escaping @Sendable (CounterEntry) -> Void) {
+    func getSnapshot(in context: Context, completion: @escaping @Sendable (CountersEntry) -> Void) { //widget Galery
         completion(
-            CounterEntry(date: Date(), counter: Counter(name: "Asdf", desc: "sdfsdf", count: 12, lastRecord: Date(), colorHex: "DAF226", isFavorite: true, targetCount: 100))
+            CountersEntry(date: Date(),
+                          counters: [
+                            Counter(name: "Do the exercises 150 times", desc: "", count: 90, lastRecord: Date(), colorHex: "F58F8F", isFavorite: true, targetCount: 100),
+                            Counter(name: "Ate burgers", desc: "", count: 105, lastRecord: Date(), colorHex: "51D403", isFavorite: true, targetCount: 100),
+                            Counter(name: "Go to a law lecture", desc: "", count: 12, lastRecord: Date(), colorHex: "FDDD03", isFavorite: true, targetCount: 100),
+                            Counter(name: "Met Karl this year", desc: "", count: 26, lastRecord: Date(), colorHex: "53A4F0", isFavorite: true, targetCount: 100),
+                          ])
         )
     }
     
-    func placeholder(in context: Context) -> CounterEntry {
-        CounterEntry(date: Date(), counter: Counter(name: "Asdf", desc: "sdfsdf", count: 12, lastRecord: Date(), colorHex: "DAF226", isFavorite: true, targetCount: 100))
+    func placeholder(in context: Context) -> CountersEntry {
+        CountersEntry(date: Date(), counters: [])
     }
     
-//    func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> CounterEntry {
-//        CounterEntry(date: Date(), counter: Counter(name: "Asdf", desc: "sdfsdf", count: 12, lastRecord: Date(), colorHex: "DAF226", isFavorite: true, targetCount: 100))
-//    }
-    
-    func getTimeline(in context: Context, completion: @escaping @Sendable (Timeline<CounterEntry>) -> Void) {
+    func getTimeline(in context: Context, completion: @escaping @Sendable (Timeline<CountersEntry>) -> Void) {
         Task { @MainActor in
-            var entries: [CounterEntry] = []
+            var entries: [CountersEntry] = []
             let currentDate = Date()
+            let modelContainer = sharedModelContainer
             let context = sharedModelContainer.mainContext
             
-            let counters = (try? context.fetch(FetchDescriptor<Counter>())) ?? []
-            entries = counters.map {
-                CounterEntry(date: currentDate, counter: $0)
-            }
+            let counters = (try? context.fetch(FetchDescriptor<Counter>()))?.filter { $0.isFavorite } ?? []
+            entries = [CountersEntry(date: currentDate, counters: counters)]
             
             let timeline = Timeline(entries: entries, policy: .atEnd)
             completion(timeline)
         }
     }
-}
-
-
-struct CounterEntry: TimelineEntry {
-    let date: Date
-    let counter: Counter
-}
-
-struct ICounterWidgetEntryView : View {
-    var entry: ICounterProvider.Entry
-    
-    @Environment(\.widgetFamily) var family
-    
-    var body: some View {
-        switch family {
-        case .systemSmall:
-            smallWidget()
-        default:
-            Text(entry.counter.name)
-        }
-    }
-    
-    @ViewBuilder private func smallWidget() -> some View {
-        VStack {
-            Text(entry.counter.name)
-                .multilineTextAlignment(.leading)
-            
-            Spacer()
-            CounterValueView(count: entry.counter.count)
-            Spacer()
-            countButton()
-        }
-        
-    }
-    
-    @ViewBuilder
-    private func countButton() -> some View {
-        Button(intent: NothingAction()) {
-            RoundedRectangle(cornerRadius: 16)
-                .fill(Color(hex: entry.counter.colorHex))
-                .modifier(ShadowModifier(foregroundColor: .black, cornerRadius: 16))
-                .frame(width: 120, height: 32)
-                .overlay {
-                    Text("count")
-                        .font(.system(size: 18, weight: .bold))
-                        .foregroundStyle(.textDark)
-                }
-        }
-        .buttonStyle(.plain)
-    }
-}
-
-
-#Preview(as: .systemSmall) {
-    ICounterWidget()
-} timeline: {
-    CounterEntry(date: Date(), counter: Counter(name: "Помыть деда 232 раза", desc: "sdfsdf", count: 12, lastRecord: Date(), colorHex: "FDDD03", isFavorite: true, targetCount: 100))
-    //    SimpleEntry(date: .now, configuration: .smiley)
-    //    SimpleEntry(date: .now, configuration: .starEyes)
 }

@@ -42,6 +42,7 @@
 		8E736D842D45A552005CB1A7 /* Vibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB4A8D62D02622400EA4E8C /* Vibration.swift */; };
 		8E736D882D45B027005CB1A7 /* ModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E736D872D45B027005CB1A7 /* ModelContainer.swift */; };
 		8E736D892D45B02C005CB1A7 /* ModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E736D872D45B027005CB1A7 /* ModelContainer.swift */; };
+		8E736D982D46C848005CB1A7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EBB739B2C3AB14F00A0A899 /* Images.xcassets */; };
 		8E7C56172CB1CF6E006A56C9 /* ICToggleControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C56162CB1CF6E006A56C9 /* ICToggleControlView.swift */; };
 		8E7C561A2CB29001006A56C9 /* CounterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C56192CB29001006A56C9 /* CounterScreen.swift */; };
 		8E7C561C2CB29011006A56C9 /* CounterScreenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C561B2CB29011006A56C9 /* CounterScreenStore.swift */; };
@@ -468,6 +469,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E736D982D46C848005CB1A7 /* Images.xcassets in Resources */,
 				8E736D7D2D457D5F005CB1A7 /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

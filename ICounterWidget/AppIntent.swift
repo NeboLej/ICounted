@@ -9,22 +9,39 @@ import WidgetKit
 import AppIntents
 import SwiftData
 
-//struct ConfigurationAppIntent: WidgetConfigurationIntent {
-//    static var title: LocalizedStringResource { "Configuration" }
-//    static var description: IntentDescription { "This is an example widget." }
-//
-//    // An example configurable parameter.
-//    @Parameter(title: "Favorite Emoji", default: "😃")
-//    var favoriteEmoji: String
-//}
-
-struct NothingAction: AppIntent {
+struct PlusCountIntent: AppIntent {
     
     static var title: LocalizedStringResource = "Do nothing"
-    static var description: IntentDescription? = "Not description"
+    @Parameter(title: "counterId") var counterId: String
+    
+    init(counterId: String) {
+        self.counterId = counterId
+    }
+    init() { } //req
     
     func perform() async throws -> some IntentResult {
-        print("asdasdsd")
+        guard let uuid = UUID(uuidString: counterId) else { return .result() }
+        let counterWidgetManager = await CounterWidgetManager(modelContainer: sharedModelContainer)
+        await counterWidgetManager.countPlus(counterID: uuid)
         return .result()
+    }
+}
+
+@MainActor
+struct CounterWidgetManager {
+    private let modelContainer: ModelContainer
+    private let localRepository: DBCounterRepository
+    
+    init(modelContainer: ModelContainer) {
+        self.modelContainer = modelContainer
+        let dataBase: DBRepository = DBRepository(context: modelContainer.mainContext)
+        localRepository = DBCounterRepository(swiftDataDB: dataBase)
+    }
+    
+    func countPlus(counterID: UUID, message: String? = nil) {
+        Vibration.light.vibrate()
+        guard let counter = localRepository.getCounter(id: counterID) else { return }
+        localRepository.plusCount(counter: counter, message: message)
+        try? modelContainer.mainContext.save()
     }
 }

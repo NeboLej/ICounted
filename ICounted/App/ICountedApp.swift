@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 //import SwiftData
 
 @main
@@ -14,6 +15,8 @@ struct ICountedApp: App {
     let container = sharedModelContainer
     let countersStore: CountersStore
     let screenBuilder: ScreenBuilder
+    
+    @Environment(\.scenePhase) private var scenePhase
     
     
     init() {
@@ -39,5 +42,18 @@ struct ICountedApp: App {
 //                    }
 //                }
         }
+        .onChange(of: scenePhase) {
+            switch scenePhase {
+            case .active:
+                countersStore.updateAllCounters()
+            case .inactive:
+                break
+            case .background:
+                WidgetCenter.shared.reloadAllTimelines()
+            @unknown default:
+                break
+            }
+        }
+        
     }
 }

@@ -12,7 +12,5 @@ import SwiftUI
 struct ICounterWidgetBundle: WidgetBundle {
     var body: some Widget {
         ICounterWidget()
-//        ICounterWidgetControl()
-//        ICounterWidgetLiveActivity()
     }
 }
