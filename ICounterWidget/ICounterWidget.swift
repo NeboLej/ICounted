@@ -15,18 +15,6 @@ struct ICounterWidget: Widget {
     
     private let modelCountainer = sharedModelContainer
     
-//    init() {
-//        modelCountainer = sharedModelContainer
-////        let schema = Schema([Counter.self, CounterRecord.self])
-////        let config = ModelConfiguration(schema: schema, cloudKitDatabase: .automatic)
-////        let container = try! ModelContainer(for: schema, configurations: config)
-////        
-////        let dataBase: DBRepository = DBRepository(context: container.mainContext)
-////        let localRepository: DBRepositoryProtocol = DBCounterRepository(swiftDataDB: dataBase)
-////        
-////        countersStore = CountersStore(localRepository: localRepository)
-//    }
-    
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: ICounterProvider(modelContainer: modelCountainer)) { entry in
             if #available(iOS 17.0, *) {
@@ -40,48 +28,10 @@ struct ICounterWidget: Widget {
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")
-//        AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: ICounterProvider(countersStore: countersStore)) { entry in
-//            ICounterWidgetEntryView(entry: entry, countersStore: countersStore)
-//                .containerBackground(.fill.tertiary, for: .widget)
-//        }
     }
 }
 
-//struct Provider: AppIntentTimelineProvider {
-//    
-//    func placeholder(in context: Context) -> SimpleEntry {
-//        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent())
-//    }
-//    
-//    func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
-//        SimpleEntry(date: Date(), configuration: configuration)
-//    }
-//    
-//    func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
-//        var entries: [SimpleEntry] = []
-//        
-//        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-//        let currentDate = Date()
-//        for hourOffset in 0 ..< 5 {
-//            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-//            let entry = SimpleEntry(date: entryDate, configuration: configuration)
-//            entries.append(entry)
-//        }
-//        
-//        return Timeline(entries: entries, policy: .atEnd)
-//    }
-//    
-//    //    func relevances() async -> WidgetRelevances<ConfigurationAppIntent> {
-//    //        // Generate a list containing the contexts this widget is relevant in.
-//    //    }
-//}
-
 struct ICounterProvider: TimelineProvider {
-    func getSnapshot(in context: Context, completion: @escaping @Sendable (CounterEntry) -> Void) {
-        completion(
-            CounterEntry(date: Date(), counter: Counter(name: "Asdf", desc: "sdfsdf", count: 12, lastRecord: Date(), colorHex: "DAF226", isFavorite: true, targetCount: 100))
-        )
-    }
     
     private let modelContainer: ModelContainer
     
@@ -89,13 +39,19 @@ struct ICounterProvider: TimelineProvider {
         self.modelContainer = modelContainer
     }
     
+    func getSnapshot(in context: Context, completion: @escaping @Sendable (CounterEntry) -> Void) {
+        completion(
+            CounterEntry(date: Date(), counter: Counter(name: "Asdf", desc: "sdfsdf", count: 12, lastRecord: Date(), colorHex: "DAF226", isFavorite: true, targetCount: 100))
+        )
+    }
+    
     func placeholder(in context: Context) -> CounterEntry {
         CounterEntry(date: Date(), counter: Counter(name: "Asdf", desc: "sdfsdf", count: 12, lastRecord: Date(), colorHex: "DAF226", isFavorite: true, targetCount: 100))
     }
     
-    func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> CounterEntry {
-        CounterEntry(date: Date(), counter: Counter(name: "Asdf", desc: "sdfsdf", count: 12, lastRecord: Date(), colorHex: "DAF226", isFavorite: true, targetCount: 100))
-    }
+//    func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> CounterEntry {
+//        CounterEntry(date: Date(), counter: Counter(name: "Asdf", desc: "sdfsdf", count: 12, lastRecord: Date(), colorHex: "DAF226", isFavorite: true, targetCount: 100))
+//    }
     
     func getTimeline(in context: Context, completion: @escaping @Sendable (Timeline<CounterEntry>) -> Void) {
         Task { @MainActor in
@@ -111,33 +67,9 @@ struct ICounterProvider: TimelineProvider {
             let timeline = Timeline(entries: entries, policy: .atEnd)
             completion(timeline)
         }
-        
-        
-        
-        
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        
-//        for hourOffset in 0 ..< 5 {
-//            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-//            let entry = CounterEntry(date: entryDate, counter: Counter(name: "Помыть деда", desc: "sdfsdf", count: 12, lastRecord: Date(), colorHex: "DAF226", isFavorite: true, targetCount: 100))
-//            entries.append(entry)
-//        }
-        
-//        let counter = modelContainer.
-//        let entry = CounterEntry(date: currentDate, counter: counter ?? Counter(name: "Помыть деда", desc: "sdfsdf", count: 12, lastRecord: Date(), colorHex: "DAF226", isFavorite: true, targetCount: 100))
-//        
-//        return Timeline(entries: [entry], policy: .atEnd)
     }
-    
-    //    func relevances() async -> WidgetRelevances<ConfigurationAppIntent> {
-    //        // Generate a list containing the contexts this widget is relevant in.
-    //    }
 }
 
-struct SimpleEntry: TimelineEntry {
-    let date: Date
-    let configuration: ConfigurationAppIntent
-}
 
 struct CounterEntry: TimelineEntry {
     let date: Date
@@ -188,19 +120,6 @@ struct ICounterWidgetEntryView : View {
     }
 }
 
-extension ConfigurationAppIntent {
-    fileprivate static var smiley: ConfigurationAppIntent {
-        let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "😀"
-        return intent
-    }
-    
-    fileprivate static var starEyes: ConfigurationAppIntent {
-        let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "🤩"
-        return intent
-    }
-}
 
 #Preview(as: .systemSmall) {
     ICounterWidget()
@@ -208,19 +127,4 @@ extension ConfigurationAppIntent {
     CounterEntry(date: Date(), counter: Counter(name: "Помыть деда 232 раза", desc: "sdfsdf", count: 12, lastRecord: Date(), colorHex: "FDDD03", isFavorite: true, targetCount: 100))
     //    SimpleEntry(date: .now, configuration: .smiley)
     //    SimpleEntry(date: .now, configuration: .starEyes)
-}
-
-
-import AppIntents
-import SwiftData
-
-struct NothingAction: AppIntent {
-    
-    static var title: LocalizedStringResource = "Do nothing"
-    static var description: IntentDescription? = "Not description"
-    
-    func perform() async throws -> some IntentResult {
-        print("asdasdsd")
-        return .result()
-    }
 }
