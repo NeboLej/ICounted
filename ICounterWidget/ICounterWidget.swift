@@ -55,7 +55,6 @@ struct ICounterProvider: TimelineProvider {
         Task { @MainActor in
             var entries: [CountersEntry] = []
             let currentDate = Date()
-            let modelContainer = sharedModelContainer
             let context = sharedModelContainer.mainContext
             
             let counters = (try? context.fetch(FetchDescriptor<Counter>()))?.filter { $0.isFavorite } ?? []

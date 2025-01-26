@@ -21,7 +21,7 @@ struct PlusCountIntent: AppIntent {
     
     func perform() async throws -> some IntentResult {
         guard let uuid = UUID(uuidString: counterId) else { return .result() }
-        let counterWidgetManager = await CounterWidgetManager(modelContainer: sharedModelContainer)
+        let counterWidgetManager = await CounterWidgetManager()
         await counterWidgetManager.countPlus(counterID: uuid)
         return .result()
     }
@@ -29,11 +29,10 @@ struct PlusCountIntent: AppIntent {
 
 @MainActor
 struct CounterWidgetManager {
-    private let modelContainer: ModelContainer
+    private let modelContainer = sharedModelContainer
     private let localRepository: DBCounterRepository
     
-    init(modelContainer: ModelContainer) {
-        self.modelContainer = modelContainer
+    init() {
         let dataBase: DBRepository = DBRepository(context: modelContainer.mainContext)
         localRepository = DBCounterRepository(swiftDataDB: dataBase)
     }

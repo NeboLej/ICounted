@@ -7,14 +7,13 @@
 
 import SwiftUI
 import WidgetKit
-//import SwiftData
 
 @main
 struct ICountedApp: App {
     
-    let container = sharedModelContainer
-    let countersStore: CountersStore
-    let screenBuilder: ScreenBuilder
+    private let container = sharedModelContainer
+    private let countersStore: CountersStore
+    private let screenBuilder: ScreenBuilder
     
     @Environment(\.scenePhase) private var scenePhase
     
