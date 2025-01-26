@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-class Counter: Identifiable, Equatable {
+class Counter: Identifiable, Equatable, HasUUID, ObservableObject {
     var id: UUID = UUID.init()
     var name: String = "def"
     var desc: String = "def"

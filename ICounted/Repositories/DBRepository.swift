@@ -25,7 +25,7 @@ class DBRepository {
         try context.save()
     }
     
-    func getByID<T>(id: PersistentIdentifier) throws -> T? where T: PersistentModel {
+    func getByID<T>(id: UUID) throws -> T? where T: HasUUID {
         var descriptor = FetchDescriptor<T>(predicate: #Predicate { $0.id == id })
         descriptor.fetchLimit = 1
         return try context.fetch(descriptor).first
@@ -35,4 +35,8 @@ class DBRepository {
         context.delete(model)
         try context.save()
     }
+}
+
+protocol HasUUID: PersistentModel {
+    var id: UUID { get set }
 }

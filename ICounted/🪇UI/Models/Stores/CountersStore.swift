@@ -14,6 +14,7 @@ class CountersStore: BaseStore {
     private let localRepository: DBRepositoryProtocol
     
     var counterList: [Counter] = []
+    
     var allCount: Int {
         counterList.reduce(0) { $0 + $1.count }
     }

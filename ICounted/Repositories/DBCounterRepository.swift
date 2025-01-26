@@ -23,6 +23,15 @@ class DBCounterRepository: DBRepositoryProtocol {
         self.swiftDataDB = swiftDataDB
     }
     
+    func getCounter(id: UUID) -> Counter? {
+        do {
+            return try swiftDataDB.getByID(id: id)
+        } catch {
+            print("Ошибка получения счетчика: \(id.uuidString)")
+            return nil
+        }
+    }
+    
     func getAllCounters() -> [Counter] {
         do {
             return try swiftDataDB.getAll()

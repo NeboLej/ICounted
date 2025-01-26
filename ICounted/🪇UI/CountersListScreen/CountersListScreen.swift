@@ -46,6 +46,7 @@ struct CountersListScreen: View {
             }
         }
         .onAppear {
+            
         }
         .sheet(isPresented: $isShowCreateCounter) {
             screenBuilder.getScreen(screenType: .createCounter)

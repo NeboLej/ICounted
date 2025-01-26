@@ -6,21 +6,24 @@
 //
 
 import SwiftUI
-import SwiftData
+import WidgetKit
+//import SwiftData
 
 @main
 struct ICountedApp: App {
     
-    let container: ModelContainer
+    let container = sharedModelContainer
     let countersStore: CountersStore
     let screenBuilder: ScreenBuilder
+    
+    @Environment(\.scenePhase) private var scenePhase
     
     
     init() {
         
-        let schema = Schema([Counter.self, CounterRecord.self])
-        let config = ModelConfiguration(schema: schema, cloudKitDatabase: .automatic)
-        container = try! ModelContainer(for: schema, configurations: config)
+//        let schema = Schema([Counter.self, CounterRecord.self])
+//        let config = ModelConfiguration(schema: schema, cloudKitDatabase: .automatic)
+//        container = try! ModelContainer(for: schema, configurations: config)
         
         let dataBase: DBRepository = DBRepository(context: container.mainContext)
         let localRepository: DBRepositoryProtocol = DBCounterRepository(swiftDataDB: dataBase)
@@ -39,5 +42,18 @@ struct ICountedApp: App {
 //                    }
 //                }
         }
+        .onChange(of: scenePhase) {
+            switch scenePhase {
+            case .active:
+                countersStore.updateAllCounters()
+            case .inactive:
+                break
+            case .background:
+                WidgetCenter.shared.reloadAllTimelines()
+            @unknown default:
+                break
+            }
+        }
+        
     }
 }

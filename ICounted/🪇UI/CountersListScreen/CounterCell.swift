@@ -10,8 +10,7 @@ import SwiftUI
 struct CounterCell: View {
     
     @Environment(\.countersStore) var countersStore: CountersStore
-    
-    let counter: Counter
+    @State var counter: Counter
     
     var body: some View {
         ZStack {
@@ -88,6 +87,10 @@ struct CounterCell: View {
         }
         .background(Color(hex: counter.colorHex).opacity(0.2))
         .modifier(ShadowModifier(foregroundColor: .background1, cornerRadius: 15))
+        .onChange(of: countersStore.allCount) {
+            guard let counter = countersStore.counterList.first(where: { $0.id == counter.id }) else { return }
+            self.counter = counter
+        }
     }
     
     
