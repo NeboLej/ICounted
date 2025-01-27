@@ -28,7 +28,7 @@ struct ICMessageRecordInput: View {
             VStack {
                 Spacer()
                 HStack {
-                    ICTextField(text: $message, name: "Record Message", placeholder: "message", lineLimit: 2...6, maxLength: 500)
+                    ICTextField(text: $message, name: Localized.Component.messageFormMessageTF, placeholder: Localized.Component.messageFormMessageTFPlaceholder, lineLimit: 2...6, maxLength: 500)
                         .focused($keyboardFocused)
                         .padding(.trailing, 12)
                         .padding(.bottom, 6)
@@ -41,7 +41,7 @@ struct ICMessageRecordInput: View {
                             RoundedRectangle(cornerRadius: 16)
                                 .stroke(style: .init(lineWidth: 2))
                                 .foregroundStyle(.black)
-                            Text("count")
+                            Text(Localized.Component.messageFormAddCountButton)
                                 .font(.system(size: 14))
                         }
                         .onTapGesture {

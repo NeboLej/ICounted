@@ -11,7 +11,7 @@ import SwiftData
 
 struct PlusCountIntent: AppIntent {
     
-    static var title: LocalizedStringResource = "Do nothing"
+    static var title: LocalizedStringResource = LocalizedStringResource("widget_add_count_intent_name")
     @Parameter(title: "counterId") var counterId: String
     
     init(counterId: String) {

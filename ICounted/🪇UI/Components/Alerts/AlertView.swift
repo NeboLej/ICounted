@@ -23,7 +23,7 @@ struct AlertView: View {
                     .foregroundStyle(model.type.getColor())
                     .frame(height: 40)
                     .overlay {
-                        Text((!model.title.isEmpty ? model.title : model.type.rawValue).uppercased())
+                        Text((!model.title.isEmpty ? model.title : model.type.localizedTitle()).uppercased())
                     }
                 Rectangle()
                     .frame(height: 2)
@@ -39,7 +39,7 @@ struct AlertView: View {
                 
                 
                 if model.actions.isEmpty {
-                    getAction(action: .init(name: "OK", completion: {}))
+                    getAction(action: .init(name: Localized.Alert.okButton, completion: {}))
                         .padding([.horizontal, .bottom], 16)
                         .padding(.bottom, 26)
                 } else if model.actions.count > 2 {

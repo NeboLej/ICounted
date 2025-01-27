@@ -56,7 +56,7 @@ struct CounterCell: View {
                     }
                     if let lastRecord = counter.records?.last?.date {
                         VStack(alignment: .leading)  {
-                            Text("last record")
+                            Text(Localized.CounterCell.lastRecord)
                                 .foregroundStyle(.textDark)
                                 .font(.system(size: 14))
                                 .fontWeight(.regular)
@@ -73,7 +73,7 @@ struct CounterCell: View {
                         .foregroundStyle(Color(hex: counter.colorHex))
                         .frame(width: 80, height: 32)
                         .overlay {
-                            Text("count")
+                            Text(Localized.CounterCell.addCountButton)
                                 .font(.system(size: 14))
                         }
                         .onTapGesture {
