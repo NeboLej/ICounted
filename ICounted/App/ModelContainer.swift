@@ -10,7 +10,7 @@ import SwiftData
 
 var sharedModelContainer: ModelContainer = {
     let schema = Schema([Counter.self, CounterRecord.self])
-    let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+    let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false, cloudKitDatabase: .automatic)
 
     do {
         return try ModelContainer(for: schema, configurations: [modelConfiguration])

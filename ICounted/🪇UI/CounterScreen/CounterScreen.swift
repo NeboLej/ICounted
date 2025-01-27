@@ -60,7 +60,7 @@ struct CounterScreen: View {
     private func isFavoriteView() -> some View  {
         HStack {
             Spacer()
-            Text("add to widget")
+            Text(Localized.Counter.toWidget)
                 .font(.system(size: 14))
                 .foregroundStyle(.textInfo)
             Image(localStore.isAddToWidget ? .starActive : .star)
@@ -83,7 +83,7 @@ struct CounterScreen: View {
     private func counterProgressView() -> some View {
         HStack {
             VStack(alignment: .leading) {
-                Text("value")
+                Text(Localized.Counter.currentValue)
                     .font(.system(size: 14))
                     .foregroundStyle(.textInfo)
                 CounterValueView(count: localStore.count, width: 20, height: 30)
@@ -93,7 +93,7 @@ struct CounterScreen: View {
             
             if localStore.isUseTargetValue {
                 VStack(alignment: .trailing) {
-                    Text("target value")
+                    Text(Localized.Counter.targetValue)
                         .font(.system(size: 14))
                         .foregroundStyle(.textInfo)
                     CounterValueView(count: localStore.targetCount, width: 20, height: 30)
@@ -115,7 +115,7 @@ struct CounterScreen: View {
                     .font(.system(size: 16))
                     .foregroundStyle(.textDark)
                 Spacer()
-                Text(localStore.selectedDate != nil ? "\(localStore.selectedRecords.count) records" : "")
+                Text(localStore.selectedDate != nil ? "\(localStore.selectedRecords.count) \(Localized.Counter.recordsCount)" : "")
                     .font(.system(size: 14))
                     .foregroundStyle(.textInfo)
             }
@@ -135,7 +135,7 @@ struct CounterScreen: View {
             .modifier(ShadowModifier(foregroundColor: .black, cornerRadius: 20))
             .frame(width: 180, height: 40)
             .overlay {
-                Text("count")
+                Text(Localized.Counter.addCountButton)
                     .font(.system(size: 18, weight: .bold))
                     .foregroundStyle(.textDark)
             }
@@ -164,10 +164,10 @@ struct CounterScreen: View {
                 .onTapGesture { isShowMenu.toggle() }
             
             VStack(alignment: .leading, spacing: 10) {
-                Text("edit")
+                Text(Localized.Counter.menuEdit)
                     .font(.system(size: 14))
                     .foregroundStyle(.textDark)
-                Text("delete")
+                Text(Localized.Counter.menuDelete)
                     .font(.system(size: 14))
                     .foregroundStyle(.textDark)
                     .onTapGesture {
@@ -181,18 +181,6 @@ struct CounterScreen: View {
             }.opacity(isShowMenu ? 1 : 0)
         }
         .animation(.easeOut(duration: 0.3), value: isShowMenu)
-    }
-    
-    @ViewBuilder
-    private func colorPicker() -> some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text("Color")
-                .font(.system(size: 14))
-                .foregroundStyle(.textInfo)
-            ICIconNameView(name: localStore.name, color: localStore.color)
-                .modifier(ShadowModifier(foregroundColor: .background1, cornerRadius: 15, lineWidth: 1))
-                .frame(width: 68, height: 68)
-        }
     }
     
     @ViewBuilder

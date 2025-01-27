@@ -28,8 +28,8 @@ struct ICounterWidget: Widget {
                     .background()
             }
         }
-        .configurationDisplayName("ICounter Widget")
-        .description("Widget for quick recording in ICounter application")
+        .configurationDisplayName(Localized.Widget.name)
+        .description(Localized.Widget.desctiption)
     }
 }
 
@@ -39,10 +39,10 @@ struct ICounterProvider: TimelineProvider {
         completion(
             CountersEntry(date: Date(),
                           counters: [
-                            Counter(name: "Do the exercises 150 times", desc: "", count: 90, lastRecord: Date(), colorHex: "F58F8F", isFavorite: true, targetCount: 100),
-                            Counter(name: "Ate burgers", desc: "", count: 105, lastRecord: Date(), colorHex: "51D403", isFavorite: true, targetCount: 100),
-                            Counter(name: "Go to a law lecture", desc: "", count: 12, lastRecord: Date(), colorHex: "FDDD03", isFavorite: true, targetCount: 100),
-                            Counter(name: "Met Karl this year", desc: "", count: 26, lastRecord: Date(), colorHex: "53A4F0", isFavorite: true, targetCount: 100),
+                            Counter(name: Localized.Widget.exapmleName1, desc: "", count: 90, lastRecord: Date(), colorHex: "F58F8F", isFavorite: true, targetCount: 100),
+                            Counter(name: Localized.Widget.exapmleName2, desc: "", count: 105, lastRecord: Date(), colorHex: "51D403", isFavorite: true, targetCount: 100),
+                            Counter(name: Localized.Widget.exapmleName3, desc: "", count: 12, lastRecord: Date(), colorHex: "FDDD03", isFavorite: true, targetCount: 100),
+                            Counter(name: Localized.Widget.exapmleName4, desc: "", count: 26, lastRecord: Date(), colorHex: "53A4F0", isFavorite: true, targetCount: 100),
                           ])
         )
     }

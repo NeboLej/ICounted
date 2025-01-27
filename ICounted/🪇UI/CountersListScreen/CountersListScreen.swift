@@ -107,7 +107,7 @@ struct CountersListScreen: View {
     @ViewBuilder
     private func counter() -> some View {
         VStack {
-            Text("Counters")
+            Text(Localized.CounterListScreen.counterPanel)
                 .font(.system(size: 16))
                 .foregroundStyle(.textDark)
             Rectangle()
@@ -121,10 +121,10 @@ struct CountersListScreen: View {
     @ViewBuilder
     private func allCount() -> some View {
         VStack {
-            Text("Count")
+            Text(Localized.CounterListScreen.countPanel)
                 .font(.system(size: 16))
                 .foregroundStyle(.textDark)
-            Text("all count + ")
+            Text(Localized.CounterListScreen.countPanelDesc)
                 .font(.system(size: 8))
                 .foregroundStyle(.textDark)
             Rectangle()
@@ -142,7 +142,7 @@ struct CountersListScreen: View {
             Image(systemName: "gearshape.fill")
                 .foregroundStyle(.blue)
                 .padding(.bottom, 3)
-            Text("Settings")
+            Text(Localized.CounterListScreen.settingPanel)
                 .font(.system(size: 16))
                 .foregroundStyle(.textDark)
         }

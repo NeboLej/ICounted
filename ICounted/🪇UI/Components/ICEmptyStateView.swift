@@ -37,14 +37,7 @@ struct EmptyStateView: View {
                 }
             
             VStack {
-                ICTagCloudView(words: ["walking the dogs",
-                                       "offer help to 20 people",
-                                       "fill up the car",
-                                       "watered the ficus",
-                                       "missed the lecture",
-                                       "work 100 days",
-                                       "said \"By the way\"",
-                                       "morning jog"])
+                ICTagCloudView(words: Localized.Component.welcomePageTagsArray.split(separator: "@").map { String($0) })
                 
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .clipped()
@@ -53,7 +46,7 @@ struct EmptyStateView: View {
             }.ignoresSafeArea()
             
             VStack {
-                Text("You don't have any counters yet")
+                Text(Localized.Component.welcomePageDescription)
                     .font(.system(size: 20, weight: .bold))
                     .foregroundColor(.textDark)
                     .frame(maxWidth: .infinity)
@@ -66,7 +59,7 @@ struct EmptyStateView: View {
                     Spacer()
                     createCounterButton()
                     
-                    Text("New counter")
+                    Text(Localized.Component.welcomePageAddCounterButton)
                         .font(.system(size: 18, weight: .bold))
                         .foregroundColor(.textDark)
                         .padding(.top, 10)
