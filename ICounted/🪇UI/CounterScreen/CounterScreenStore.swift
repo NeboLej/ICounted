@@ -51,6 +51,6 @@ class CounterScreenStore {
     }
     
     func showAlert(positiveAction: @escaping ()->(), negativeAction: @escaping ()->()) {
-        alert = AlertModel(type: .warning, title: "", message: "Delete the counter \"\(name)\" and the entire history of records without the possibility of recovery??", actions: [.init(name: "delete", completion: positiveAction), .init(name: "cancel", completion: negativeAction)])
+        alert = AlertModel(type: .warning, title: "", message: Localized.Counter.alertDeleteMessage(name), actions: [.init(name: Localized.Counter.alertDeleteYesButton, completion: positiveAction), .init(name: Localized.Counter.alertDeleteNoButton, completion: negativeAction)])
     }
 }

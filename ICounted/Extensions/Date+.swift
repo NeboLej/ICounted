@@ -49,9 +49,9 @@ extension Date {
     
     func toReadableDate() -> String {
         let date = Date()
-        if isSameDay(date: date) { return "Today" }
-        else if isSameDay(date: date.nextDay) { return "Tomorrow" }
-        else if isSameDay(date: date.prevDay) { return "Yesterday" }
+        if isSameDay(date: date) { return Localized.Component.dateToday }
+        else if isSameDay(date: date.nextDay) { return Localized.Component.dateTomorrow }
+        else if isSameDay(date: date.prevDay) { return Localized.Component.dateYesterday }
         else { return SIMPLE_FMT.string(from: self) }
     }
     

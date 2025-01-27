@@ -21,7 +21,7 @@ struct RecordCell: View {
                     .padding([.vertical, .leading], 16)
             }
             
-            Text(!record.message.isEmpty ? record.message : "No message")
+            Text(!record.message.isEmpty ? record.message : Localized.RecordCell.emptyMessage)
                 .font(.system(size: 14, weight: .regular))
                 .foregroundStyle(.textDark)
                 .padding(.all, 16)

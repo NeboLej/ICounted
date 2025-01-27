@@ -115,7 +115,7 @@ struct CounterScreen: View {
                     .font(.system(size: 16))
                     .foregroundStyle(.textDark)
                 Spacer()
-                Text(localStore.selectedDate != nil ? "\(localStore.selectedRecords.count) \(Localized.Counter.recordsCount)" : "")
+                Text(localStore.selectedDate != nil ? Localized.Counter.recordsCount(localStore.selectedRecords.count) : "")
                     .font(.system(size: 14))
                     .foregroundStyle(.textInfo)
             }

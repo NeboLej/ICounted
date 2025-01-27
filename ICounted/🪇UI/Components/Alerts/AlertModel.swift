@@ -9,6 +9,14 @@ import Foundation
 
 enum AlertType: String {
     case success = "Success", error = "Error", warning = "Warning"
+    
+    func localizedTitle() -> String {
+        switch self {
+        case .error: Localized.Alert.errorTitle
+        case .success: Localized.Alert.successTitle
+        case .warning: Localized.Alert.warningTitle
+        }
+    }
 }
 
 struct AlertAction: Identifiable {
@@ -24,11 +32,11 @@ struct AlertModel {
     var actions: [AlertAction]
     
     static func getErrorModel(message: String) -> AlertModel {
-        AlertModel(type: .error, title: "", message: message, actions: [.init(name: "OK", completion: {})])
+        AlertModel(type: .error, title: "", message: message, actions: [.init(name: Localized.Alert.okButton, completion: {})])
     }
     
     static func getSuccessModel(message: String) -> AlertModel {
-        AlertModel(type: .success, title: "", message: message, actions: [.init(name: "OK", completion: {})])
+        AlertModel(type: .success, title: "", message: message, actions: [.init(name: Localized.Alert.okButton, completion: {})])
     }
 }
 

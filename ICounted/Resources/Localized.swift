@@ -20,6 +20,10 @@ enum Localized {
         static let lastRecord = NSLocalizedString("counterCell_last_record", comment: "")
     }
     
+    enum RecordCell {
+        static let emptyMessage = NSLocalizedString("record_cell_empty_message", comment: "")
+    }
+    
     enum CreateCounter {
         static let colorPicker = NSLocalizedString("createCounter_colorPiceker", comment: "")
         static let descriptionTF = NSLocalizedString("createCounter_description_tf", comment: "")
@@ -39,17 +43,36 @@ enum Localized {
         static let targetValue = NSLocalizedString("counter_target_value", comment: "")
         static let menuDelete = NSLocalizedString("counter_menu_delete", comment: "")
         static let menuEdit = NSLocalizedString("counter_menu_edit", comment: "")
-        static let recordsCount = NSLocalizedString("counter_records_count", comment: "")
+        static func recordsCount(_ count: Int) -> String {
+            String(format: NSLocalizedString("counter_records_count", comment: ""), String(count))
+        }
         static let toWidget = NSLocalizedString("counter_to_widget", comment: "")
+        static func alertDeleteMessage(_ name: String) -> String {
+            String(format: NSLocalizedString("counter_delete_alert_message", comment: ""), name)
+        }
+        static let alertDeleteYesButton = NSLocalizedString("counter_delete_alert_yes", comment: "")
+        static let alertDeleteNoButton = NSLocalizedString("counter_delete_alert_no", comment: "")
     }
     
     enum Component {
         static let welcomePageAddCounterButton = NSLocalizedString("component_welcomePage_add_counter_button", comment: "")
         static let welcomePageDescription = NSLocalizedString("component_welcomePage_description", comment: "")
         static let welcomePageTagsArray = NSLocalizedString("component_welcomePage_tags_array", comment: "")
+        
         static let messageFormAddCountButton = NSLocalizedString("component_message_form_add_count_button", comment: "")
         static let messageFormMessageTF = NSLocalizedString("component_message_form_message_tf", comment: "")
         static let messageFormMessageTFPlaceholder = NSLocalizedString("component_message_form_message_tf_placeholder", comment: "")
+        
+        static let dateToday = NSLocalizedString("date_today", comment: "")
+        static let dateYesterday = NSLocalizedString("date_yesterday", comment: "")
+        static let dateTomorrow = NSLocalizedString("date_tomorrow", comment: "")
+    }
+    
+    enum Alert {
+        static let errorTitle = NSLocalizedString("alert_error_title", comment: "")
+        static let warningTitle = NSLocalizedString("alert_warinig_title", comment: "")
+        static let successTitle = NSLocalizedString("alert_success_title", comment: "")
+        static let okButton = NSLocalizedString("alert_ok_button", comment: "")
     }
     
     enum Widget {
@@ -64,7 +87,5 @@ enum Localized {
         static let exapmleName2 = NSLocalizedString("widget_example_name_2", comment: "")
         static let exapmleName3 = NSLocalizedString("widget_example_name_3", comment: "")
         static let exapmleName4 = NSLocalizedString("widget_example_name_4", comment: "")
-        
-        
     }
 }
