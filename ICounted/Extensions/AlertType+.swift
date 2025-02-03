@@ -11,7 +11,7 @@ extension AlertType {
     func getColor() -> Color {
         switch self {
         case .success:
-            Color.alertSuccess
+                .alertSuccess
         case .error:
             Color.alertError
         case .warning:
