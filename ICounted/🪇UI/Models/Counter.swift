@@ -32,9 +32,13 @@ class Counter: Identifiable, Equatable, HasUUID, ObservableObject {
         self.targetCount = targetCount
     }
     
-    func copy(count: Int? = nil, isFavorite: Bool? = nil) -> Counter {
+    func copy(name: String? =  nil, desc: String? = nil, count: Int? = nil, colorHex: String? = nil, isFavorite: Bool? = nil, targetCount: Int? = nil) -> Counter {
+        self.name = name ?? self.name
+        self.desc = desc ?? self.desc
         self.count = count ?? self.count
+        self.colorHex = colorHex ?? self.colorHex
         self.isFavorite = isFavorite ?? self.isFavorite
+        self.targetCount = targetCount ?? self.targetCount
         return self
     }
     
