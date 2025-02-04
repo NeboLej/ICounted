@@ -123,7 +123,7 @@ struct CounterCell: View {
                     .fontWeight(.regular)
             }
             
-            ICTextProgressBar(progress: .constant(counter.progress ?? 0), color: Color(hex: counter.colorHex))
+            ICTextProgressBar(progress: .constant(counter.progress ?? 0), color: .constant(Color(hex: counter.colorHex)))
                 .frame(height: 5)
         }
     }

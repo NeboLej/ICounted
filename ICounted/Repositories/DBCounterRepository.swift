@@ -10,9 +10,10 @@ import Foundation
 protocol DBRepositoryProtocol {
     func getAllCounters() -> [Counter]
     func saveCounter(newCounter: Counter)
-    func plusCount(counter: Counter, message: String?)
+    func plusCount(counter: Counter, message: String?, date: Date?)
     func favoriteToggle(counter: Counter)
     func deleteCounter(counter: Counter)
+    func deleteRecord(record: CounterRecord)
 }
 
 class DBCounterRepository: DBRepositoryProtocol {
@@ -49,9 +50,9 @@ class DBCounterRepository: DBRepositoryProtocol {
         }
     }
     
-    func plusCount(counter: Counter, message: String? = nil) {
+    func plusCount(counter: Counter, message: String? = nil, date: Date? = nil) {
         counter.modify(count: counter.count + 1)
-        counter.addRecord(record: CounterRecord(message: message ?? "", counter: counter))
+        counter.addRecord(record: CounterRecord(date: date == nil ? Date() : date!, message: message ?? "", counter: counter))
     }
     
     func favoriteToggle(counter: Counter) {
@@ -65,11 +66,22 @@ class DBCounterRepository: DBRepositoryProtocol {
             print("Ошибка удаления счетчика: \(error)")
         }
     }
+    
+    func deleteRecord(record: CounterRecord) {
+        do {
+            try swiftDataDB.delete(model: record)
+            if let counter = record.counter {
+                counter.modify(count: counter.count - 1)
+            }
+        } catch {
+            print("Ошибка удаления записи: \(error)")
+        }
+    }
 }
 
 
 class DBRepositoryMock: DBRepositoryProtocol {
-
+    
     var counters: [Counter] = []
 //    [.init(name: "asdsd", desc: "asdasdsd", count: 123, lastRecord: nil, colorHex: "95D385", isFavorite: true, targetCount: nil),
 //                              .init(name: "assssssOO", desc: "sdasdsddsdsdsd sdasd ", count: 10, lastRecord: Date(), colorHex: "95D385", isFavorite: false, targetCount: 100)]
@@ -83,7 +95,7 @@ class DBRepositoryMock: DBRepositoryProtocol {
         counters.append(newCounter)
     }
     
-    func plusCount(counter: Counter, message: String?) {
+    func plusCount(counter: Counter, message: String?, date: Date?) {
         counter.modify(count: counter.count + 1)
     }
     
@@ -93,5 +105,11 @@ class DBRepositoryMock: DBRepositoryProtocol {
     
     func deleteCounter(counter: Counter) {
         counters.removeAll(where: { $0.id == counter.id })
+    }
+    
+    func deleteRecord(record: CounterRecord) {
+        counters.forEach { counter in
+            counter.records?.removeAll(where: { $0.id == record.id })
+        }
     }
 }

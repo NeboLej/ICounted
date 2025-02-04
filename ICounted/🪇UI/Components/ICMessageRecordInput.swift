@@ -11,6 +11,7 @@ struct ICMessageRecordInput: View {
     
     @Environment(\.countersStore) var countersStore: CountersStore
     var counter: Counter
+    @State var selectDate = Date()
     
     @State private var message: String = ""
     @FocusState private var keyboardFocused: Bool
@@ -25,33 +26,52 @@ struct ICMessageRecordInput: View {
                     keyboardFocused = false
                     isShow = false
                 }
-            VStack {
+            VStack(spacing: 0) {
                 Spacer()
-                HStack {
-                    ICTextField(text: $message, name: Localized.Component.messageFormMessageTF, placeholder: Localized.Component.messageFormMessageTFPlaceholder, lineLimit: 2...6, maxLength: 500)
-                        .focused($keyboardFocused)
-                        .padding(.trailing, 12)
-                        .padding(.bottom, 6)
-                        .ignoresSafeArea(.keyboard, edges: .bottom)
-                    
-                    RoundedRectangle(cornerRadius: 16)
-                        .foregroundStyle(Color(hex: counter.colorHex))
-                        .frame(width: 80, height: 32)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(style: .init(lineWidth: 2))
-                                .foregroundStyle(.black)
-                            Text(Localized.Component.messageFormAddCountButton)
-                                .font(.system(size: 14))
-                        }
-                        .onTapGesture {
-                            keyboardFocused = false
-                            countersStore.countPlus(counter: counter, message: message)
-                            isShow = false
-                        }.padding(.trailing, 8)
+                VStack {
+                    DatePicker(selection: $selectDate) {
+                        Text("Дата")
+                            .font(.system(size: 14))
+                            .foregroundStyle(.textInfo)
+                            .padding(.horizontal, 12)
+                    }.padding(.horizontal, 12)
+                    HStack {
+                        ICTextField(text: $message, name: Localized.Component.messageFormMessageTF, placeholder: Localized.Component.messageFormMessageTFPlaceholder, lineLimit: 2...6, maxLength: 500)
+                            .focused($keyboardFocused)
+                            .padding(.horizontal, 12)
+                            .padding(.bottom, 6)
+                            .ignoresSafeArea(.keyboard, edges: .bottom)
+                        
+                        RoundedRectangle(cornerRadius: 16)
+                            .foregroundStyle(Color(hex: counter.colorHex))
+                            .frame(width: 80, height: 32)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 16)
+                                    .stroke(style: .init(lineWidth: 2))
+                                    .foregroundStyle(.black)
+                                Text(Localized.Component.messageFormAddCountButton)
+                                    .font(.system(size: 14))
+                            }
+                            .onTapGesture {
+                                keyboardFocused = false
+                                countersStore.countPlus(counter: counter, message: message, date: selectDate)
+                                isShow = false
+                            }.padding(.trailing, 8)
+                    }
                 }
+                .padding(.vertical, 12)
+                
+                .background(Color(hex: counter.colorHex).opacity(0.8))
+                .clipShape(
+                    UnevenRoundedRectangle(cornerRadii: .init(topLeading: 20, bottomLeading: 0, bottomTrailing: 0, topTrailing: 20), style: .continuous)
+                )
+                .overlay(
+                    UnevenRoundedRectangle(cornerRadii: .init(topLeading: 20, bottomLeading: 0, bottomTrailing: 0, topTrailing: 20), style: .continuous)
+                        .stroke(.black, lineWidth: 2)
+                )
             }
         }
+        .ignoresSafeArea(.container)
         .onAppear {
             Vibration.medium.vibrate()
             keyboardFocused = true
@@ -59,14 +79,14 @@ struct ICMessageRecordInput: View {
     }
 }
 
-//#Preview {
-//    ScreenBuilder.shared.getComponent(componentType: .messageRecordInput(Counter(name: "asdsd", desc: "asd", count: 123, lastRecord: Date(), colorHex: "FFFAAA", isFavorite: false, targetCount: nil), .constant(true)))
-//}
-
-
 #Preview {
-    ScreenBuilder.shared.getScreen(screenType: .counterList)
+    ScreenBuilder.shared.getComponent(componentType: .messageRecordInput(Counter(name: "asdsd", desc: "asd", count: 123, lastRecord: Date(), colorHex: "FFFAAA", isFavorite: false, targetCount: nil), .constant(true)))
 }
+
+
+//#Preview {
+//    ScreenBuilder.shared.getScreen(screenType: .counterList)
+//}
 
 
 struct BackdropView: UIViewRepresentable {

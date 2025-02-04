@@ -86,14 +86,13 @@ struct CountersListScreen: View {
     private func counterList() -> some View {
         ForEach(countersStore.counterList) { counter in
             screenBuilder.getComponent(componentType: .counterCell(counter))
-                .onTapGesture {
+                .modifier(TapAndLongPressModifier(isVibration: false, tapAction: {
                     Vibration.light.vibrate()
                     selectedCounter = counter
-                }
-                .onLongPressGesture {
+                }, longPressAction: {
                     longPressCounter = counter
                     isShowMessageInput = true
-                }
+                }))
         }
     }
     

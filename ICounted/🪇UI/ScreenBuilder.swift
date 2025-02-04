@@ -12,6 +12,7 @@ enum Screen {
     case counterList
     case counter(Counter)
     case createCounter
+    case editCounter(Counter)
 }
 
 enum Component {
@@ -43,6 +44,10 @@ class ScreenBuilder {
         case .createCounter:
             CreateCounterScreen()
                 .environment(\.countersStore, countersStore)
+        case .editCounter(let counter):
+            EditCounterScreen(counter: counter)
+                .environment(\.countersStore, countersStore)
+                .environment(\.screenBuilder, self)
         }
     }
     

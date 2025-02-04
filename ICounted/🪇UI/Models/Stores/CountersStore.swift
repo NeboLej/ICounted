@@ -35,9 +35,9 @@ class CountersStore: BaseStore {
         counterList = localRepository.getAllCounters()
     }
     
-    func countPlus(counter: Counter, message: String? = nil) {
+    func countPlus(counter: Counter, message: String? = nil, date: Date? = nil) {
         Vibration.light.vibrate()
-        localRepository.plusCount(counter: counter, message: message)
+        localRepository.plusCount(counter: counter, message: message, date: date)
     }
     
     func favoriteToggle(counter: Counter) {
@@ -46,6 +46,11 @@ class CountersStore: BaseStore {
     
     func deleteCounter(counter: Counter) {
         localRepository.deleteCounter(counter: counter)
+        updateAllCounters()
+    }
+    
+    func deleteRecord(record: CounterRecord) {
+        localRepository.deleteRecord(record: record)
         updateAllCounters()
     }
 }

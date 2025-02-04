@@ -20,12 +20,12 @@ class CounterScreenStore {
     var progress: Double = 0
     var records: [CounterRecord] = []
     var id: UUID?
-    var selectedDate: Date?
+    var selectedDate: Date? = Date()
     var recordsDate: [Date] = []
     
     var selectedRecords: [CounterRecord] {
         if selectedDate == nil { return [] }
-        return records.filter({ $0.date.isSameDay(date: selectedDate!) }).reversed()
+        return records.filter({ $0.date.isSameDay(date: selectedDate!) }).sorted(by: { $0.date > $1.date })
     }
     
     var alert: AlertModel?
@@ -50,7 +50,11 @@ class CounterScreenStore {
         return (100 / Double(targetCount)) * Double(count)
     }
     
-    func showAlert(positiveAction: @escaping ()->(), negativeAction: @escaping ()->()) {
+    func showAlertDeleteCounter(positiveAction: @escaping ()->(), negativeAction: @escaping ()->()) {
         alert = AlertModel(type: .warning, title: "", message: Localized.Counter.alertDeleteMessage(name), actions: [.init(name: Localized.Counter.alertDeleteYesButton, completion: positiveAction), .init(name: Localized.Counter.alertDeleteNoButton, completion: negativeAction)])
+    }
+    
+    func showAlertDeleteRecord(positiveAction: @escaping ()->(), negativeAction: @escaping ()->()) {
+        alert = AlertModel(type: .warning, title: "", message: Localized.Counter.alertDeleteRecordMessage, actions: [.init(name: Localized.Counter.alertDeleteYesButton, completion: positiveAction), .init(name: Localized.Counter.alertDeleteNoButton, completion: negativeAction)])
     }
 }

@@ -18,6 +18,7 @@ struct CounterScreen: View {
     @State var isShowMessageInput: Bool = false
     
     @State private var isShowMenu: Bool = false
+    @State private var isShowEditCounter = false
     
     var body: some View {
         VStack(spacing: 16) {
@@ -49,7 +50,14 @@ struct CounterScreen: View {
         .onAppear {
             localStore.bindCounter(counter: counter)
         }
+        .sheet(isPresented: $isShowEditCounter) {
+            screenBuilder.getScreen(screenType: .editCounter(counter))
+        }
         .onChange(of: countersStore.allCount) {
+            guard let counter = countersStore.counterList.first(where: { $0.id == counter.id }) else { return }
+            localStore.bindCounter(counter: counter)
+        }
+        .onChange(of: isShowEditCounter) {
             guard let counter = countersStore.counterList.first(where: { $0.id == counter.id }) else { return }
             localStore.bindCounter(counter: counter)
         }
@@ -122,7 +130,14 @@ struct CounterScreen: View {
             .padding(.top, 16)
             .padding(.bottom, 4)
             ForEach(localStore.selectedRecords) { record in
-                RecordCell(record: record, color: localStore.color)
+                RecordCell(record: record, color: localStore.color) { onDeleteRecord in
+                    localStore.showAlertDeleteRecord {
+                        countersStore.deleteRecord(record: onDeleteRecord)
+                        localStore.alert = nil
+                    } negativeAction: {
+                        localStore.alert = nil
+                    }
+                }
             }
         }
         .padding(.bottom, 8)
@@ -130,6 +145,22 @@ struct CounterScreen: View {
     
     @ViewBuilder
     private func countButton() -> some View {
+        
+//        Button {
+//            countersStore.countPlus(counter: counter)
+//        } label: {
+//            RoundedRectangle(cornerRadius: 20)
+//                .fill(localStore.color)
+//                .modifier(ShadowModifier(foregroundColor: .black, cornerRadius: 20))
+//                .frame(width: 180, height: 40)
+//                .overlay {
+//                    Text(Localized.Counter.addCountButton)
+//                        .font(.system(size: 18, weight: .bold))
+//                        .foregroundStyle(.textDark)
+//                }
+//        }.supportsLongPress {
+//            isShowMessageInput = true
+//        }
         RoundedRectangle(cornerRadius: 20)
             .fill(localStore.color)
             .modifier(ShadowModifier(foregroundColor: .black, cornerRadius: 20))
@@ -139,12 +170,11 @@ struct CounterScreen: View {
                     .font(.system(size: 18, weight: .bold))
                     .foregroundStyle(.textDark)
             }
-            .onTapGesture {
-                countersStore.countPlus(counter: counter)
-            }
-            .onLongPressGesture {
-                isShowMessageInput = true
-            }
+            .modifier(TapAndLongPressModifier(isVibration: true, tapAction: {
+            countersStore.countPlus(counter: counter)
+        }, longPressAction: {
+            isShowMessageInput = true
+        }))
     }
     
     @ViewBuilder
@@ -167,11 +197,14 @@ struct CounterScreen: View {
                 Text(Localized.Counter.menuEdit)
                     .font(.system(size: 14))
                     .foregroundStyle(.textDark)
+                    .onTapGesture {
+                        isShowEditCounter = true
+                    }
                 Text(Localized.Counter.menuDelete)
                     .font(.system(size: 14))
                     .foregroundStyle(.textDark)
                     .onTapGesture {
-                        localStore.showAlert {
+                        localStore.showAlertDeleteCounter {
                             countersStore.deleteCounter(counter: counter)
                             dismiss()
                         } negativeAction: {
@@ -189,7 +222,7 @@ struct CounterScreen: View {
             Text(String(localStore.progress)+"%")
                 .font(.system(size: 14))
                 .foregroundStyle(.textInfo)
-            ICTextProgressBar(progress: .constant(localStore.progress), color: localStore.color)
+            ICTextProgressBar(progress: .constant(localStore.progress), color: $localStore.color)
                 .frame(height: 10)
         }
     }
@@ -197,5 +230,5 @@ struct CounterScreen: View {
 }
 
 #Preview {
-    ScreenBuilder.shared.getScreen(screenType: .counter(Counter(name: "Counter", desc: "bla bla bla jsadk jjda kdjnak sjdkas ndkjasndk anskdj akjsdnaskj dnashb dhasdb jasdl asd;am lsdjk na", count: 123, lastRecord: Date(), colorHex: "04d4f4", isFavorite: true, targetCount: 500)))
+    ScreenBuilder.shared.getScreen(screenType: .counter(Counter(name: "Counter", desc: "bla bla bla jsadk jjda kdjnak sjdkas ndkjasndk anskdj akjsdnaskj dnashb dhasdb jasdl asd;am lsdjk na", count: 133, lastRecord: Date(), colorHex: "04d4f4", isFavorite: true, targetCount: 500)))
 }
