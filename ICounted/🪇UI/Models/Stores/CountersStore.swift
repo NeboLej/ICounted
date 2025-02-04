@@ -48,4 +48,9 @@ class CountersStore: BaseStore {
         localRepository.deleteCounter(counter: counter)
         updateAllCounters()
     }
+    
+    func deleteRecord(record: CounterRecord) {
+        localRepository.deleteRecord(record: record)
+        updateAllCounters()
+    }
 }

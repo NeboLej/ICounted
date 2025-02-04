@@ -130,7 +130,14 @@ struct CounterScreen: View {
             .padding(.top, 16)
             .padding(.bottom, 4)
             ForEach(localStore.selectedRecords) { record in
-                RecordCell(record: record, color: localStore.color)
+                RecordCell(record: record, color: localStore.color) { onDeleteRecord in
+                    localStore.showAlertDeleteRecord {
+                        countersStore.deleteRecord(record: onDeleteRecord)
+                        localStore.alert = nil
+                    } negativeAction: {
+                        localStore.alert = nil
+                    }
+                }
             }
         }
         .padding(.bottom, 8)
@@ -182,7 +189,7 @@ struct CounterScreen: View {
                     .font(.system(size: 14))
                     .foregroundStyle(.textDark)
                     .onTapGesture {
-                        localStore.showAlert {
+                        localStore.showAlertDeleteCounter {
                             countersStore.deleteCounter(counter: counter)
                             dismiss()
                         } negativeAction: {

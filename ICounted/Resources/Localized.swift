@@ -52,6 +52,7 @@ enum Localized {
         }
         static let alertDeleteYesButton = NSLocalizedString("counter_delete_alert_yes", comment: "")
         static let alertDeleteNoButton = NSLocalizedString("counter_delete_alert_no", comment: "")
+        static let alertDeleteRecordMessage = NSLocalizedString("counter_delete_record_alert", comment: "")
     }
     
     enum Component {
