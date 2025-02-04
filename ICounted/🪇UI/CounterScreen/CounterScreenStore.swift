@@ -20,7 +20,7 @@ class CounterScreenStore {
     var progress: Double = 0
     var records: [CounterRecord] = []
     var id: UUID?
-    var selectedDate: Date?
+    var selectedDate: Date? = Date()
     var recordsDate: [Date] = []
     
     var selectedRecords: [CounterRecord] {

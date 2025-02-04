@@ -64,6 +64,7 @@ struct EditCounterScreen: View {
                 
             }
         }
+        .background(.background1)
         .onAppear {
             localStore.bindCounter(counter: counter)
         }
