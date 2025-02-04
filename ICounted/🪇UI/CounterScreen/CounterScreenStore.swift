@@ -25,7 +25,7 @@ class CounterScreenStore {
     
     var selectedRecords: [CounterRecord] {
         if selectedDate == nil { return [] }
-        return records.filter({ $0.date.isSameDay(date: selectedDate!) }).reversed()
+        return records.filter({ $0.date.isSameDay(date: selectedDate!) }).sorted(by: { $0.date > $1.date })
     }
     
     var alert: AlertModel?
