@@ -46,6 +46,8 @@
 		8E7C561C2CB29011006A56C9 /* CounterScreenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C561B2CB29011006A56C9 /* CounterScreenStore.swift */; };
 		8E891C0D2D514FE40094EEE4 /* EditCounterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E891C0C2D514FE40094EEE4 /* EditCounterScreen.swift */; };
 		8E891C0F2D5150F40094EEE4 /* EditCounterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E891C0E2D5150F40094EEE4 /* EditCounterStore.swift */; };
+		8E891C1D2D5286D20094EEE4 /* LongPress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E891C1C2D5286D20094EEE4 /* LongPress.swift */; };
+		8E891C1E2D5286D20094EEE4 /* LongPress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E891C1C2D5286D20094EEE4 /* LongPress.swift */; };
 		8E9E1BBB2CAF1875002B12E2 /* CreateCounterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9E1BBA2CAF1875002B12E2 /* CreateCounterScreen.swift */; };
 		8E9E1BBD2CAF188D002B12E2 /* CreateCounterScreenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9E1BBC2CAF188D002B12E2 /* CreateCounterScreenStore.swift */; };
 		8EB4A8D12D00BE8800EA4E8C /* ICCalendarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB4A8D02D00BE8800EA4E8C /* ICCalendarChart.swift */; };
@@ -124,6 +126,7 @@
 		8E7C561B2CB29011006A56C9 /* CounterScreenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterScreenStore.swift; sourceTree = "<group>"; };
 		8E891C0C2D514FE40094EEE4 /* EditCounterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCounterScreen.swift; sourceTree = "<group>"; };
 		8E891C0E2D5150F40094EEE4 /* EditCounterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCounterStore.swift; sourceTree = "<group>"; };
+		8E891C1C2D5286D20094EEE4 /* LongPress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPress.swift; sourceTree = "<group>"; };
 		8E9E1BBA2CAF1875002B12E2 /* CreateCounterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCounterScreen.swift; sourceTree = "<group>"; };
 		8E9E1BBC2CAF188D002B12E2 /* CreateCounterScreenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCounterScreenStore.swift; sourceTree = "<group>"; };
 		8EB4A8D02D00BE8800EA4E8C /* ICCalendarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICCalendarChart.swift; sourceTree = "<group>"; };
@@ -312,6 +315,7 @@
 			children = (
 				8EBB73B42C3ABFE300A0A899 /* ShadowModifier.swift */,
 				8E520B7D2CBB48AF0076FB16 /* AlertModifier.swift */,
+				8E891C1C2D5286D20094EEE4 /* LongPress.swift */,
 			);
 			path = "🐣Modifiers";
 			sourceTree = "<group>";
@@ -490,6 +494,7 @@
 				8E736D832D45A539005CB1A7 /* BaseStore.swift in Sources */,
 				8E736D892D45B02C005CB1A7 /* ModelContainer.swift in Sources */,
 				8E736D7C2D457D36005CB1A7 /* CounterValueView.swift in Sources */,
+				8E891C1E2D5286D20094EEE4 /* LongPress.swift in Sources */,
 				8E736D7B2D4578B3005CB1A7 /* CounterRecord.swift in Sources */,
 				8E736D7E2D457DCF005CB1A7 /* ShadowModifier.swift in Sources */,
 				8E736D812D45A512005CB1A7 /* DBCounterRepository.swift in Sources */,
@@ -532,6 +537,7 @@
 				8EBB73B52C3ABFE300A0A899 /* ShadowModifier.swift in Sources */,
 				8E1312162CD193FA00A517C3 /* CounterRecord.swift in Sources */,
 				8E891C0D2D514FE40094EEE4 /* EditCounterScreen.swift in Sources */,
+				8E891C1D2D5286D20094EEE4 /* LongPress.swift in Sources */,
 				8E520B842CBBE8B30076FB16 /* AlertType+.swift in Sources */,
 				8E9E1BBB2CAF1875002B12E2 /* CreateCounterScreen.swift in Sources */,
 				8EB512982D47EB7800E1CFFA /* Localized.swift in Sources */,

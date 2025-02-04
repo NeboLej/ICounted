@@ -145,6 +145,22 @@ struct CounterScreen: View {
     
     @ViewBuilder
     private func countButton() -> some View {
+        
+//        Button {
+//            countersStore.countPlus(counter: counter)
+//        } label: {
+//            RoundedRectangle(cornerRadius: 20)
+//                .fill(localStore.color)
+//                .modifier(ShadowModifier(foregroundColor: .black, cornerRadius: 20))
+//                .frame(width: 180, height: 40)
+//                .overlay {
+//                    Text(Localized.Counter.addCountButton)
+//                        .font(.system(size: 18, weight: .bold))
+//                        .foregroundStyle(.textDark)
+//                }
+//        }.supportsLongPress {
+//            isShowMessageInput = true
+//        }
         RoundedRectangle(cornerRadius: 20)
             .fill(localStore.color)
             .modifier(ShadowModifier(foregroundColor: .black, cornerRadius: 20))
@@ -154,12 +170,11 @@ struct CounterScreen: View {
                     .font(.system(size: 18, weight: .bold))
                     .foregroundStyle(.textDark)
             }
-            .onTapGesture {
-                countersStore.countPlus(counter: counter)
-            }
-            .onLongPressGesture {
-                isShowMessageInput = true
-            }
+            .modifier(TapAndLongPressModifier(isVibration: true, tapAction: {
+            countersStore.countPlus(counter: counter)
+        }, longPressAction: {
+            isShowMessageInput = true
+        }))
     }
     
     @ViewBuilder

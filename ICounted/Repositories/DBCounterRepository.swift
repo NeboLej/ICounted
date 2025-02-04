@@ -10,7 +10,7 @@ import Foundation
 protocol DBRepositoryProtocol {
     func getAllCounters() -> [Counter]
     func saveCounter(newCounter: Counter)
-    func plusCount(counter: Counter, message: String?)
+    func plusCount(counter: Counter, message: String?, date: Date?)
     func favoriteToggle(counter: Counter)
     func deleteCounter(counter: Counter)
     func deleteRecord(record: CounterRecord)
@@ -50,9 +50,9 @@ class DBCounterRepository: DBRepositoryProtocol {
         }
     }
     
-    func plusCount(counter: Counter, message: String? = nil) {
+    func plusCount(counter: Counter, message: String? = nil, date: Date? = nil) {
         counter.modify(count: counter.count + 1)
-        counter.addRecord(record: CounterRecord(message: message ?? "", counter: counter))
+        counter.addRecord(record: CounterRecord(date: date == nil ? Date() : date!, message: message ?? "", counter: counter))
     }
     
     func favoriteToggle(counter: Counter) {
@@ -95,7 +95,7 @@ class DBRepositoryMock: DBRepositoryProtocol {
         counters.append(newCounter)
     }
     
-    func plusCount(counter: Counter, message: String?) {
+    func plusCount(counter: Counter, message: String?, date: Date?) {
         counter.modify(count: counter.count + 1)
     }
     
