@@ -69,7 +69,7 @@ struct CounterScreen: View {
         HStack {
             Spacer()
             Text(Localized.Counter.toWidget)
-                .font(.system(size: 14))
+                .font(.myFont(type: .regular, size: 14))
                 .foregroundStyle(.textInfo)
             Image(localStore.isAddToWidget ? .starActive : .star)
         }
@@ -80,7 +80,8 @@ struct CounterScreen: View {
         HStack {
             if !localStore.description.isEmpty {
                 Text(localStore.description)
-                    .font(.system(size: 16))
+                    .font(.myFont(type: .medium, size: 16))
+                    .lineSpacing(4)
                     .foregroundStyle(.textDark)
             }
             Spacer()
@@ -92,7 +93,7 @@ struct CounterScreen: View {
         HStack {
             VStack(alignment: .leading) {
                 Text(Localized.Counter.currentValue)
-                    .font(.system(size: 14))
+                    .font(.myFont(type: .regular, size: 14))
                     .foregroundStyle(.textInfo)
                 CounterValueView(count: localStore.count, width: 20, height: 30)
             }
@@ -102,7 +103,7 @@ struct CounterScreen: View {
             if localStore.isUseTargetValue {
                 VStack(alignment: .trailing) {
                     Text(Localized.Counter.targetValue)
-                        .font(.system(size: 14))
+                        .font(.myFont(type: .regular, size: 14))
                         .foregroundStyle(.textInfo)
                     CounterValueView(count: localStore.targetCount, width: 20, height: 30)
                 }
@@ -120,11 +121,11 @@ struct CounterScreen: View {
         VStack {
             HStack {
                 Text(localStore.selectedDate?.toReadableDate() ?? "")
-                    .font(.system(size: 16))
+                    .font(.myFont(type: .regular, size: 16))
                     .foregroundStyle(.textDark)
                 Spacer()
                 Text(localStore.selectedDate != nil ? Localized.Counter.recordsCount(localStore.selectedRecords.count) : "")
-                    .font(.system(size: 14))
+                    .font(.myFont(type: .regular, size: 14))
                     .foregroundStyle(.textInfo)
             }
             .padding(.top, 16)
@@ -145,29 +146,13 @@ struct CounterScreen: View {
     
     @ViewBuilder
     private func countButton() -> some View {
-        
-//        Button {
-//            countersStore.countPlus(counter: counter)
-//        } label: {
-//            RoundedRectangle(cornerRadius: 20)
-//                .fill(localStore.color)
-//                .modifier(ShadowModifier(foregroundColor: .black, cornerRadius: 20))
-//                .frame(width: 180, height: 40)
-//                .overlay {
-//                    Text(Localized.Counter.addCountButton)
-//                        .font(.system(size: 18, weight: .bold))
-//                        .foregroundStyle(.textDark)
-//                }
-//        }.supportsLongPress {
-//            isShowMessageInput = true
-//        }
         RoundedRectangle(cornerRadius: 20)
             .fill(localStore.color)
             .modifier(ShadowModifier(foregroundColor: .black, cornerRadius: 20))
             .frame(width: 180, height: 40)
             .overlay {
                 Text(Localized.Counter.addCountButton)
-                    .font(.system(size: 18, weight: .bold))
+                    .font(.myFont(type: .bold, size: 18))
                     .foregroundStyle(.textDark)
             }
             .modifier(TapAndLongPressModifier(isVibration: true, tapAction: {
@@ -195,13 +180,13 @@ struct CounterScreen: View {
             
             VStack(alignment: .leading, spacing: 10) {
                 Text(Localized.Counter.menuEdit)
-                    .font(.system(size: 14))
+                    .font(.myFont(type: .regular, size: 14))
                     .foregroundStyle(.textDark)
                     .onTapGesture {
                         isShowEditCounter = true
                     }
                 Text(Localized.Counter.menuDelete)
-                    .font(.system(size: 14))
+                    .font(.myFont(type: .regular, size: 14))
                     .foregroundStyle(.textDark)
                     .onTapGesture {
                         localStore.showAlertDeleteCounter {
@@ -220,7 +205,7 @@ struct CounterScreen: View {
     private func progressBar() -> some View {
         VStack(alignment: .trailing) {
             Text(String(localStore.progress)+"%")
-                .font(.system(size: 14))
+                .font(.myFont(type: .regular, size: 14))
                 .foregroundStyle(.textInfo)
             ICTextProgressBar(progress: .constant(localStore.progress), color: $localStore.color)
                 .frame(height: 10)

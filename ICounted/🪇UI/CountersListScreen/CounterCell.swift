@@ -21,13 +21,13 @@ struct CounterCell: View {
                     VStack(alignment: .leading) {
                         Text(counter.name)
                             .foregroundStyle(.textDark)
-                            .font(.system(size: 18))
-                            .fontWeight(.semibold)
+                            .font(.myFont(type: .bold, size: 18))
                         Text(counter.desc)
-                            .lineLimit(3)
+                            .lineLimit(4)
                             .foregroundStyle(.textInfo)
-                            .font(.system(size: 14))
-                            .fontWeight(.regular)
+                            .font(.myFont(type: .regular, size: 14))
+                            .lineSpacing(4)
+                            .fixedSize(horizontal: false, vertical: true)
                     }
                     Spacer()
                     VStack {
@@ -58,12 +58,10 @@ struct CounterCell: View {
                         VStack(alignment: .leading)  {
                             Text(Localized.CounterCell.lastRecord)
                                 .foregroundStyle(.textDark)
-                                .font(.system(size: 14))
-                                .fontWeight(.regular)
+                                .font(.myFont(type: .regular, size: 14))
                             Text(lastRecord.toSimpleDate())
                                 .foregroundStyle(.textInfo)
-                                .font(.system(size: 14))
-                                .fontWeight(.regular)
+                                .font(.myFont(type: .regular, size: 14))
                         }
                     }
                     
@@ -74,7 +72,7 @@ struct CounterCell: View {
                         .frame(width: 80, height: 32)
                         .overlay {
                             Text(Localized.CounterCell.addCountButton)
-                                .font(.system(size: 14))
+                                .font(.myFont(type: .regular, size: 14))
                         }
                         .onTapGesture {
                             countersStore.countPlus(counter: counter)
@@ -101,7 +99,6 @@ struct CounterCell: View {
                 Image(.fire)
                     .resizable()
                     .frame(width: 30, height: 30)
-                    
             }
         }
     }
@@ -114,13 +111,11 @@ struct CounterCell: View {
             HStack {
                 Text(String(Int(counter.progress ?? 0)) + "%")
                     .foregroundStyle(.textInfo)
-                    .font(.system(size: 12))
-                    .fontWeight(.regular)
+                    .font(.myFont(type: .regular, size: 12))
                 Spacer()
                 Text(String(counter.targetCount ?? 0))
                     .foregroundStyle(.textInfo)
-                    .font(.system(size: 12))
-                    .fontWeight(.regular)
+                    .font(.myFont(type: .regular, size: 12))
             }
             
             ICTextProgressBar(progress: .constant(counter.progress ?? 0), color: .constant(Color(hex: counter.colorHex)))
@@ -131,6 +126,6 @@ struct CounterCell: View {
 
 #Preview {
 //    ScreenBuilder.shared.getScreen(screenType: .counterList)
-    ScreenBuilder.shared.getComponent(componentType: .counterCell(Counter(name: "wdsa", desc: "asdasd", count: 11222, lastRecord: Date(), colorHex: "FDC356", isFavorite: true, targetCount: 10)))
+    ScreenBuilder.shared.getComponent(componentType: .counterCell(Counter(name: "wdsa", desc: "некий текст не маленького размера чтобы можно было все видеть", count: 11222, lastRecord: Date(), colorHex: "FDC356", isFavorite: true, targetCount: 10)))
         .frame(height: 200)
 }

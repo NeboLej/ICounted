@@ -96,13 +96,30 @@
         }
       }
     },
+    "component_message_form_date" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дата"
+          }
+        }
+      }
+    },
     "component_message_form_message_tf" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "message"
+            "value" : "Message"
           }
         },
         "ru" : {
@@ -515,7 +532,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "описание"
+            "value" : "Описание"
           }
         }
       }
@@ -753,7 +770,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "новая запись"
+            "value" : "Новая запись"
           }
         }
       }
@@ -876,9 +893,6 @@
           }
         }
       }
-    },
-    "Дата" : {
-
     }
   },
   "version" : "1.0"

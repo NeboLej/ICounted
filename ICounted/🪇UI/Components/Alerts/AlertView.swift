@@ -33,7 +33,7 @@ struct AlertView: View {
                     .padding(.top, 10)
                 
                 Text(model.message)
-                    .font(.system(size: 14))
+                    .font(.myFont(type: .regular, size: 14))
                     .foregroundStyle(.textInfo)
                     .padding(16)
                 
@@ -87,7 +87,7 @@ struct AlertView: View {
             .frame(width: 150, height: 34)
             .overlay {
                 Text(action.name)
-                    .font(.system(size: 18, weight: .semibold))
+                    .font(.myFont(type: .semiBold, size: 18))
                     .foregroundStyle(.textDark)
             }
             .onTapGesture {

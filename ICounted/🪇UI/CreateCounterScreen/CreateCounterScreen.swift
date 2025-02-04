@@ -33,7 +33,7 @@ struct CreateCounterScreen: View {
                         ICNumberSetterView(number: $localStore.startValue)
                         Spacer()
                         Text(Localized.CreateCounter.startValue)
-                            .font(.system(size: 14))
+                            .font(.myFont(type: .regular, size: 14))
                             .foregroundStyle(.textInfo)
                     }.padding(.vertical , 20)
                     
@@ -42,7 +42,7 @@ struct CreateCounterScreen: View {
                     HStack {
                         VStack(alignment: .leading) {
                             Text(Localized.CreateCounter.targetValue)
-                                .font(.system(size: 14))
+                                .font(.myFont(type: .regular, size: 14))
                                 .foregroundStyle(.textInfo)
                             ICToggleControlView(isOn: $localStore.isUseTargetValue, color: localStore.color)
                         }.padding(.vertical, 2)
@@ -58,7 +58,7 @@ struct CreateCounterScreen: View {
                     HStack {
                         VStack(alignment: .leading) {
                             Text(Localized.CreateCounter.toWidget)
-                                .font(.system(size: 14))
+                                .font(.myFont(type: .regular, size: 14))
                                 .foregroundStyle(.textInfo)
                             ICToggleControlView(isOn: $localStore.isAddToWidget, color: localStore.color)
                         }
@@ -86,7 +86,7 @@ struct CreateCounterScreen: View {
             .frame(width: 220, height: 48)
             .overlay {
                 Text(Localized.CreateCounter.saveButton)
-                    .font(.system(size: 18, weight: .bold))
+                    .font(.myFont(type: .bold, size: 18))
                     .foregroundStyle(.textDark)
             }
             .onTapGesture {
@@ -106,7 +106,7 @@ struct CreateCounterScreen: View {
     private func colorPicker() -> some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(Localized.CreateCounter.colorPicker)
-                .font(.system(size: 14))
+                .font(.myFont(type: .regular, size: 14))
                 .foregroundStyle(.textInfo)
             
             ZStack(alignment: .topTrailing) {

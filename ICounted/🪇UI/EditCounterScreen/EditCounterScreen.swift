@@ -33,7 +33,7 @@ struct EditCounterScreen: View {
                     HStack {
                         VStack(alignment: .leading) {
                             Text(Localized.CreateCounter.targetValue)
-                                .font(.system(size: 14))
+                                .font(.myFont(type: .regular, size: 14))
                                 .foregroundStyle(.textInfo)
                             ICToggleControlView(isOn: $localStore.isUseTargetValue, color: localStore.color)
                         }.padding(.vertical, 2)
@@ -49,7 +49,7 @@ struct EditCounterScreen: View {
                     HStack {
                         VStack(alignment: .leading) {
                             Text(Localized.CreateCounter.toWidget)
-                                .font(.system(size: 14))
+                                .font(.myFont(type: .regular, size: 14))
                                 .foregroundStyle(.textInfo)
                             ICToggleControlView(isOn: $localStore.isAddToWidget, color: localStore.color)
                         }
@@ -82,7 +82,7 @@ struct EditCounterScreen: View {
             .frame(width: 220, height: 48)
             .overlay {
                 Text(Localized.CreateCounter.saveButton)
-                    .font(.system(size: 18, weight: .bold))
+                    .font(.myFont(type: .bold, size: 18))
                     .foregroundStyle(.textDark)
             }
             .onTapGesture {
@@ -102,7 +102,7 @@ struct EditCounterScreen: View {
     private func colorPicker() -> some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(Localized.CreateCounter.colorPicker)
-                .font(.system(size: 14))
+                .font(.myFont(type: .regular, size: 14))
                 .foregroundStyle(.textInfo)
             
             ZStack(alignment: .topTrailing) {

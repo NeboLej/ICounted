@@ -47,7 +47,7 @@ struct EmptyStateView: View {
             
             VStack {
                 Text(Localized.Component.welcomePageDescription)
-                    .font(.system(size: 20, weight: .bold))
+                    .font(.myFont(type: .bold, size: 20))
                     .foregroundColor(.textDark)
                     .frame(maxWidth: .infinity)
                     .padding(20)
@@ -60,7 +60,7 @@ struct EmptyStateView: View {
                     createCounterButton()
                     
                     Text(Localized.Component.welcomePageAddCounterButton)
-                        .font(.system(size: 18, weight: .bold))
+                        .font(.myFont(type: .bold, size: 18))
                         .foregroundColor(.textDark)
                         .padding(.top, 10)
                     
@@ -165,7 +165,7 @@ struct AnimationTagView: View {
     @ViewBuilder func tagView(word: String) -> some View {
         ZStack {
             Text(word)
-                .font(.system(size: 14, weight: .regular))
+                .font(.myFont(type: .regular, size: 14))
                 .padding(.horizontal, 16)
                 .padding(.vertical, 8)
         }

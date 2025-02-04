@@ -19,8 +19,7 @@ struct ICIconNameView: View {
             
             Text(getAbbreviation(maxCount: 3))
                 .foregroundStyle(.white)
-                .font(.system(size: 16))
-                .fontWeight(.bold)
+                .font(.myFont(type: .bold, size: 16))
                 .rotationEffect(.degrees(-45))
             RoundedRectangle(cornerRadius: 15)
                 .stroke(lineWidth: 2)

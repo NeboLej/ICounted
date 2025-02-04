@@ -63,6 +63,7 @@ enum Localized {
         static let messageFormAddCountButton = NSLocalizedString("component_message_form_add_count_button", comment: "")
         static let messageFormMessageTF = NSLocalizedString("component_message_form_message_tf", comment: "")
         static let messageFormMessageTFPlaceholder = NSLocalizedString("component_message_form_message_tf_placeholder", comment: "")
+        static let messageFormDate = NSLocalizedString("component_message_form_date", comment: "")
         
         static let dateToday = NSLocalizedString("date_today", comment: "")
         static let dateYesterday = NSLocalizedString("date_yesterday", comment: "")

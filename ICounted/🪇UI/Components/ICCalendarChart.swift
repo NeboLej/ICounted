@@ -28,7 +28,7 @@ struct ICCalendarChart: View {
             VStack(alignment: .leading, spacing: 11) {
                 ForEach(days, id: \.self) { day in
                     Text(day)
-                        .font(.system(size: 14))
+                        .font(.myFont(type: .regular, size: 14))
                         .foregroundStyle(.textInfo)
                 }
             }.padding(.top, 25)
@@ -53,7 +53,7 @@ struct ICCalendarChart: View {
     private func monthView(month: Date) -> some View {
         VStack(alignment: .leading, spacing: 2) {
             Text(month.monthNameShort())
-                .font(.system(size: 18, weight: .medium))
+                .font(.myFont(type: .medium, size: 18))
                 .foregroundStyle(.textInfo)
             LazyHGrid(rows: columns, alignment: .center, spacing: 2, pinnedViews: .sectionHeaders) {
                 ForEach(extractDate(month: month)) {

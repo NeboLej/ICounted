@@ -107,7 +107,7 @@ struct CountersListScreen: View {
     private func counter() -> some View {
         VStack {
             Text(Localized.CounterListScreen.counterPanel)
-                .font(.system(size: 16))
+                .font(.myFont(type: .regular, size: 16))
                 .foregroundStyle(.textDark)
             Rectangle()
                 .frame(height: 1)
@@ -121,10 +121,10 @@ struct CountersListScreen: View {
     private func allCount() -> some View {
         VStack {
             Text(Localized.CounterListScreen.countPanel)
-                .font(.system(size: 16))
+                .font(.myFont(type: .regular, size: 16))
                 .foregroundStyle(.textDark)
             Text(Localized.CounterListScreen.countPanelDesc)
-                .font(.system(size: 8))
+                .font(.myFont(type: .regular, size: 8))
                 .foregroundStyle(.textDark)
             Rectangle()
                 .fill(.black)
@@ -142,7 +142,7 @@ struct CountersListScreen: View {
                 .foregroundStyle(.blue)
                 .padding(.bottom, 3)
             Text(Localized.CounterListScreen.settingPanel)
-                .font(.system(size: 16))
+                .font(.myFont(type: .regular, size: 16))
                 .foregroundStyle(.textDark)
         }
     }
