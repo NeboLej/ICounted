@@ -36,7 +36,7 @@ struct ICounterWidgetView: View {
     private func emptyState() -> some View {
         VStack {
             Text(Localized.Widget.emptyStateDescription)
-                .font(.system(size: 14))
+                .font(.myFont(type: .regular, size: 14))
                 .multilineTextAlignment(.center)
             Image(.starActive)
         }
@@ -114,7 +114,7 @@ struct ICounterWidgetView: View {
     private func counterCell(counter: Counter) -> some View {
         VStack {
             Text(counter.name)
-                .font(.system(size: 14))
+                .font(.myFont(type: .regular, size: 14))
                 .frame(height: 40)
                 
             Spacer()
@@ -133,7 +133,7 @@ struct ICounterWidgetView: View {
                 .frame(width: 120, height: 32)
                 .overlay {
                     Text(Localized.Widget.addCountButton)
-                        .font(.system(size: 18, weight: .bold))
+                        .font(.myFont(type: .bold, size: 18))
                         .foregroundStyle(.textDark)
                 }
         }

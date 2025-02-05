@@ -17,12 +17,13 @@ struct RecordCell: View {
         HStack {
             HStack(alignment: .top) {
                 Text(record.date.time())
-                    .font(.system(size: 14, weight: .regular))
+                    .font(.myFont(type: .regular, size: 15))
                     .foregroundStyle(.textInfo)
                     .padding([.vertical, .leading], 16)
                 
                 Text(!record.message.isEmpty ? record.message : Localized.RecordCell.emptyMessage)
-                    .font(.system(size: 14, weight: .regular))
+                    .font(.myFont(type: .regular, size: 15))
+                    .lineSpacing(4)
                     .foregroundStyle(.textDark)
                     .padding(.all, 16)
                     .frame(alignment: .top)
@@ -49,7 +50,7 @@ struct RecordCell: View {
 }
 
 #Preview {
-    RecordCell(record: CounterRecord(date: Date(), message: "asds sads jsakdjn nakdn kasdnk jadj na asd sad ", counter: nil), color: .red) { _ in
+    RecordCell(record: CounterRecord(date: Date(), message: "некий текст на русском чтобы проверять и видить всякие изъяны", counter: nil), color: .red) { _ in
         
     }
 }

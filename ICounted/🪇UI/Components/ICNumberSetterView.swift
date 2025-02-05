@@ -74,7 +74,7 @@ struct ICNumberSetterView: View {
     @ViewBuilder
     private func number(numb: String, color: Color, lineWidth: CGFloat = 1) -> some View {
         Text(numb)
-            .font(.system(size: 16))
+            .font(.myFont(type: .regular, size: 16))
             .foregroundStyle(.textDark)
             .frame(width: 26, height: 34)
             .background(color)

@@ -28,15 +28,17 @@ struct CounterValueView: View {
             let string = String(count).map { String($0) }
             ForEach(0..<string.count, id: \.self) { i in
                 Text(string[i])
-                    .font(.system(size: fontSize))
+                    .font(.myFont(type: .medium, size: fontSize))
                     .foregroundStyle(.textDark)
                     .frame(width: width, height: height)
+                    .padding(.top, 3)
                     .background(Color.background1)
                     .overlay {
                         RoundedRectangle(cornerRadius: cornerRadius)
                             .stroke(lineWidth: 1)
                             .foregroundStyle(.textDark)
                     }
+                    
             }
         }
     }

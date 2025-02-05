@@ -47,7 +47,7 @@ struct EmptyStateView: View {
             
             VStack {
                 Text(Localized.Component.welcomePageDescription)
-                    .font(.system(size: 20, weight: .bold))
+                    .font(.myFont(type: .bold, size: 20))
                     .foregroundColor(.textDark)
                     .frame(maxWidth: .infinity)
                     .padding(20)
@@ -60,7 +60,7 @@ struct EmptyStateView: View {
                     createCounterButton()
                     
                     Text(Localized.Component.welcomePageAddCounterButton)
-                        .font(.system(size: 18, weight: .bold))
+                        .font(.myFont(type: .bold, size: 18))
                         .foregroundColor(.textDark)
                         .padding(.top, 10)
                     
@@ -108,7 +108,7 @@ struct AnimationTagView: View {
     @State var color: Color!
     @State var rotationEffectAngle: CGFloat = 5
     @State var delay: CGFloat = CGFloat.random(in: 0...2)
-    @State var colors: [Color] = ["#FDDD03", "#95D385", "#53A4F0", "#F58F8F", "D385BD", "58D4AF", "D45858"].map { Color(hex: $0)}
+    @State var colors: [Color] = ["#FDDD03", "#95D385", "#53A4F0", "#F58F8F", "D385BD", "58D4AF", "D45858"].map { Color(hex: $0) }
     
     var body: some View {
         tagView(word: word)
@@ -165,7 +165,7 @@ struct AnimationTagView: View {
     @ViewBuilder func tagView(word: String) -> some View {
         ZStack {
             Text(word)
-                .font(.system(size: 14, weight: .regular))
+                .font(.myFont(type: .regular, size: 14))
                 .padding(.horizontal, 16)
                 .padding(.vertical, 8)
         }

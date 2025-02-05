@@ -30,8 +30,8 @@ struct ICMessageRecordInput: View {
                 Spacer()
                 VStack {
                     DatePicker(selection: $selectDate) {
-                        Text("Дата")
-                            .font(.system(size: 14))
+                        Text(Localized.Component.messageFormDate)
+                            .font(.myFont(type: .regular, size: 14))
                             .foregroundStyle(.textInfo)
                             .padding(.horizontal, 12)
                     }.padding(.horizontal, 12)
@@ -50,7 +50,7 @@ struct ICMessageRecordInput: View {
                                     .stroke(style: .init(lineWidth: 2))
                                     .foregroundStyle(.black)
                                 Text(Localized.Component.messageFormAddCountButton)
-                                    .font(.system(size: 14))
+                                    .font(.myFont(type: .regular, size: 14))
                             }
                             .onTapGesture {
                                 keyboardFocused = false

@@ -34,7 +34,7 @@ struct ICTextField: View {
         VStack(alignment: .leading, spacing: 4) {
             HStack {
                 Text(name)
-                    .font(.system(size: 14))
+                    .font(.myFont(type: .regular, size: 14))
                     .foregroundStyle(.textInfo)
                     .padding(.horizontal, 12)
                 Spacer()

@@ -16,8 +16,7 @@ struct ICHeaderView: View {
         VStack(spacing: 0) {
             Text(name.uppercased())
                 .foregroundStyle(.textDark)
-                .font(.system(size: 18))
-                .fontWeight(.semibold)
+                .font(.myFont(type: .semiBold, size: 18))
                 .padding(.vertical, 16)
             Rectangle()
                 .fill(.black)
@@ -28,5 +27,5 @@ struct ICHeaderView: View {
 }
 
 #Preview {
-    ICHeaderView(name: "asd", color: .background2)
+    ICHeaderView(name: "asd afr", color: .background2)
 }
