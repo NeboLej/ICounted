@@ -109,7 +109,7 @@ struct CounterCell: View {
     private func progressBar() -> some View {
         VStack(spacing: 4) {
             HStack {
-                Text(String(Int(counter.progress ?? 0)) + "%")
+                Text(String(format: "%.1f", counter.progress ?? 0) + "%")
                     .foregroundStyle(.textInfo)
                     .font(.myFont(type: .regular, size: 12))
                 Spacer()

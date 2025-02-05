@@ -204,7 +204,7 @@ struct CounterScreen: View {
     @ViewBuilder
     private func progressBar() -> some View {
         VStack(alignment: .trailing) {
-            Text(String(localStore.progress)+"%")
+            Text(String(format: "%.1f", localStore.progress)+"%")
                 .font(.myFont(type: .regular, size: 14))
                 .foregroundStyle(.textInfo)
             ICTextProgressBar(progress: .constant(localStore.progress), color: $localStore.color)
