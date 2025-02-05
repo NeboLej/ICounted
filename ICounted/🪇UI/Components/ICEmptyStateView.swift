@@ -108,7 +108,7 @@ struct AnimationTagView: View {
     @State var color: Color!
     @State var rotationEffectAngle: CGFloat = 5
     @State var delay: CGFloat = CGFloat.random(in: 0...2)
-    @State var colors: [Color] = ["#FDDD03", "#95D385", "#53A4F0", "#F58F8F", "D385BD", "58D4AF", "D45858"].map { Color(hex: $0)}
+    @State var colors: [Color] = ["#FDDD03", "#95D385", "#53A4F0", "#F58F8F", "D385BD", "58D4AF", "D45858"].map { Color(hex: $0) }
     
     var body: some View {
         tagView(word: word)
