@@ -9,9 +9,15 @@ import SwiftUI
 
 struct RecordCell: View {
     
-    let record: CounterRecord
-    let color: Color
-    let onDelete: ((CounterRecord) -> Void)
+    private let record: CounterRecord
+    private let color: Color
+    private let onDelete: ((CounterRecord) -> Void)
+    
+    init(record: CounterRecord, color: Color, onDelete: @escaping (CounterRecord) -> Void) {
+        self.record = record
+        self.color = color
+        self.onDelete = onDelete
+    }
     
     var body: some View {
         HStack {

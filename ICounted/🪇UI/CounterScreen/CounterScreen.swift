@@ -13,10 +13,10 @@ struct CounterScreen: View {
     @Environment(\.screenBuilder) var screenBuilder: ScreenBuilder
     @Environment(\.dismiss) var dismiss
     
-    @State var localStore = CounterScreenStore()
     @State var counter: Counter
-    @State var isShowMessageInput: Bool = false
     
+    @State private var localStore = CounterScreenStore()
+    @State private var isShowMessageInput: Bool = false
     @State private var isShowMenu: Bool = false
     @State private var isShowEditCounter = false
     

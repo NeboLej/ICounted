@@ -14,7 +14,8 @@ struct EditCounterScreen: View {
     @Environment(\.dismiss) var dismiss
     
     @State var counter: Counter
-    @State var localStore = EditCounterStore()
+    
+    @State private var localStore = EditCounterStore()
     
     var body: some View {
         GeometryReader { _ in
