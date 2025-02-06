@@ -13,6 +13,7 @@ struct CountersListScreen: View {
     @State private var selectedCounter: Counter? = nil
     @State private var longPressCounter: Counter? = nil
     @State private var isShowMessageInput = false
+    @State private var localStore = CounterListScreenStore()
     
     @Environment(\.countersStore) var countersStore: CountersStore
     @Environment(\.screenBuilder) var screenBuilder: ScreenBuilder
@@ -27,6 +28,9 @@ struct CountersListScreen: View {
                 counterList()
                     .padding(.top, 8)
                     .padding(.horizontal, 16)
+                    .overlay {
+                        tooltipView()
+                    }
                 Spacer(minLength: 68)
             }.background(Color.background1)
             
@@ -45,9 +49,9 @@ struct CountersListScreen: View {
                 }
             }
         }
-        .onAppear {
-            
-        }
+        .onChange(of: countersStore.counterList, { oldValue, newValue in
+            localStore.bindCounterList(counters: countersStore.counterList)
+        })
         .sheet(isPresented: $isShowCreateCounter) {
             screenBuilder.getScreen(screenType: .createCounter)
         }
@@ -91,6 +95,7 @@ struct CountersListScreen: View {
                     selectedCounter = counter
                 }, longPressAction: {
                     longPressCounter = counter
+                    localStore.didUserSawTooltip()
                     isShowMessageInput = true
                 }))
         }
@@ -100,6 +105,33 @@ struct CountersListScreen: View {
     private func emptyStateView() -> some View {
         EmptyStateView {
             isShowCreateCounter = true
+        }
+    }
+    
+    @ViewBuilder
+    private func tooltipView() -> some View {
+        ICTooltipView( alignment: .bottom, isVisible: $localStore.isShowTooltip) {
+            VStack{
+                Text(Localized.CounterListScreen.tooltipLongpress)
+                    .font(.myFont(type: .regular, size: 18))
+                    .lineSpacing(4)
+                    .frame(width: 200)
+                    .padding(.bottom, 4)
+                
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(.background3)
+                    .modifier(ShadowModifier(foregroundColor: .black, cornerRadius: 20))
+                    .frame(width: 100, height: 30)
+                    .overlay {
+                        Text(Localized.Component.tooltipOkButton)
+                            .font(.myFont(type: .bold, size: 18))
+                            .foregroundStyle(.textDark)
+                            .padding(.horizontal, 5)
+                            .padding(.top, 5)
+                    }.onTapGesture {
+                        localStore.didUserSawTooltip()
+                    }
+            }
         }
     }
     

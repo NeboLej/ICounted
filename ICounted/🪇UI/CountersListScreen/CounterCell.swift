@@ -78,7 +78,9 @@ struct CounterCell: View {
                             countersStore.countPlus(counter: counter)
                         }
                     
-                }.frame(height: 45)
+                }
+                .frame(height: 45)
+                .padding(.top, 8)
             }
             .padding([.top, .horizontal], 16)
             .padding(.bottom, 12)
@@ -126,6 +128,6 @@ struct CounterCell: View {
 
 #Preview {
 //    ScreenBuilder.shared.getScreen(screenType: .counterList)
-    ScreenBuilder.shared.getComponent(componentType: .counterCell(Counter(name: "wdsa", desc: "некий текст не маленького размера чтобы можно было все видеть", count: 11222, lastRecord: Date(), colorHex: "FDC356", isFavorite: true, targetCount: 10)))
+    ScreenBuilder.shared.getComponent(componentType: .counterCell(Counter(name: "wdsa", desc: "некий текст не маленького размера чтобы можно было все видеть", count: 11222, lastRecord: Date(), colorHex: "FDC356", isFavorite: true, targetCount: 200)))
         .frame(height: 200)
 }

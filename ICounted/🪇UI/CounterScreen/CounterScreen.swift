@@ -39,6 +39,10 @@ struct CounterScreen: View {
                 menu()
                 Spacer()
                 countButton()
+                    .overlay {
+                        tooltipView()
+                            .offset(x: -16)
+                    }
             }.padding(.horizontal, 16)
         }
         .background(.background1)
@@ -159,6 +163,7 @@ struct CounterScreen: View {
             countersStore.countPlus(counter: counter)
         }, longPressAction: {
             isShowMessageInput = true
+            localStore.didUserSawTooltip()
         }))
     }
     
@@ -212,6 +217,32 @@ struct CounterScreen: View {
         }
     }
     
+    @ViewBuilder
+    private func tooltipView() -> some View {
+        ICTooltipView( alignment: .top, isVisible: $localStore.isShowTooltip) {
+            VStack{
+                Text(Localized.Counter.tooltipLongpress)
+                    .font(.myFont(type: .regular, size: 18))
+                    .lineSpacing(4)
+                    .frame(width: 200)
+                    .padding(.bottom, 4)
+                
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(.background3)
+                    .modifier(ShadowModifier(foregroundColor: .black, cornerRadius: 20))
+                    .frame(width: 100, height: 30)
+                    .overlay {
+                        Text(Localized.Component.tooltipOkButton)
+                            .font(.myFont(type: .bold, size: 18))
+                            .foregroundStyle(.textDark)
+                            .padding(.horizontal, 5)
+                            .padding(.top, 5)
+                    }.onTapGesture {
+                        localStore.didUserSawTooltip()
+                    }
+            }
+        }
+    }
 }
 
 #Preview {

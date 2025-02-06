@@ -13,6 +13,7 @@ enum Localized {
         static let countPanel = NSLocalizedString("countersList_all_count_panel", comment: "")
         static let countPanelDesc = NSLocalizedString("countersList_all_count_panel_desc", comment: "")
         static let settingPanel = NSLocalizedString("counterList_setting_panel", comment: "")
+        static let tooltipLongpress = NSLocalizedString("counterList_tooltip_longpress", comment: "")
     }
 
     enum CounterCell {
@@ -53,6 +54,7 @@ enum Localized {
         static let alertDeleteYesButton = NSLocalizedString("counter_delete_alert_yes", comment: "")
         static let alertDeleteNoButton = NSLocalizedString("counter_delete_alert_no", comment: "")
         static let alertDeleteRecordMessage = NSLocalizedString("counter_delete_record_alert", comment: "")
+        static let tooltipLongpress = NSLocalizedString("counter_tooltip_longpress", comment: "")
     }
     
     enum Component {
@@ -68,6 +70,8 @@ enum Localized {
         static let dateToday = NSLocalizedString("date_today", comment: "")
         static let dateYesterday = NSLocalizedString("date_yesterday", comment: "")
         static let dateTomorrow = NSLocalizedString("date_tomorrow", comment: "")
+        
+        static let tooltipOkButton = NSLocalizedString("component_tooltip_ok_button", comment: "")
     }
     
     enum Alert {

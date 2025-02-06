@@ -64,6 +64,10 @@
 		8E891C572D52A4EA0094EEE4 /* ACARISANS-REGULAR.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 8E891C482D52A4EA0094EEE4 /* ACARISANS-REGULAR.TTF */; };
 		8E891C5A2D52A5870094EEE4 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E891C592D52A5870094EEE4 /* Font.swift */; };
 		8E891C5B2D52A5870094EEE4 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E891C592D52A5870094EEE4 /* Font.swift */; };
+		8E891CBD2D55229B0094EEE4 /* CounterListScreenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E891CBC2D55229B0094EEE4 /* CounterListScreenStore.swift */; };
+		8E891CBF2D55245D0094EEE4 /* UserDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E891CBE2D55245D0094EEE4 /* UserDef.swift */; };
+		8E891CC02D55245D0094EEE4 /* UserDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E891CBE2D55245D0094EEE4 /* UserDef.swift */; };
+		8E891CC22D552D550094EEE4 /* ICTooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E891CC12D552D550094EEE4 /* ICTooltipView.swift */; };
 		8E9E1BBB2CAF1875002B12E2 /* CreateCounterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9E1BBA2CAF1875002B12E2 /* CreateCounterScreen.swift */; };
 		8E9E1BBD2CAF188D002B12E2 /* CreateCounterScreenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9E1BBC2CAF188D002B12E2 /* CreateCounterScreenStore.swift */; };
 		8EB4A8D12D00BE8800EA4E8C /* ICCalendarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB4A8D02D00BE8800EA4E8C /* ICCalendarChart.swift */; };
@@ -151,6 +155,9 @@
 		8E891C492D52A4EA0094EEE4 /* ACARISANS-SEMIBOLD.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ACARISANS-SEMIBOLD.TTF"; sourceTree = "<group>"; };
 		8E891C592D52A5870094EEE4 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		8E891C5C2D52AA830094EEE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8E891CBC2D55229B0094EEE4 /* CounterListScreenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterListScreenStore.swift; sourceTree = "<group>"; };
+		8E891CBE2D55245D0094EEE4 /* UserDef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDef.swift; sourceTree = "<group>"; };
+		8E891CC12D552D550094EEE4 /* ICTooltipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICTooltipView.swift; sourceTree = "<group>"; };
 		8E9E1BBA2CAF1875002B12E2 /* CreateCounterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCounterScreen.swift; sourceTree = "<group>"; };
 		8E9E1BBC2CAF188D002B12E2 /* CreateCounterScreenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCounterScreenStore.swift; sourceTree = "<group>"; };
 		8EB4A8D02D00BE8800EA4E8C /* ICCalendarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICCalendarChart.swift; sourceTree = "<group>"; };
@@ -344,6 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				8EBB73A82C3AB2D000A0A899 /* CountersListScreen.swift */,
+				8E891CBC2D55229B0094EEE4 /* CounterListScreenStore.swift */,
 				8E2BDA762CA80E8200941DE1 /* CounterCell.swift */,
 			);
 			path = CountersListScreen;
@@ -377,6 +385,7 @@
 			children = (
 				8E520B7A2CB9E9150076FB16 /* Alerts */,
 				8EBB73B92C3AD89900A0A899 /* CounterValueView.swift */,
+				8E891CC12D552D550094EEE4 /* ICTooltipView.swift */,
 				8E7C56162CB1CF6E006A56C9 /* ICToggleControlView.swift */,
 				8E6FA9032CAF23F600DAAEA5 /* ICHeaderView.swift */,
 				8E6FA9052CAF27C200DAAEA5 /* ICTextField.swift */,
@@ -414,6 +423,7 @@
 			children = (
 				8EF9BEF12CFCBCC300C2E776 /* DBCounterRepository.swift */,
 				8EF9BEF72CFD219700C2E776 /* DBRepository.swift */,
+				8E891CBE2D55245D0094EEE4 /* UserDef.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -553,6 +563,7 @@
 				8E736D812D45A512005CB1A7 /* DBCounterRepository.swift in Sources */,
 				8E736D822D45A52F005CB1A7 /* CountersStore.swift in Sources */,
 				8E891C5B2D52A5870094EEE4 /* Font.swift in Sources */,
+				8E891CC02D55245D0094EEE4 /* UserDef.swift in Sources */,
 				8E736D7A2D457851005CB1A7 /* Counter.swift in Sources */,
 				8E736D802D45A50C005CB1A7 /* DBRepository.swift in Sources */,
 				8E736D842D45A552005CB1A7 /* Vibration.swift in Sources */,
@@ -597,8 +608,11 @@
 				8EB512982D47EB7800E1CFFA /* Localized.swift in Sources */,
 				8E736D882D45B027005CB1A7 /* ModelContainer.swift in Sources */,
 				8E9E1BBD2CAF188D002B12E2 /* CreateCounterScreenStore.swift in Sources */,
+				8E891CBD2D55229B0094EEE4 /* CounterListScreenStore.swift in Sources */,
 				8EF9BEF22CFCBCC300C2E776 /* DBCounterRepository.swift in Sources */,
+				8E891CC22D552D550094EEE4 /* ICTooltipView.swift in Sources */,
 				8E2BDA7A2CA82E5B00941DE1 /* Color+.swift in Sources */,
+				8E891CBF2D55245D0094EEE4 /* UserDef.swift in Sources */,
 				8EBB73982C3AB14E00A0A899 /* ICountedApp.swift in Sources */,
 				8E891C0F2D5150F40094EEE4 /* EditCounterStore.swift in Sources */,
 				8EF9BEF82CFD219700C2E776 /* DBRepository.swift in Sources */,
