@@ -147,6 +147,23 @@
         }
       }
     },
+    "component_tooltip_ok_button" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "got it"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "хорошо"
+          }
+        }
+      }
+    },
     "component_welcomePage_add_counter_button" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -210,7 +227,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "запись"
+            "value" : "Запись"
           }
         }
       }
@@ -385,6 +402,23 @@
         }
       }
     },
+    "counter_tooltip_longpress" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Here too, long pressing the button will open a detailed input menu!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тут тоже долгое нажатие на кнопку откроет меню подробной записи!"
+          }
+        }
+      }
+    },
     "counterCell_add_count_button" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -397,7 +431,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "запись"
+            "value" : "Запись"
           }
         }
       }
@@ -448,6 +482,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Настройки"
+          }
+        }
+      }
+    },
+    "counterList_tooltip_longpress" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Long press on the counter to open the detailed recording menu!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Долгое нажатие на счетчик откроет меню подробной записи!"
           }
         }
       }

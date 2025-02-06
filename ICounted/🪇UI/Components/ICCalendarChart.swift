@@ -29,6 +29,7 @@ struct ICCalendarChart: View {
                 ForEach(days, id: \.self) { day in
                     Text(day)
                         .font(.myFont(type: .regular, size: 14))
+                        .padding(.bottom, 4.5)
                         .foregroundStyle(.textInfo)
                 }
             }.padding(.top, 25)
