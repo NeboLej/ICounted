@@ -14,6 +14,7 @@ struct ICountedApp: App {
     private let container = sharedModelContainer
     private let countersStore: CountersStore
     private let screenBuilder: ScreenBuilder
+    private let settingsStore = SettingStore()
     
     @Environment(\.scenePhase) private var scenePhase
     
@@ -28,7 +29,7 @@ struct ICountedApp: App {
         let localRepository: DBRepositoryProtocol = DBCounterRepository(swiftDataDB: dataBase)
         
         countersStore = CountersStore(localRepository: localRepository)
-        screenBuilder = ScreenBuilder(countersStore: countersStore)
+        screenBuilder = ScreenBuilder(countersStore: countersStore, settingsStore: settingsStore)
     }
     
     
