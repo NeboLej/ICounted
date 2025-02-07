@@ -33,18 +33,10 @@ struct ICountedApp: App {
         screenBuilder = ScreenBuilder(countersStore: countersStore, settingsStore: settingsStore)
     }
     
-    mutating func ff() {
-        screenBuilder = ScreenBuilder(countersStore: countersStore, settingsStore: settingsStore)
-    }
-    
-    
     var body: some Scene {
         WindowGroup {
-            if settingsStore.shouldRestart {
-                screenBuilder.getScreen(screenType: .counterList)
-            } else {
-                screenBuilder.getScreen(screenType: .counterList)
-            }
+            screenBuilder.getScreen(screenType: .counterList)
+                .id(settingsStore.refreshID)
             
 //                .overlay {
 //                    if store.state.alert != nil {

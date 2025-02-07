@@ -13,11 +13,12 @@ struct CountersListScreen: View {
     @State private var selectedCounter: Counter? = nil
     @State private var longPressCounter: Counter? = nil
     @State private var isShowMessageInput = false
-    @State var isShowSetting = false
+    @State private var isShowSetting = false
     @State private var localStore = CounterListScreenStore()
     
     @Environment(\.countersStore) var countersStore: CountersStore
     @Environment(\.screenBuilder) var screenBuilder: ScreenBuilder
+    @Environment(\.settingsStore) var settingsStore: SettingStore
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
@@ -56,14 +57,19 @@ struct CountersListScreen: View {
         .sheet(isPresented: $isShowCreateCounter) {
             screenBuilder.getScreen(screenType: .createCounter)
         }
-        .sheet(isPresented: $isShowSetting) {
+        .sheet(isPresented: $isShowSetting, onDismiss: {
+            settingsStore.isReturnToSettings = false
+        }, content: {
             screenBuilder.getScreen(screenType: .settings)
-        }
+        })
         .sheet(isPresented: .init(get: { selectedCounter != nil }, set: { _ in selectedCounter = nil }) , onDismiss: {
             selectedCounter = nil
         }, content: {
             screenBuilder.getScreen(screenType: .counter(selectedCounter!))
         })
+        .onAppear {
+            isShowSetting = settingsStore.isReturnToSettings
+        }
     }
     
     @ViewBuilder

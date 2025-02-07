@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum LocalType: CaseIterable, Hashable {
+enum LocalizationType: CaseIterable, Hashable {
     case russian
     case english
     
@@ -18,7 +18,7 @@ enum LocalType: CaseIterable, Hashable {
         }
     }
     
-    func getLocalChortCode() -> String {
+    func getLanguageChortCode() -> String {
         switch self {
         case .russian: "ru"
         case .english: "en"
@@ -30,14 +30,14 @@ class LocalizationManager {
     static let shared = LocalizationManager()
     
 
-    private var currentLanguage: String = UserDefaults.standard.get(case: .userLacalize) as? String ?? Locale.current.language.languageCode?.identifier ?? "en" {
+    private var currentLicalization: String = UserDefaults.standard.get(case: .userLacalize) as? String ?? Locale.current.language.languageCode?.identifier ?? "en" {
         didSet {
-            UserDefaults.standard.set(currentLanguage, case: .userLacalize) //standard.set(currentLanguage, forKey: "currentLanguage")
+            UserDefaults.standard.set(currentLicalization, case: .userLacalize)
         }
     }
     
-    func getCurrentLanguage() -> LocalType {
-        switch currentLanguage {
+    func getCurrentLocalization() -> LocalizationType {
+        switch currentLicalization {
         case "ru":
             return .russian
         default:
@@ -46,18 +46,18 @@ class LocalizationManager {
     }
     
     init() {
-        if !LocalType.allCases.map({ $0.getLocalChortCode() }).contains(currentLanguage) {
-            currentLanguage = "en"
+        if !LocalizationType.allCases.map({ $0.getLanguageChortCode() }).contains(currentLicalization) {
+            currentLicalization = "en"
         }
     }
 
-    func setLanguage(_ language: LocalType) {
-        currentLanguage = language.getLocalChortCode()
+    func setLocalization(_ language: LocalizationType) {
+        currentLicalization = language.getLanguageChortCode()
         Localized.reset()
     }
 
     func localizedString(forKey key: String) -> String {
-        let path = Bundle.main.path(forResource: currentLanguage, ofType: "lproj")
+        let path = Bundle.main.path(forResource: currentLicalization, ofType: "lproj")
         let bundle = Bundle(path: path!)
         return bundle?.localizedString(forKey: key, value: nil, table: nil) ?? key
     }
@@ -75,6 +75,7 @@ struct Localized {
     let component = Localized.Component()
     let alert = Localized.Alert()
     let widget = Localized.Widget()
+    let settings = Localized.Settings()
     
     static func reset() {
         Localized.shared = Localized()
@@ -169,5 +170,12 @@ struct Localized {
         let exapmleName2 = localize("widget_example_name_2")
         let exapmleName3 = localize("widget_example_name_3")
         let exapmleName4 = localize("widget_example_name_4")
+    }
+    
+    struct Settings {
+        let title = localize("settings_title")
+        let language = localize("settings_language")
+        let darkMode = localize("settings_darkMode")
+        let version = localize("setting_version")
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum Screen {
+indirect enum Screen {
     case counterList
     case counter(Counter)
     case createCounter
@@ -39,6 +39,7 @@ class ScreenBuilder {
         case .counterList:
             CountersListScreen()
                 .environment(\.countersStore, countersStore)
+                .environment(\.settingsStore, settingsStore)
                 .environment(\.screenBuilder, self)
         case .counter(let counter):
             CounterScreen(counter: counter)

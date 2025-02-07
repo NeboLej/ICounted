@@ -792,6 +792,74 @@
         }
       }
     },
+    "setting_version" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App version"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Версия приложения"
+          }
+        }
+      }
+    },
+    "settings_darkMode" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark mode"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Темная тема"
+          }
+        }
+      }
+    },
+    "settings_language" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Язык"
+          }
+        }
+      }
+    },
+    "settings_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройки"
+          }
+        }
+      }
+    },
     "widget_add_count_button" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -945,9 +1013,6 @@
         }
       }
     },
-    "Версия" : {
-
-    },
     "О приложении" : {
 
     },
@@ -955,12 +1020,6 @@
 
     },
     "Сортировка счетчиков" : {
-
-    },
-    "Темная тема" : {
-
-    },
-    "Язык" : {
 
     }
   },
