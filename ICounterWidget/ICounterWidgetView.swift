@@ -35,7 +35,7 @@ struct ICounterWidgetView: View {
     @ViewBuilder
     private func emptyState() -> some View {
         VStack {
-            Text(Localized.Widget.emptyStateDescription)
+            Text(Localized.shared.widget.emptyStateDescription)
                 .font(.myFont(type: .regular, size: 14))
                 .multilineTextAlignment(.center)
             Image(.starActive)
@@ -132,7 +132,7 @@ struct ICounterWidgetView: View {
                 .modifier(ShadowModifier(foregroundColor: .black, cornerRadius: 16))
                 .frame(width: 120, height: 32)
                 .overlay {
-                    Text(Localized.Widget.addCountButton)
+                    Text(Localized.shared.widget.addCountButton)
                         .font(.myFont(type: .bold, size: 18))
                         .foregroundStyle(.textDark)
                 }

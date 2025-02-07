@@ -37,7 +37,7 @@ struct EmptyStateView: View {
                 }
             
             VStack {
-                ICTagCloudView(words: Localized.Component.welcomePageTagsArray.split(separator: "@").map { String($0) })
+                ICTagCloudView(words: Localized.shared.component.welcomePageTagsArray.split(separator: "@").map { String($0) })
                 
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .clipped()
@@ -46,7 +46,7 @@ struct EmptyStateView: View {
             }.ignoresSafeArea()
             
             VStack {
-                Text(Localized.Component.welcomePageDescription)
+                Text(Localized.shared.component.welcomePageDescription)
                     .font(.myFont(type: .bold, size: 20))
                     .foregroundColor(.textDark)
                     .frame(maxWidth: .infinity)
@@ -59,7 +59,7 @@ struct EmptyStateView: View {
                     Spacer()
                     createCounterButton()
                     
-                    Text(Localized.Component.welcomePageAddCounterButton)
+                    Text(Localized.shared.component.welcomePageAddCounterButton)
                         .font(.myFont(type: .bold, size: 18))
                         .foregroundColor(.textDark)
                         .padding(.top, 10)

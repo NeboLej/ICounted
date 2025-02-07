@@ -12,9 +12,9 @@ enum AlertType: String {
     
     func localizedTitle() -> String {
         switch self {
-        case .error: Localized.Alert.errorTitle
-        case .success: Localized.Alert.successTitle
-        case .warning: Localized.Alert.warningTitle
+        case .error: Localized.shared.alert.errorTitle
+        case .success: Localized.shared.alert.successTitle
+        case .warning: Localized.shared.alert.warningTitle
         }
     }
 }
@@ -32,11 +32,11 @@ struct AlertModel {
     var actions: [AlertAction]
     
     static func getErrorModel(message: String) -> AlertModel {
-        AlertModel(type: .error, title: "", message: message, actions: [.init(name: Localized.Alert.okButton, completion: {})])
+        AlertModel(type: .error, title: "", message: message, actions: [.init(name: Localized.shared.alert.okButton, completion: {})])
     }
     
     static func getSuccessModel(message: String) -> AlertModel {
-        AlertModel(type: .success, title: "", message: message, actions: [.init(name: Localized.Alert.okButton, completion: {})])
+        AlertModel(type: .success, title: "", message: message, actions: [.init(name: Localized.shared.alert.okButton, completion: {})])
     }
 }
 

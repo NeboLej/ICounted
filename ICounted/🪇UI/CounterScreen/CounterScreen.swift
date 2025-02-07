@@ -72,7 +72,7 @@ struct CounterScreen: View {
     private func isFavoriteView() -> some View  {
         HStack {
             Spacer()
-            Text(Localized.Counter.toWidget)
+            Text(Localized.shared.counter.toWidget)
                 .font(.myFont(type: .regular, size: 14))
                 .foregroundStyle(.textInfo)
             Image(localStore.isAddToWidget ? .starActive : .star)
@@ -96,7 +96,7 @@ struct CounterScreen: View {
     private func counterProgressView() -> some View {
         HStack {
             VStack(alignment: .leading) {
-                Text(Localized.Counter.currentValue)
+                Text(Localized.shared.counter.currentValue)
                     .font(.myFont(type: .regular, size: 14))
                     .foregroundStyle(.textInfo)
                 CounterValueView(count: localStore.count, width: 20, height: 30)
@@ -106,7 +106,7 @@ struct CounterScreen: View {
             
             if localStore.isUseTargetValue {
                 VStack(alignment: .trailing) {
-                    Text(Localized.Counter.targetValue)
+                    Text(Localized.shared.counter.targetValue)
                         .font(.myFont(type: .regular, size: 14))
                         .foregroundStyle(.textInfo)
                     CounterValueView(count: localStore.targetCount, width: 20, height: 30)
@@ -128,7 +128,7 @@ struct CounterScreen: View {
                     .font(.myFont(type: .regular, size: 16))
                     .foregroundStyle(.textDark)
                 Spacer()
-                Text(localStore.selectedDate != nil ? Localized.Counter.recordsCount(localStore.selectedRecords.count) : "")
+                Text(localStore.selectedDate != nil ? Localized.shared.counter.recordsCount(localStore.selectedRecords.count) : "")
                     .font(.myFont(type: .regular, size: 14))
                     .foregroundStyle(.textInfo)
             }
@@ -155,7 +155,7 @@ struct CounterScreen: View {
             .modifier(ShadowModifier(foregroundColor: .black, cornerRadius: 20))
             .frame(width: 180, height: 40)
             .overlay {
-                Text(Localized.Counter.addCountButton)
+                Text(Localized.shared.counter.addCountButton)
                     .font(.myFont(type: .bold, size: 18))
                     .foregroundStyle(.textDark)
             }
@@ -184,13 +184,13 @@ struct CounterScreen: View {
                 .onTapGesture { isShowMenu.toggle() }
             
             VStack(alignment: .leading, spacing: 10) {
-                Text(Localized.Counter.menuEdit)
+                Text(Localized.shared.counter.menuEdit)
                     .font(.myFont(type: .regular, size: 14))
                     .foregroundStyle(.textDark)
                     .onTapGesture {
                         isShowEditCounter = true
                     }
-                Text(Localized.Counter.menuDelete)
+                Text(Localized.shared.counter.menuDelete)
                     .font(.myFont(type: .regular, size: 14))
                     .foregroundStyle(.textDark)
                     .onTapGesture {
@@ -221,7 +221,7 @@ struct CounterScreen: View {
     private func tooltipView() -> some View {
         ICTooltipView( alignment: .top, isVisible: $localStore.isShowTooltip) {
             VStack{
-                Text(Localized.Counter.tooltipLongpress)
+                Text(Localized.shared.counter.tooltipLongpress)
                     .font(.myFont(type: .regular, size: 18))
                     .lineSpacing(4)
                     .frame(width: 200)
@@ -232,7 +232,7 @@ struct CounterScreen: View {
                     .modifier(ShadowModifier(foregroundColor: .black, cornerRadius: 20))
                     .frame(width: 100, height: 30)
                     .overlay {
-                        Text(Localized.Component.tooltipOkButton)
+                        Text(Localized.shared.component.tooltipOkButton)
                             .font(.myFont(type: .bold, size: 18))
                             .foregroundStyle(.textDark)
                             .padding(.horizontal, 5)

@@ -18,10 +18,15 @@ struct SettingsScreen: View {
         
         List {
             Picker("Язык", selection: $store.local) {
-                ForEach(Settings.Local.allCases, id: \.self) {
+                ForEach(LocalType.allCases, id: \.self) {
                     Text($0.getLanguage()).tag($0)
                 }
-            }.padding(.vertical, 2)
+            }
+            .padding(.vertical, 2)
+            .onChange(of: store.local) { oldValue, newValue in
+                LocalizationManager.shared.setLanguage(newValue)
+                settingsStore.restart()
+            }
             
             HStack {
                 Text("Темная тема")
@@ -63,26 +68,20 @@ struct SettingsScreen: View {
 
 @Observable
 class SettingStore: BaseStore {
-    var local: Settings.Local = .english
+    var local: LocalType = LocalizationManager.shared.getCurrentLanguage()
     var sortType: Settings.SortType = .name
     var isDarkTheme: Bool = false
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+    
+    var shouldRestart: Bool = false
+
+    func restart() {
+        shouldRestart = true
+    }
+    
 }
 
 struct Settings {
-    
-    enum Local: CaseIterable, Hashable {
-        case russian
-        case english
-        
-        func getLanguage() -> String {
-            switch self {
-            case .russian: "Русский"
-            case .english: "English"
-            }
-        }
-    }
-    
     enum SortType: CaseIterable, Hashable {
         case dateCreate
         case name

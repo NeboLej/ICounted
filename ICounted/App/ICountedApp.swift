@@ -13,8 +13,8 @@ struct ICountedApp: App {
     
     private let container = sharedModelContainer
     private let countersStore: CountersStore
-    private let screenBuilder: ScreenBuilder
-    private let settingsStore = SettingStore()
+    private var screenBuilder: ScreenBuilder
+    private let settingsStore: SettingStore
     
     @Environment(\.scenePhase) private var scenePhase
     
@@ -28,14 +28,24 @@ struct ICountedApp: App {
         let dataBase: DBRepository = DBRepository(context: container.mainContext)
         let localRepository: DBRepositoryProtocol = DBCounterRepository(swiftDataDB: dataBase)
         
+        settingsStore = SettingStore()
         countersStore = CountersStore(localRepository: localRepository)
+        screenBuilder = ScreenBuilder(countersStore: countersStore, settingsStore: settingsStore)
+    }
+    
+    mutating func ff() {
         screenBuilder = ScreenBuilder(countersStore: countersStore, settingsStore: settingsStore)
     }
     
     
     var body: some Scene {
         WindowGroup {
-            screenBuilder.getScreen(screenType: .counterList)
+            if settingsStore.shouldRestart {
+                screenBuilder.getScreen(screenType: .counterList)
+            } else {
+                screenBuilder.getScreen(screenType: .counterList)
+            }
+            
 //                .overlay {
 //                    if store.state.alert != nil {
 //                        AlertView(model: store.state.alert!, store: store)
@@ -55,5 +65,14 @@ struct ICountedApp: App {
             }
         }
         
+    }
+}
+
+@Observable
+class AppState  {
+    var shouldRestart: Bool = false
+
+    func restart() {
+        shouldRestart = true
     }
 }

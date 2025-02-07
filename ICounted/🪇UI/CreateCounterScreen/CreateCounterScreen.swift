@@ -18,21 +18,21 @@ struct CreateCounterScreen: View {
     var body: some View {
         GeometryReader { _ in
             VStack {
-                ICHeaderView(name: localStore.name.isEmpty ? Localized.CreateCounter.title : localStore.name, color: localStore.color)
+                ICHeaderView(name: localStore.name.isEmpty ? Localized.shared.createCounter.title : localStore.name, color: localStore.color)
                 
                 Group {
-                    ICTextField(text: $localStore.name, name: Localized.CreateCounter.nameTF, placeholder: Localized.CreateCounter.nameTFPlaceholder, maxLength: 30)
+                    ICTextField(text: $localStore.name, name: Localized.shared.createCounter.nameTF, placeholder: Localized.shared.createCounter.nameTFPlaceholder, maxLength: 30)
                         .padding(.top, 10)
                     
                     HStack(alignment: .top, spacing: 24) {
-                        ICTextField(text: $localStore.description, name: Localized.CreateCounter.descriptionTF, placeholder: Localized.CreateCounter.descriptionTFPlaceholder, lineLimit: 2...6, maxLength: 200)
+                        ICTextField(text: $localStore.description, name: Localized.shared.createCounter.descriptionTF, placeholder: Localized.shared.createCounter.descriptionTFPlaceholder, lineLimit: 2...6, maxLength: 200)
                         colorPicker()
                     }.padding(.top, 10)
                     
                     HStack {
                         ICNumberSetterView(number: $localStore.startValue)
                         Spacer()
-                        Text(Localized.CreateCounter.startValue)
+                        Text(Localized.shared.createCounter.startValue)
                             .font(.myFont(type: .regular, size: 14))
                             .foregroundStyle(.textInfo)
                     }.padding(.vertical , 20)
@@ -41,7 +41,7 @@ struct CreateCounterScreen: View {
                     
                     HStack {
                         VStack(alignment: .leading) {
-                            Text(Localized.CreateCounter.targetValue)
+                            Text(Localized.shared.createCounter.targetValue)
                                 .font(.myFont(type: .regular, size: 14))
                                 .foregroundStyle(.textInfo)
                             ICToggleControlView(isOn: $localStore.isUseTargetValue, color: localStore.color)
@@ -57,7 +57,7 @@ struct CreateCounterScreen: View {
                     
                     HStack {
                         VStack(alignment: .leading) {
-                            Text(Localized.CreateCounter.toWidget)
+                            Text(Localized.shared.createCounter.toWidget)
                                 .font(.myFont(type: .regular, size: 14))
                                 .foregroundStyle(.textInfo)
                             ICToggleControlView(isOn: $localStore.isAddToWidget, color: localStore.color)
@@ -85,7 +85,7 @@ struct CreateCounterScreen: View {
             .modifier(ShadowModifier(foregroundColor: .black, cornerRadius: 20))
             .frame(width: 220, height: 48)
             .overlay {
-                Text(Localized.CreateCounter.saveButton)
+                Text(Localized.shared.createCounter.saveButton)
                     .font(.myFont(type: .bold, size: 18))
                     .foregroundStyle(.textDark)
             }
@@ -105,7 +105,7 @@ struct CreateCounterScreen: View {
     @ViewBuilder
     private func colorPicker() -> some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text(Localized.CreateCounter.colorPicker)
+            Text(Localized.shared.createCounter.colorPicker)
                 .font(.myFont(type: .regular, size: 14))
                 .foregroundStyle(.textInfo)
             
