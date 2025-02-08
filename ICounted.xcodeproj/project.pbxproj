@@ -87,6 +87,7 @@
 		8EBB73BA2C3AD89900A0A899 /* CounterValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB73B92C3AD89900A0A899 /* CounterValueView.swift */; };
 		8ED152972D57A32E008BBB9C /* SettingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED152962D57A32E008BBB9C /* SettingStore.swift */; };
 		8ED152982D57A32E008BBB9C /* SettingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED152962D57A32E008BBB9C /* SettingStore.swift */; };
+		8ED1529A2D57B6D9008BBB9C /* SettingsScreenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED152992D57B6D9008BBB9C /* SettingsScreenStore.swift */; };
 		8EF9BEED2CFCB87A00C2E776 /* CountersStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF9BEEC2CFCB87A00C2E776 /* CountersStore.swift */; };
 		8EF9BEEF2CFCB91900C2E776 /* BaseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF9BEEE2CFCB91900C2E776 /* BaseStore.swift */; };
 		8EF9BEF22CFCBCC300C2E776 /* DBCounterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF9BEF12CFCBCC300C2E776 /* DBCounterRepository.swift */; };
@@ -178,6 +179,7 @@
 		8EBB73B42C3ABFE300A0A899 /* ShadowModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowModifier.swift; sourceTree = "<group>"; };
 		8EBB73B92C3AD89900A0A899 /* CounterValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterValueView.swift; sourceTree = "<group>"; };
 		8ED152962D57A32E008BBB9C /* SettingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingStore.swift; sourceTree = "<group>"; };
+		8ED152992D57B6D9008BBB9C /* SettingsScreenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenStore.swift; sourceTree = "<group>"; };
 		8EF9BEEC2CFCB87A00C2E776 /* CountersStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountersStore.swift; sourceTree = "<group>"; };
 		8EF9BEEE2CFCB91900C2E776 /* BaseStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStore.swift; sourceTree = "<group>"; };
 		8EF9BEF12CFCBCC300C2E776 /* DBCounterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBCounterRepository.swift; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				8E891CE82D553EA50094EEE4 /* SettingsScreen.swift */,
+				8ED152992D57B6D9008BBB9C /* SettingsScreenStore.swift */,
 			);
 			path = SettingScreen;
 			sourceTree = "<group>";
@@ -604,6 +607,7 @@
 				8E520B7C2CB9E9260076FB16 /* AlertView.swift in Sources */,
 				8EBB73A92C3AB2D000A0A899 /* CountersListScreen.swift in Sources */,
 				8EB4A8D52D022E9400EA4E8C /* ICMessageRecordInput.swift in Sources */,
+				8ED1529A2D57B6D9008BBB9C /* SettingsScreenStore.swift in Sources */,
 				8E2BDA7C2CA832FA00941DE1 /* Date+.swift in Sources */,
 				8E2BDA802CA8378E00941DE1 /* ICIconNameView.swift in Sources */,
 				8E6FA9042CAF23F600DAAEA5 /* ICHeaderView.swift in Sources */,

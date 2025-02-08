@@ -210,7 +210,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "выгулял собаку@предложить помощь 20 людям@заправил машину@полил фикус@пропустил лекций@отработать 100 смен@употребил слово-паразит \"Типа\"@бегаю по утру"
+            "value" : "выгулял собаку@предложить помощь 20 людям@заправил машину@полил фикус@пропустил лекций@отработать 100 смен@употребил слово-паразит \"Типа\"@бегаю по утрам"
           }
         }
       }
@@ -945,6 +945,40 @@
         }
       }
     },
+    "settings_send_feedback" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Report a bug"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сообщить об ошибке"
+          }
+        }
+      }
+    },
+    "settings_send_feedback_email_theme" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Problem with ICointer app"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Проблема с приложением ICounter"
+          }
+        }
+      }
+    },
     "settings_sorting_counters" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1182,9 +1216,6 @@
           }
         }
       }
-    },
-    "О приложении" : {
-
     }
   },
   "version" : "1.0"

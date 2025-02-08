@@ -190,5 +190,8 @@ struct Localized {
         let dateRecordSorting = localize("settings_date_record_sorting")
         let nameSorting = localize("settings_name_sorting")
         let countRecordsSorting = localize("settings_count_records_sorting")
+        
+        let sendFeedback = localize("settings_send_feedback")
+        let sendFeedbackEmailTheme = localize("settings_send_feedback_email_theme")
     }
 }

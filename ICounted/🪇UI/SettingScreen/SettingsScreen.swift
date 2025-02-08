@@ -12,6 +12,8 @@ struct SettingsScreen: View {
     @Environment(\.settingsStore) var settingsStore: SettingStore
     @Environment(\.colorScheme) var colorScheme
     
+    @State private var localStore = SettingsScreenStore()
+    
     var body: some View {
         @Bindable var store = settingsStore
         VStack(spacing: 0) {
@@ -45,9 +47,9 @@ struct SettingsScreen: View {
                             Text($0.getSortType()).tag($0)
                         }
                     }.padding(.vertical, 2)
-                    .onChange(of: store.sortType) { oldValue, newValue in
-                        settingsStore.changeSortType(newValue)
-                    }
+                        .onChange(of: store.sortType) { oldValue, newValue in
+                            settingsStore.changeSortType(newValue)
+                        }
                     
                 }
                 
@@ -61,14 +63,18 @@ struct SettingsScreen: View {
                     .padding(.vertical, 8)
                     
                 }.listRowBackground(Color.indigo)
-
+                
                 Section {
-                    
                     HStack {
-                        Text("О приложении")
+                        Text(Localized.shared.settings.sendFeedback)
                         Spacer()
                         Image(systemName: "chevron.right")
-                    }.padding(.vertical, 4)
+                    }
+                    .padding(.vertical, 6)
+                    .onTapGesture {
+                        localStore.openSendProblemScreen()
+                    }
+                    
                     HStack {
                         Text(Localized.shared.settings.version)
                         Spacer()
