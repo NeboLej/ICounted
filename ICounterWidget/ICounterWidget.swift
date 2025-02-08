@@ -28,8 +28,8 @@ struct ICounterWidget: Widget {
                     .background()
             }
         }
-        .configurationDisplayName(Localized.Widget.name)
-        .description(Localized.Widget.desctiption)
+        .configurationDisplayName(Localized.shared.widget.name)
+        .description(Localized.shared.widget.desctiption)
     }
 }
 
@@ -39,10 +39,10 @@ struct ICounterProvider: TimelineProvider {
         completion(
             CountersEntry(date: Date(),
                           counters: [
-                            Counter(name: Localized.Widget.exapmleName1, desc: "", count: 90, lastRecord: Date(), colorHex: "F58F8F", isFavorite: true, targetCount: 100),
-                            Counter(name: Localized.Widget.exapmleName2, desc: "", count: 105, lastRecord: Date(), colorHex: "51D403", isFavorite: true, targetCount: 100),
-                            Counter(name: Localized.Widget.exapmleName3, desc: "", count: 12, lastRecord: Date(), colorHex: "FDDD03", isFavorite: true, targetCount: 100),
-                            Counter(name: Localized.Widget.exapmleName4, desc: "", count: 26, lastRecord: Date(), colorHex: "53A4F0", isFavorite: true, targetCount: 100),
+                            Counter(name: Localized.shared.widget.exapmleName1, desc: "", count: 90, lastRecord: Date(), colorHex: "F58F8F", isFavorite: true, targetCount: 100, dateCreate: Date()),
+                            Counter(name: Localized.shared.widget.exapmleName2, desc: "", count: 105, lastRecord: Date(), colorHex: "51D403", isFavorite: true, targetCount: 100, dateCreate: Date()),
+                            Counter(name: Localized.shared.widget.exapmleName3, desc: "", count: 12, lastRecord: Date(), colorHex: "FDDD03", isFavorite: true, targetCount: 100, dateCreate: Date()),
+                            Counter(name: Localized.shared.widget.exapmleName4, desc: "", count: 26, lastRecord: Date(), colorHex: "53A4F0", isFavorite: true, targetCount: 100, dateCreate: Date()),
                           ])
         )
     }

@@ -35,7 +35,7 @@ struct ICounterWidgetView: View {
     @ViewBuilder
     private func emptyState() -> some View {
         VStack {
-            Text(Localized.Widget.emptyStateDescription)
+            Text(Localized.shared.widget.emptyStateDescription)
                 .font(.myFont(type: .regular, size: 14))
                 .multilineTextAlignment(.center)
             Image(.starActive)
@@ -132,7 +132,7 @@ struct ICounterWidgetView: View {
                 .modifier(ShadowModifier(foregroundColor: .black, cornerRadius: 16))
                 .frame(width: 120, height: 32)
                 .overlay {
-                    Text(Localized.Widget.addCountButton)
+                    Text(Localized.shared.widget.addCountButton)
                         .font(.myFont(type: .bold, size: 18))
                         .foregroundStyle(.textDark)
                 }
@@ -146,10 +146,10 @@ struct ICounterWidgetView: View {
     ICounterWidget()
 } timeline: {
     CountersEntry(date: Date(), counters: [
-        Counter(name: "Go to a law lecture", desc: "", count: 12, lastRecord: Date(), colorHex: "FDDD03", isFavorite: true, targetCount: 100),
-        Counter(name: "Ate burgers", desc: "", count: 105, lastRecord: Date(), colorHex: "51D403", isFavorite: true, targetCount: 100),
-        Counter(name: "Met Karl this year", desc: "", count: 26, lastRecord: Date(), colorHex: "53A4F0", isFavorite: true, targetCount: 100),
-        Counter(name: "Do the exercises 150 times", desc: "", count: 90, lastRecord: Date(), colorHex: "F58F8F", isFavorite: true, targetCount: 100),
+        Counter(name: "Go to a law lecture", desc: "", count: 12, lastRecord: Date(), colorHex: "FDDD03", isFavorite: true, targetCount: 100, dateCreate: Date()),
+        Counter(name: "Ate burgers", desc: "", count: 105, lastRecord: Date(), colorHex: "51D403", isFavorite: true, targetCount: 100, dateCreate: Date()),
+        Counter(name: "Met Karl this year", desc: "", count: 26, lastRecord: Date(), colorHex: "53A4F0", isFavorite: true, targetCount: 100, dateCreate: Date()),
+        Counter(name: "Do the exercises 150 times", desc: "", count: 90, lastRecord: Date(), colorHex: "F58F8F", isFavorite: true, targetCount: 100, dateCreate: Date()),
     ])
     //    SimpleEntry(date: .now, configuration: .smiley)
     //    SimpleEntry(date: .now, configuration: .starEyes)

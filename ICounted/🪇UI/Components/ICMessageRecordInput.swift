@@ -30,13 +30,13 @@ struct ICMessageRecordInput: View {
                 Spacer()
                 VStack {
                     DatePicker(selection: $selectDate) {
-                        Text(Localized.Component.messageFormDate)
+                        Text(Localized.shared.component.messageFormDate)
                             .font(.myFont(type: .regular, size: 14))
                             .foregroundStyle(.textInfo)
                             .padding(.horizontal, 12)
                     }.padding(.horizontal, 12)
                     HStack {
-                        ICTextField(text: $message, name: Localized.Component.messageFormMessageTF, placeholder: Localized.Component.messageFormMessageTFPlaceholder, lineLimit: 2...6, maxLength: 500)
+                        ICTextField(text: $message, name: Localized.shared.component.messageFormMessageTF, placeholder: Localized.shared.component.messageFormMessageTFPlaceholder, lineLimit: 2...6, maxLength: 500)
                             .focused($keyboardFocused)
                             .padding(.horizontal, 12)
                             .padding(.bottom, 6)
@@ -49,8 +49,9 @@ struct ICMessageRecordInput: View {
                                 RoundedRectangle(cornerRadius: 16)
                                     .stroke(style: .init(lineWidth: 2))
                                     .foregroundStyle(.black)
-                                Text(Localized.Component.messageFormAddCountButton)
+                                Text(Localized.shared.component.messageFormAddCountButton)
                                     .font(.myFont(type: .regular, size: 14))
+                                    .foregroundStyle(.textDark)
                             }
                             .onTapGesture {
                                 keyboardFocused = false
@@ -80,7 +81,7 @@ struct ICMessageRecordInput: View {
 }
 
 #Preview {
-    ScreenBuilder.shared.getComponent(componentType: .messageRecordInput(Counter(name: "asdsd", desc: "asd", count: 123, lastRecord: Date(), colorHex: "FFFAAA", isFavorite: false, targetCount: nil), .constant(true)))
+    ScreenBuilder.shared.getComponent(componentType: .messageRecordInput(Counter(name: "asdsd", desc: "asd", count: 123, lastRecord: Date(), colorHex: "FFFAAA", isFavorite: false, targetCount: nil, dateCreate: Date()), .constant(true)))
 }
 
 

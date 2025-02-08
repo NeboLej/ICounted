@@ -39,7 +39,7 @@ struct AlertView: View {
                 
                 
                 if model.actions.isEmpty {
-                    getAction(action: .init(name: Localized.Alert.okButton, completion: {}))
+                    getAction(action: .init(name: Localized.shared.alert.okButton, completion: {}))
                         .padding([.horizontal, .bottom], 16)
                         .padding(.bottom, 26)
                 } else if model.actions.count > 2 {

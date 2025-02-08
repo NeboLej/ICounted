@@ -8,11 +8,12 @@
 import Foundation
 import SwiftUI
 
-enum Screen {
+indirect enum Screen {
     case counterList
     case counter(Counter)
     case createCounter
     case editCounter(Counter)
+    case settings
 }
 
 enum Component {
@@ -22,12 +23,14 @@ enum Component {
 
 class ScreenBuilder {
     
-    static let shared = ScreenBuilder(countersStore: CountersStore(localRepository: DBRepositoryMock()))
+    static let shared = ScreenBuilder(countersStore: CountersStore(localRepository: DBRepositoryMock()), settingsStore: SettingStore())
     
     var countersStore: CountersStore
+    var settingsStore: SettingStore
     
-    init(countersStore: CountersStore) {
+    init(countersStore: CountersStore, settingsStore: SettingStore) {
         self.countersStore = countersStore
+        self.settingsStore = settingsStore
     }
     
     @ViewBuilder
@@ -36,6 +39,7 @@ class ScreenBuilder {
         case .counterList:
             CountersListScreen()
                 .environment(\.countersStore, countersStore)
+                .environment(\.settingsStore, settingsStore)
                 .environment(\.screenBuilder, self)
         case .counter(let counter):
             CounterScreen(counter: counter)
@@ -48,6 +52,9 @@ class ScreenBuilder {
             EditCounterScreen(counter: counter)
                 .environment(\.countersStore, countersStore)
                 .environment(\.screenBuilder, self)
+        case .settings:
+            SettingsScreen()
+                .environment(\.settingsStore, settingsStore)
         }
     }
     

@@ -27,7 +27,7 @@ struct RecordCell: View {
                     .foregroundStyle(.textInfo)
                     .padding([.vertical, .leading], 16)
                 
-                Text(!record.message.isEmpty ? record.message : Localized.RecordCell.emptyMessage)
+                Text(!record.message.isEmpty ? record.message : Localized.shared.recordCell.emptyMessage)
                     .font(.myFont(type: .regular, size: 15))
                     .lineSpacing(4)
                     .foregroundStyle(.textDark)

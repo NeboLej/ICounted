@@ -17,7 +17,7 @@ struct ShadowModifier: ViewModifier {
     let xOffset: CGFloat
     let yOffser: CGFloat
     
-    init(foregroundColor: UIColor = .red, shadowColor: UIColor = .black, cornerRadius: CGFloat = 10, borderColor: UIColor = .black, lineWidth: CGFloat = 2, xOffset: CGFloat = 3, yOffser: CGFloat = 4) {
+    init(foregroundColor: UIColor = .red, shadowColor: UIColor = .shadow, cornerRadius: CGFloat = 10, borderColor: UIColor = .shadow, lineWidth: CGFloat = 2, xOffset: CGFloat = 3, yOffser: CGFloat = 4) {
         self.foregroundColor = foregroundColor
         self.shadowColor = shadowColor
         self.cornerRadius = cornerRadius

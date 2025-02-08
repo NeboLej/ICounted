@@ -150,5 +150,5 @@ struct ICCalendarChart: View {
 //}
 //
 #Preview {
-    ScreenBuilder.shared.getScreen(screenType: .counter(Counter(name: "Counter", desc: "bla bla bla jsadk jjda kdjnak sjdkas ndkjasndk anskdj akjsdnaskj dnashb dhasdb jasdl asd;am lsdjk na", count: 123, lastRecord: Date(), colorHex: "04d4f4", isFavorite: true, targetCount: 500)))
+    ScreenBuilder.shared.getScreen(screenType: .counter(Counter(name: "Counter", desc: "bla bla bla jsadk jjda kdjnak sjdkas ndkjasndk anskdj akjsdnaskj dnashb dhasdb jasdl asd;am lsdjk na", count: 123, lastRecord: Date(), colorHex: "04d4f4", isFavorite: true, targetCount: 500, dateCreate: Date())))
 }

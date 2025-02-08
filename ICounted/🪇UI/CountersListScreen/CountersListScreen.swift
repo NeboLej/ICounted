@@ -13,10 +13,12 @@ struct CountersListScreen: View {
     @State private var selectedCounter: Counter? = nil
     @State private var longPressCounter: Counter? = nil
     @State private var isShowMessageInput = false
+    @State private var isShowSetting = false
     @State private var localStore = CounterListScreenStore()
     
     @Environment(\.countersStore) var countersStore: CountersStore
     @Environment(\.screenBuilder) var screenBuilder: ScreenBuilder
+    @Environment(\.settingsStore) var settingsStore: SettingStore
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
@@ -55,22 +57,37 @@ struct CountersListScreen: View {
         .sheet(isPresented: $isShowCreateCounter) {
             screenBuilder.getScreen(screenType: .createCounter)
         }
+        .sheet(isPresented: $isShowSetting, onDismiss: {
+            settingsStore.isReturnToSettings = false
+        }, content: {
+            screenBuilder.getScreen(screenType: .settings)
+        })
         .sheet(isPresented: .init(get: { selectedCounter != nil }, set: { _ in selectedCounter = nil }) , onDismiss: {
             selectedCounter = nil
         }, content: {
             screenBuilder.getScreen(screenType: .counter(selectedCounter!))
         })
+        .onAppear {
+            isShowSetting = settingsStore.isReturnToSettings
+            countersStore.sortType = settingsStore.sortType
+        }
+        .onChange(of: settingsStore.sortType) { oldValue, newValue in
+            countersStore.sortType = newValue
+        }
     }
     
     @ViewBuilder
     private func headerView() -> some View {
         HStack(spacing: 12) {
             counter()
-                .modifier(ShadowModifier(foregroundColor: .background1))
+                .modifier(ShadowModifier(foregroundColor: .countNumberBackground))
             allCount()
-                .modifier(ShadowModifier(foregroundColor: .background1))
+                .modifier(ShadowModifier(foregroundColor: .countNumberBackground))
             setting()
                 .modifier(ShadowModifier(foregroundColor: .background2))
+                .onTapGesture {
+                    isShowSetting = true
+                }
         }
     }
     
@@ -112,7 +129,7 @@ struct CountersListScreen: View {
     private func tooltipView() -> some View {
         ICTooltipView( alignment: .bottom, isVisible: $localStore.isShowTooltip) {
             VStack{
-                Text(Localized.CounterListScreen.tooltipLongpress)
+                Text(Localized.shared.counterListScreen.tooltipLongpress)
                     .font(.myFont(type: .regular, size: 18))
                     .lineSpacing(4)
                     .frame(width: 200)
@@ -123,7 +140,7 @@ struct CountersListScreen: View {
                     .modifier(ShadowModifier(foregroundColor: .black, cornerRadius: 20))
                     .frame(width: 100, height: 30)
                     .overlay {
-                        Text(Localized.Component.tooltipOkButton)
+                        Text(Localized.shared.component.tooltipOkButton)
                             .font(.myFont(type: .bold, size: 18))
                             .foregroundStyle(.textDark)
                             .padding(.horizontal, 5)
@@ -138,7 +155,7 @@ struct CountersListScreen: View {
     @ViewBuilder
     private func counter() -> some View {
         VStack {
-            Text(Localized.CounterListScreen.counterPanel)
+            Text(Localized.shared.counterListScreen.counterPanel)
                 .font(.myFont(type: .regular, size: 16))
                 .foregroundStyle(.textDark)
             Rectangle()
@@ -152,10 +169,10 @@ struct CountersListScreen: View {
     @ViewBuilder
     private func allCount() -> some View {
         VStack {
-            Text(Localized.CounterListScreen.countPanel)
+            Text(Localized.shared.counterListScreen.countPanel)
                 .font(.myFont(type: .regular, size: 16))
                 .foregroundStyle(.textDark)
-            Text(Localized.CounterListScreen.countPanelDesc)
+            Text(Localized.shared.counterListScreen.countPanelDesc)
                 .font(.myFont(type: .regular, size: 8))
                 .foregroundStyle(.textDark)
             Rectangle()
@@ -173,7 +190,7 @@ struct CountersListScreen: View {
             Image(systemName: "gearshape.fill")
                 .foregroundStyle(.blue)
                 .padding(.bottom, 3)
-            Text(Localized.CounterListScreen.settingPanel)
+            Text(Localized.shared.counterListScreen.settingPanel)
                 .font(.myFont(type: .regular, size: 16))
                 .foregroundStyle(.textDark)
         }

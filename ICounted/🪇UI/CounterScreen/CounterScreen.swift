@@ -12,6 +12,7 @@ struct CounterScreen: View {
     @Environment(\.countersStore) var countersStore: CountersStore
     @Environment(\.screenBuilder) var screenBuilder: ScreenBuilder
     @Environment(\.dismiss) var dismiss
+    @Environment(\.colorScheme) var colorScheme
     
     @State var counter: Counter
     
@@ -72,7 +73,7 @@ struct CounterScreen: View {
     private func isFavoriteView() -> some View  {
         HStack {
             Spacer()
-            Text(Localized.Counter.toWidget)
+            Text(Localized.shared.counter.toWidget)
                 .font(.myFont(type: .regular, size: 14))
                 .foregroundStyle(.textInfo)
             Image(localStore.isAddToWidget ? .starActive : .star)
@@ -86,7 +87,7 @@ struct CounterScreen: View {
                 Text(localStore.description)
                     .font(.myFont(type: .medium, size: 16))
                     .lineSpacing(4)
-                    .foregroundStyle(.textDark)
+                    .foregroundStyle(colorScheme == .light ? .textDark : .textLight)
             }
             Spacer()
         }
@@ -96,7 +97,7 @@ struct CounterScreen: View {
     private func counterProgressView() -> some View {
         HStack {
             VStack(alignment: .leading) {
-                Text(Localized.Counter.currentValue)
+                Text(Localized.shared.counter.currentValue)
                     .font(.myFont(type: .regular, size: 14))
                     .foregroundStyle(.textInfo)
                 CounterValueView(count: localStore.count, width: 20, height: 30)
@@ -106,7 +107,7 @@ struct CounterScreen: View {
             
             if localStore.isUseTargetValue {
                 VStack(alignment: .trailing) {
-                    Text(Localized.Counter.targetValue)
+                    Text(Localized.shared.counter.targetValue)
                         .font(.myFont(type: .regular, size: 14))
                         .foregroundStyle(.textInfo)
                     CounterValueView(count: localStore.targetCount, width: 20, height: 30)
@@ -126,9 +127,9 @@ struct CounterScreen: View {
             HStack {
                 Text(localStore.selectedDate?.toReadableDate() ?? "")
                     .font(.myFont(type: .regular, size: 16))
-                    .foregroundStyle(.textDark)
+                    .foregroundStyle(colorScheme == .light ? .textDark : .textLight)
                 Spacer()
-                Text(localStore.selectedDate != nil ? Localized.Counter.recordsCount(localStore.selectedRecords.count) : "")
+                Text(localStore.selectedDate != nil ? Localized.shared.counter.recordsCount(localStore.selectedRecords.count) : "")
                     .font(.myFont(type: .regular, size: 14))
                     .foregroundStyle(.textInfo)
             }
@@ -155,7 +156,7 @@ struct CounterScreen: View {
             .modifier(ShadowModifier(foregroundColor: .black, cornerRadius: 20))
             .frame(width: 180, height: 40)
             .overlay {
-                Text(Localized.Counter.addCountButton)
+                Text(Localized.shared.counter.addCountButton)
                     .font(.myFont(type: .bold, size: 18))
                     .foregroundStyle(.textDark)
             }
@@ -184,15 +185,15 @@ struct CounterScreen: View {
                 .onTapGesture { isShowMenu.toggle() }
             
             VStack(alignment: .leading, spacing: 10) {
-                Text(Localized.Counter.menuEdit)
+                Text(Localized.shared.counter.menuEdit)
                     .font(.myFont(type: .regular, size: 14))
-                    .foregroundStyle(.textDark)
+                    .foregroundStyle(colorScheme == .light ? .textDark : .textLight)
                     .onTapGesture {
                         isShowEditCounter = true
                     }
-                Text(Localized.Counter.menuDelete)
+                Text(Localized.shared.counter.menuDelete)
                     .font(.myFont(type: .regular, size: 14))
-                    .foregroundStyle(.textDark)
+                    .foregroundStyle(colorScheme == .light ? .textDark : .textLight)
                     .onTapGesture {
                         localStore.showAlertDeleteCounter {
                             countersStore.deleteCounter(counter: counter)
@@ -221,7 +222,7 @@ struct CounterScreen: View {
     private func tooltipView() -> some View {
         ICTooltipView( alignment: .top, isVisible: $localStore.isShowTooltip) {
             VStack{
-                Text(Localized.Counter.tooltipLongpress)
+                Text(Localized.shared.counter.tooltipLongpress)
                     .font(.myFont(type: .regular, size: 18))
                     .lineSpacing(4)
                     .frame(width: 200)
@@ -232,7 +233,7 @@ struct CounterScreen: View {
                     .modifier(ShadowModifier(foregroundColor: .black, cornerRadius: 20))
                     .frame(width: 100, height: 30)
                     .overlay {
-                        Text(Localized.Component.tooltipOkButton)
+                        Text(Localized.shared.component.tooltipOkButton)
                             .font(.myFont(type: .bold, size: 18))
                             .foregroundStyle(.textDark)
                             .padding(.horizontal, 5)
@@ -246,5 +247,5 @@ struct CounterScreen: View {
 }
 
 #Preview {
-    ScreenBuilder.shared.getScreen(screenType: .counter(Counter(name: "Counter", desc: "bla bla bla jsadk jjda kdjnak sjdkas ndkjasndk anskdj akjsdnaskj dnashb dhasdb jasdl asd;am lsdjk na", count: 133, lastRecord: Date(), colorHex: "04d4f4", isFavorite: true, targetCount: 500)))
+    ScreenBuilder.shared.getScreen(screenType: .counter(Counter(name: "Counter", desc: "bla bla bla jsadk jjda kdjnak sjdkas ndkjasndk anskdj akjsdnaskj dnashb dhasdb jasdl asd;am lsdjk na", count: 133, lastRecord: Date(), colorHex: "04d4f4", isFavorite: true, targetCount: 500, dateCreate: Date())))
 }
