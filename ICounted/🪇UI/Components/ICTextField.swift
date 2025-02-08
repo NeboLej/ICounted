@@ -46,7 +46,7 @@ struct ICTextField: View {
     @ViewBuilder
     private func textField() -> some View {
         ZStack(alignment: .top) {
-            TextField("", text: $text, prompt: Text(placeholder).foregroundStyle(.textInfo.opacity(0.5)), axis: .vertical)
+            TextField("", text: $text, prompt: Text(placeholder).foregroundStyle(.gray.opacity(0.7)), axis: .vertical)
                 .focused($focusState)
                 .submitLabel(.done)
                 .lineLimit(lineLimit)

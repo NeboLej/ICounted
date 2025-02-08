@@ -32,7 +32,7 @@ struct CounterValueView: View {
                     .foregroundStyle(.textDark)
                     .frame(width: width, height: height)
                     .padding(.top, 3)
-                    .background(Color.background1)
+                    .background(Color.countNumberBackground)
                     .overlay {
                         RoundedRectangle(cornerRadius: cornerRadius)
                             .stroke(lineWidth: 1)

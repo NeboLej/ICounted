@@ -10,6 +10,8 @@ import SwiftUI
 struct CounterCell: View {
     
     @Environment(\.countersStore) var countersStore: CountersStore
+    @Environment(\.colorScheme) var colorScheme
+    
     @State var counter: Counter
     
     var body: some View {
@@ -73,6 +75,8 @@ struct CounterCell: View {
                         .overlay {
                             Text(Localized.shared.counterCell.addCountButton)
                                 .font(.myFont(type: .regular, size: 14))
+                                .foregroundStyle(.textDark)
+                                .padding(.top, 2)
                         }
                         .onTapGesture {
                             countersStore.countPlus(counter: counter)
@@ -84,8 +88,9 @@ struct CounterCell: View {
             }
             .padding([.top, .horizontal], 16)
             .padding(.bottom, 12)
+            .background(Color(hex: counter.colorHex).opacity(colorScheme == .light ? 0.4 : 0.6))
         }
-        .background(Color(hex: counter.colorHex).opacity(0.2))
+        
         .modifier(ShadowModifier(foregroundColor: .background1, cornerRadius: 15))
         .onChange(of: countersStore.allCount) {
             guard let counter = countersStore.counterList.first(where: { $0.id == counter.id }) else { return }
@@ -126,8 +131,12 @@ struct CounterCell: View {
     }
 }
 
+//#Preview {
+////    ScreenBuilder.shared.getScreen(screenType: .counterList)
+//    ScreenBuilder.shared.getComponent(componentType: .counterCell(Counter(name: "wdsa", desc: "некий текст не маленького размера чтобы можно было все видеть", count: 11222, lastRecord: Date(), colorHex: "FDC356", isFavorite: true, targetCount: 200)))
+//        .frame(height: 200)
+//}
+
 #Preview {
-//    ScreenBuilder.shared.getScreen(screenType: .counterList)
-    ScreenBuilder.shared.getComponent(componentType: .counterCell(Counter(name: "wdsa", desc: "некий текст не маленького размера чтобы можно было все видеть", count: 11222, lastRecord: Date(), colorHex: "FDC356", isFavorite: true, targetCount: 200)))
-        .frame(height: 200)
+    ScreenBuilder.shared.getScreen(screenType: .counterList)
 }

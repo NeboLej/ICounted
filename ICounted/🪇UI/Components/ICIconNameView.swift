@@ -18,9 +18,10 @@ struct ICIconNameView: View {
                 .foregroundStyle(color)
             
             Text(getAbbreviation(maxCount: 3))
-                .foregroundStyle(.white)
+                .foregroundStyle(.textDark)
                 .font(.myFont(type: .bold, size: 16))
                 .rotationEffect(.degrees(-45))
+                .offset(x: 2, y: 2) //Font fix
             RoundedRectangle(cornerRadius: 15)
                 .stroke(lineWidth: 2)
                 .foregroundStyle(.black)
@@ -44,4 +45,5 @@ struct ICIconNameView: View {
 
 #Preview {
     ICIconNameView(name: "asd ds asd ff", color: .red)
+        .frame(width: 50, height: 50)
 }

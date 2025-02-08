@@ -22,7 +22,7 @@ struct ICNumberSetterView: View {
             ForEach(0..<string.count, id: \.self) { i in
                 VStack(spacing: 0, content: {
                     plusButton(position: i)
-                    number(numb: string[i], color: .background1)
+                    number(numb: string[i], color: .countNumberBackground)
                     minusButton(position: i)
                 })
             }
@@ -74,6 +74,7 @@ struct ICNumberSetterView: View {
     @ViewBuilder
     private func number(numb: String, color: Color, lineWidth: CGFloat = 1) -> some View {
         Text(numb)
+            .padding(.top, 3)
             .font(.myFont(type: .regular, size: 16))
             .foregroundStyle(.textDark)
             .frame(width: 26, height: 34)
@@ -136,7 +137,11 @@ struct ICNumberSetterView: View {
             }
     }
 }
-//
+
 //#Preview {
-//    CreateCounterScreen(isShow: .constant(true))
+//    ICNumberSetterView(number: .constant(372))
 //}
+
+#Preview {
+    ScreenBuilder.shared.getScreen(screenType: .createCounter)
+}

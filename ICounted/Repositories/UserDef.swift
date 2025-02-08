@@ -11,6 +11,7 @@ enum UserDefKeys: String {
     case isUserSawTooltipLongpressInCounterListScreen = "isUserSawTooltipLongpressInCounterListScreen"
     case isUserSawTooltipLongpressInCounterScreen = "isUserSawTooltipLongpressInCounterScreen"
     case userLacalize = "userLacalize"
+    case isDarkModeEnabled = "isDarkModeEnabled"
 }
 
 extension UserDefaults {

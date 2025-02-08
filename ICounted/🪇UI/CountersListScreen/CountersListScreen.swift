@@ -76,9 +76,9 @@ struct CountersListScreen: View {
     private func headerView() -> some View {
         HStack(spacing: 12) {
             counter()
-                .modifier(ShadowModifier(foregroundColor: .background1))
+                .modifier(ShadowModifier(foregroundColor: .countNumberBackground))
             allCount()
-                .modifier(ShadowModifier(foregroundColor: .background1))
+                .modifier(ShadowModifier(foregroundColor: .countNumberBackground))
             setting()
                 .modifier(ShadowModifier(foregroundColor: .background2))
                 .onTapGesture {

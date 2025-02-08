@@ -12,6 +12,7 @@ struct CounterScreen: View {
     @Environment(\.countersStore) var countersStore: CountersStore
     @Environment(\.screenBuilder) var screenBuilder: ScreenBuilder
     @Environment(\.dismiss) var dismiss
+    @Environment(\.colorScheme) var colorScheme
     
     @State var counter: Counter
     
@@ -86,7 +87,7 @@ struct CounterScreen: View {
                 Text(localStore.description)
                     .font(.myFont(type: .medium, size: 16))
                     .lineSpacing(4)
-                    .foregroundStyle(.textDark)
+                    .foregroundStyle(colorScheme == .light ? .textDark : .textLight)
             }
             Spacer()
         }
@@ -126,7 +127,7 @@ struct CounterScreen: View {
             HStack {
                 Text(localStore.selectedDate?.toReadableDate() ?? "")
                     .font(.myFont(type: .regular, size: 16))
-                    .foregroundStyle(.textDark)
+                    .foregroundStyle(colorScheme == .light ? .textDark : .textLight)
                 Spacer()
                 Text(localStore.selectedDate != nil ? Localized.shared.counter.recordsCount(localStore.selectedRecords.count) : "")
                     .font(.myFont(type: .regular, size: 14))
@@ -186,13 +187,13 @@ struct CounterScreen: View {
             VStack(alignment: .leading, spacing: 10) {
                 Text(Localized.shared.counter.menuEdit)
                     .font(.myFont(type: .regular, size: 14))
-                    .foregroundStyle(.textDark)
+                    .foregroundStyle(colorScheme == .light ? .textDark : .textLight)
                     .onTapGesture {
                         isShowEditCounter = true
                     }
                 Text(Localized.shared.counter.menuDelete)
                     .font(.myFont(type: .regular, size: 14))
-                    .foregroundStyle(.textDark)
+                    .foregroundStyle(colorScheme == .light ? .textDark : .textLight)
                     .onTapGesture {
                         localStore.showAlertDeleteCounter {
                             countersStore.deleteCounter(counter: counter)

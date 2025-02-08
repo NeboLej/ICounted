@@ -11,6 +11,8 @@ import WidgetKit
 @main
 struct ICountedApp: App {
     
+    @Environment(\.colorScheme) var colorScheme
+    
     private let container = sharedModelContainer
     private let countersStore: CountersStore
     private var screenBuilder: ScreenBuilder
@@ -37,6 +39,7 @@ struct ICountedApp: App {
         WindowGroup {
             screenBuilder.getScreen(screenType: .counterList)
                 .id(settingsStore.refreshID)
+                .preferredColorScheme(settingsStore.isDarkMode == nil ? settingsStore.getSystemTheme() : settingsStore.isDarkMode == true ? .dark : .light)
             
 //                .overlay {
 //                    if store.state.alert != nil {
