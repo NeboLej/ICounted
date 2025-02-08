@@ -85,6 +85,8 @@
 		8EBB73A92C3AB2D000A0A899 /* CountersListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB73A82C3AB2D000A0A899 /* CountersListScreen.swift */; };
 		8EBB73B52C3ABFE300A0A899 /* ShadowModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB73B42C3ABFE300A0A899 /* ShadowModifier.swift */; };
 		8EBB73BA2C3AD89900A0A899 /* CounterValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB73B92C3AD89900A0A899 /* CounterValueView.swift */; };
+		8ED152972D57A32E008BBB9C /* SettingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED152962D57A32E008BBB9C /* SettingStore.swift */; };
+		8ED152982D57A32E008BBB9C /* SettingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED152962D57A32E008BBB9C /* SettingStore.swift */; };
 		8EF9BEED2CFCB87A00C2E776 /* CountersStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF9BEEC2CFCB87A00C2E776 /* CountersStore.swift */; };
 		8EF9BEEF2CFCB91900C2E776 /* BaseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF9BEEE2CFCB91900C2E776 /* BaseStore.swift */; };
 		8EF9BEF22CFCBCC300C2E776 /* DBCounterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF9BEF12CFCBCC300C2E776 /* DBCounterRepository.swift */; };
@@ -175,6 +177,7 @@
 		8EBB73A82C3AB2D000A0A899 /* CountersListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountersListScreen.swift; sourceTree = "<group>"; };
 		8EBB73B42C3ABFE300A0A899 /* ShadowModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowModifier.swift; sourceTree = "<group>"; };
 		8EBB73B92C3AD89900A0A899 /* CounterValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterValueView.swift; sourceTree = "<group>"; };
+		8ED152962D57A32E008BBB9C /* SettingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingStore.swift; sourceTree = "<group>"; };
 		8EF9BEEC2CFCB87A00C2E776 /* CountersStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountersStore.swift; sourceTree = "<group>"; };
 		8EF9BEEE2CFCB91900C2E776 /* BaseStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStore.swift; sourceTree = "<group>"; };
 		8EF9BEF12CFCBCC300C2E776 /* DBCounterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBCounterRepository.swift; sourceTree = "<group>"; };
@@ -416,6 +419,7 @@
 			children = (
 				8EF9BEEC2CFCB87A00C2E776 /* CountersStore.swift */,
 				8EF9BEEE2CFCB91900C2E776 /* BaseStore.swift */,
+				8ED152962D57A32E008BBB9C /* SettingStore.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -575,6 +579,7 @@
 				8E736D822D45A52F005CB1A7 /* CountersStore.swift in Sources */,
 				8E891C5B2D52A5870094EEE4 /* Font.swift in Sources */,
 				8E891CC02D55245D0094EEE4 /* UserDef.swift in Sources */,
+				8ED152982D57A32E008BBB9C /* SettingStore.swift in Sources */,
 				8E736D7A2D457851005CB1A7 /* Counter.swift in Sources */,
 				8E736D802D45A50C005CB1A7 /* DBRepository.swift in Sources */,
 				8E736D842D45A552005CB1A7 /* Vibration.swift in Sources */,
@@ -615,6 +620,7 @@
 				8E891C0D2D514FE40094EEE4 /* EditCounterScreen.swift in Sources */,
 				8E891C1D2D5286D20094EEE4 /* LongPress.swift in Sources */,
 				8E520B842CBBE8B30076FB16 /* AlertType+.swift in Sources */,
+				8ED152972D57A32E008BBB9C /* SettingStore.swift in Sources */,
 				8E891CE92D553EA50094EEE4 /* SettingsScreen.swift in Sources */,
 				8E9E1BBB2CAF1875002B12E2 /* CreateCounterScreen.swift in Sources */,
 				8EB512982D47EB7800E1CFFA /* Localized.swift in Sources */,
@@ -663,7 +669,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 0.2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = Nebo.ICounter.ICounterWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -696,7 +702,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 0.2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = Nebo.ICounter.ICounterWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -856,7 +862,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 0.2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = Nebo.ICounter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -895,7 +901,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 0.2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = Nebo.ICounter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

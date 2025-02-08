@@ -82,8 +82,8 @@ class DBCounterRepository: DBRepositoryProtocol {
 
 class DBRepositoryMock: DBRepositoryProtocol {
     
-    var counters: [Counter] = [.init(name: "asdsd", desc: "asdasdsd", count: 123, lastRecord: nil, colorHex: "95D385", isFavorite: true, targetCount: nil),
-                              .init(name: "assssssOO", desc: "sdasdsddsdsdsd sdasd ", count: 10, lastRecord: Date(), colorHex: "F58F8F", isFavorite: false, targetCount: 100)]
+    var counters: [Counter] = [.init(name: "asdsd", desc: "asdasdsd", count: 123, lastRecord: nil, colorHex: "95D385", isFavorite: true, targetCount: nil, dateCreate: Date()),
+                              .init(name: "assssssOO", desc: "sdasdsddsdsdsd sdasd ", count: 10, lastRecord: Date(), colorHex: "F58F8F", isFavorite: false, targetCount: 100, dateCreate: Date())]
     
     
     func getAllCounters() -> [Counter] {

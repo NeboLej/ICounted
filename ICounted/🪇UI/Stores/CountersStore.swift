@@ -13,6 +13,12 @@ class CountersStore: BaseStore {
     @ObservationIgnored
     private let localRepository: DBRepositoryProtocol
     
+    var sortType: Settings.SortType = .dateCreate {
+        didSet {
+            updateAllCounters()
+        }
+    }
+    
     var counterList: [Counter] = []
     
     var allCount: Int {
@@ -32,7 +38,22 @@ class CountersStore: BaseStore {
     }
     
     func updateAllCounters() {
-        counterList = localRepository.getAllCounters()
+        let sortType: (Counter, Counter) -> Bool = { (lhs, rhs) -> Bool in
+            switch self.sortType {
+            case .dateCreate:
+                return lhs.dateCreate > rhs.dateCreate
+            case .dateRecord:
+                guard let lhsDate = lhs.records?.last?.date else { return false }
+                guard let rhsDate = rhs.records?.last?.date else { return true }
+                return lhsDate > rhsDate
+            case .name:
+                return lhs.name < rhs.name
+            case .recordCount:
+                return lhs.count > rhs.count
+            }
+        }
+        
+        counterList = localRepository.getAllCounters().sorted(by: sortType)//.sorted(by: { $0.name < $1.name } )
     }
     
     func countPlus(counter: Counter, message: String? = nil, date: Date? = nil) {

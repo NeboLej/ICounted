@@ -69,6 +69,10 @@ struct CountersListScreen: View {
         })
         .onAppear {
             isShowSetting = settingsStore.isReturnToSettings
+            countersStore.sortType = settingsStore.sortType
+        }
+        .onChange(of: settingsStore.sortType) { oldValue, newValue in
+            countersStore.sortType = newValue
         }
     }
     

@@ -121,5 +121,5 @@ struct EditCounterScreen: View {
 
 
 #Preview {
-    ScreenBuilder.shared.getScreen(screenType: .editCounter(Counter(name: "Counter2", desc: "bla bla bla jsadk jjda kdjnak sjdkas ndkjasndk anskdj akjsdnaskj dnashb dhasdb jasdl asd;am lsdjk na", count: 123, lastRecord: Date(), colorHex: "04d4f4", isFavorite: true, targetCount: 500)))
+    ScreenBuilder.shared.getScreen(screenType: .editCounter(Counter(name: "Counter2", desc: "bla bla bla jsadk jjda kdjnak sjdkas ndkjasndk anskdj akjsdnaskj dnashb dhasdb jasdl asd;am lsdjk na", count: 123, lastRecord: Date(), colorHex: "04d4f4", isFavorite: true, targetCount: 500, dateCreate: Date())))
 }

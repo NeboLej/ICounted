@@ -30,8 +30,7 @@ struct SettingsScreen: View {
                         settingsStore.restart()
                     }
                     
-                    
-                    Picker(Localized.shared.settings.darkMode, selection: $store.themeType) {
+                    Picker(Localized.shared.settings.themeInterface, selection: $store.themeType) {
                         ForEach(Settings.ThemeType.allCases, id: \.self) {
                             Text($0.getThemeName()).tag($0)
                         }
@@ -41,25 +40,28 @@ struct SettingsScreen: View {
                         settingsStore.changeTheme(newValue)
                     }
                     
-                    Picker("Сортировка счетчиков", selection: $store.sortType) {
+                    Picker(Localized.shared.settings.sortingCounters, selection: $store.sortType) {
                         ForEach(Settings.SortType.allCases, id: \.self) {
                             Text($0.getSortType()).tag($0)
                         }
                     }.padding(.vertical, 2)
+                    .onChange(of: store.sortType) { oldValue, newValue in
+                        settingsStore.changeSortType(newValue)
+                    }
+                    
                 }
                 
                 Section {
-                    
-                    
                     HStack {
-                        Text("Поддержать разработчика")
+                        Text(Localized.shared.settings.supportTheDeveloper)
                         Spacer()
                         Image(systemName: "star.fill")
                             .foregroundStyle(.red)
-                    }.padding(.vertical, 6)
+                    }
+                    .padding(.vertical, 8)
                     
                 }.listRowBackground(Color.indigo)
-                
+
                 Section {
                     
                     HStack {
@@ -72,7 +74,18 @@ struct SettingsScreen: View {
                         Spacer()
                         Text(store.appVersion ?? "-")
                     }.padding(.vertical, 4)
-                }//.listRowBackground(Color.background1)
+                }
+                
+                Section {
+                    HStack {
+                        Text(Localized.shared.settings.rateApp)
+                        Spacer()
+                        Image(systemName: "star.fill")
+                            .foregroundStyle(.yellow)
+                    }
+                    .padding(.vertical, 8)
+                    
+                }.listRowBackground(Color.red)
             }
         }
         //.scrollContentBackground(.hidden)
@@ -83,92 +96,4 @@ struct SettingsScreen: View {
 
 #Preview {
     ScreenBuilder.shared.getScreen(screenType: .settings)
-}
-
-
-import UIKit
-
-@Observable
-class SettingStore: BaseStore {
-    var isReturnToSettings: Bool = false
-    var local: LocalizationType = LocalizationManager.shared.getCurrentLocalization()
-    var sortType: Settings.SortType = .name
-    var isDarkMode: Bool? = UserDefaults.standard.get(case: .isDarkModeEnabled) as? Bool
-    let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-    
-    
-    var themeType: Settings.ThemeType
-    
-    var refreshID = UUID()
-    
-    override init() {
-        let isUseDarkMode = UserDefaults.standard.get(case: .isDarkModeEnabled) as? Bool
-        
-        themeType = if isUseDarkMode == nil {
-            .system
-        } else if isUseDarkMode == true {
-            .dark
-        } else {
-            .light
-        }
-        
-        super.init()
-    }
-    
-
-    func getSystemTheme() -> ColorScheme {
-        let systemColorScheme = UIScreen.main.traitCollection.userInterfaceStyle
-        return switch systemColorScheme {
-        case .dark: .dark
-        case .light: .light
-        default: .light
-        }
-    }
-    
-    func changeTheme(_ theme: Settings.ThemeType) {
-        let value: Bool? = switch theme {
-        case .dark: true
-        case .light: false
-        case .system: nil
-        }
-        UserDefaults.standard.set(value, case: .isDarkModeEnabled)
-        isDarkMode = value
-    }
-    
-    
-    func restart() {
-        isReturnToSettings = true
-        refreshID = UUID()
-    }
-}
-
-struct Settings {
-    
-    enum ThemeType: CaseIterable, Hashable {
-        case light
-        case dark
-        case system
-        
-        func getThemeName() -> String {
-            switch self {
-            case .light: "Светлая"
-            case .dark: "Темная"
-            case .system: "Как в системе"
-            }
-        }
-    }
-    
-    enum SortType: CaseIterable, Hashable {
-        case dateCreate
-        case name
-        case dateRecord
-        
-        func getSortType() -> String {
-            switch self {
-            case .dateCreate: "Дата создания"
-            case .name: "Название"
-            case .dateRecord: "Дата записи"
-            }
-        }
-    }
 }

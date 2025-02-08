@@ -23,6 +23,7 @@ class CreateCounterScreenStore {
                 count: startValue, lastRecord: Date(),
                 colorHex: color.toHex() ?? "",
                 isFavorite: isAddToWidget,
-                targetCount: isUseTargetValue ? targetCount : nil)
+                targetCount: isUseTargetValue ? targetCount : nil,
+                dateCreate: Date())
     }
 }

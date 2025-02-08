@@ -81,7 +81,7 @@ struct ICMessageRecordInput: View {
 }
 
 #Preview {
-    ScreenBuilder.shared.getComponent(componentType: .messageRecordInput(Counter(name: "asdsd", desc: "asd", count: 123, lastRecord: Date(), colorHex: "FFFAAA", isFavorite: false, targetCount: nil), .constant(true)))
+    ScreenBuilder.shared.getComponent(componentType: .messageRecordInput(Counter(name: "asdsd", desc: "asd", count: 123, lastRecord: Date(), colorHex: "FFFAAA", isFavorite: false, targetCount: nil, dateCreate: Date()), .constant(true)))
 }
 
 

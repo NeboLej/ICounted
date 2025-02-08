@@ -18,10 +18,11 @@ class Counter: Identifiable, Equatable, HasUUID, ObservableObject {
     var colorHex: String = "def"
     var isFavorite: Bool = false
     var targetCount: Int?
+    var dateCreate: Date = Date()
     
     @Relationship(deleteRule: .cascade, inverse: \CounterRecord.counter) var records: [CounterRecord]? = []
     
-    init(id: UUID = .init(), name: String, desc: String, count: Int, lastRecord: Date?, colorHex: String, isFavorite: Bool, targetCount: Int?) {
+    init(id: UUID = .init(), name: String, desc: String, count: Int, lastRecord: Date?, colorHex: String, isFavorite: Bool, targetCount: Int?, dateCreate: Date) {
         self.id = id
         self.name = name
         self.desc = desc
@@ -30,15 +31,17 @@ class Counter: Identifiable, Equatable, HasUUID, ObservableObject {
         self.colorHex = colorHex
         self.isFavorite = isFavorite
         self.targetCount = targetCount
+        self.dateCreate = dateCreate
     }
     
-    func copy(name: String? =  nil, desc: String? = nil, count: Int? = nil, colorHex: String? = nil, isFavorite: Bool? = nil, targetCount: Int? = nil) -> Counter {
+    func copy(name: String? =  nil, desc: String? = nil, count: Int? = nil, colorHex: String? = nil, isFavorite: Bool? = nil, targetCount: Int? = nil, dateCreate: Date? = nil) -> Counter {
         self.name = name ?? self.name
         self.desc = desc ?? self.desc
         self.count = count ?? self.count
         self.colorHex = colorHex ?? self.colorHex
         self.isFavorite = isFavorite ?? self.isFavorite
         self.targetCount = targetCount ?? self.targetCount
+        self.dateCreate = dateCreate ?? self.dateCreate
         return self
     }
     

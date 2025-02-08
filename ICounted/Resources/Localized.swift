@@ -175,7 +175,20 @@ struct Localized {
     struct Settings {
         let title = localize("settings_title")
         let language = localize("settings_language")
-        let darkMode = localize("settings_darkMode")
         let version = localize("setting_version")
+        
+        let themeInterface = localize("settings_themeInterface")
+        let darkMode = localize("settings_darkMode")
+        let lightMode = localize("settings_lightMode")
+        let systemMode = localize("settings_systemMode")
+        
+        let supportTheDeveloper = localize("settings_support_the_developer")
+        let rateApp = localize("settings_rate_app")
+        
+        let sortingCounters = localize("settings_sorting_counters")
+        let dateCreateSorting = localize("settings_date_create_sorting")
+        let dateRecordSorting = localize("settings_date_record_sorting")
+        let nameSorting = localize("settings_name_sorting")
+        let countRecordsSorting = localize("settings_count_records_sorting")
     }
 }
