@@ -51,6 +51,7 @@ struct ICMessageRecordInput: View {
                                     .foregroundStyle(.black)
                                 Text(Localized.shared.component.messageFormAddCountButton)
                                     .font(.myFont(type: .regular, size: 14))
+                                    .foregroundStyle(.textDark)
                             }
                             .onTapGesture {
                                 keyboardFocused = false
