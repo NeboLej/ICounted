@@ -17,7 +17,7 @@ struct CounterCell: View {
     var body: some View {
         ZStack {
             VStack {
-                HStack {
+                HStack(alignment: .top) {
                     ICIconNameView(name: counter.name, color: Color(hex: counter.colorHex))
                         .frame(width: 45, height: 45)
                     VStack(alignment: .leading) {
@@ -40,13 +40,15 @@ struct CounterCell: View {
                             }
                         Spacer()
                     }
-                }
+                }.padding(.top, 8)
                 
                 if counter.targetCount != nil {
                     progressBar()
                         .padding(.top, 16)
                         .padding(.bottom, 8)
                 }
+                
+                Spacer()
                 
                 HStack {
                     ZStack {

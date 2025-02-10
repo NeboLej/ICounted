@@ -73,6 +73,7 @@ struct CreateCounterScreen: View {
                 
             }
         }
+        .padding(.bottom, UIDevice.current.userInterfaceIdiom == .pad ? 16 : 0)
         .background(.background1)
 //        .modifier(AlertModifier(store: store))
         

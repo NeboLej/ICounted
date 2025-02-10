@@ -19,6 +19,7 @@ struct CountersListScreen: View {
     @Environment(\.countersStore) var countersStore: CountersStore
     @Environment(\.screenBuilder) var screenBuilder: ScreenBuilder
     @Environment(\.settingsStore) var settingsStore: SettingStore
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
@@ -38,7 +39,9 @@ struct CountersListScreen: View {
             
             createCounterButton()
                 .padding(.trailing, 16)
+                .padding(.bottom, UIDevice.current.userInterfaceIdiom == .pad ? 16 : 0)
         }
+        
         .overlay {
             if isShowMessageInput, longPressCounter != nil {
                 screenBuilder.getComponent(componentType: .messageRecordInput(longPressCounter!, $isShowMessageInput.animation()))
@@ -61,11 +64,13 @@ struct CountersListScreen: View {
             settingsStore.isReturnToSettings = false
         }, content: {
             screenBuilder.getScreen(screenType: .settings)
+                
         })
         .sheet(isPresented: .init(get: { selectedCounter != nil }, set: { _ in selectedCounter = nil }) , onDismiss: {
             selectedCounter = nil
         }, content: {
             screenBuilder.getScreen(screenType: .counter(selectedCounter!))
+//                .padding(.bottom, horizontalSizeClass ==  .compact ? 0 : 16)
         })
         .onAppear {
             isShowSetting = settingsStore.isReturnToSettings
@@ -103,18 +108,22 @@ struct CountersListScreen: View {
             }
     }
     
-    @ViewBuilder
+    
     private func counterList() -> some View {
-        ForEach(countersStore.counterList) { counter in
-            screenBuilder.getComponent(componentType: .counterCell(counter))
-                .modifier(TapAndLongPressModifier(isVibration: false, tapAction: {
-                    Vibration.light.vibrate()
-                    selectedCounter = counter
-                }, longPressAction: {
-                    longPressCounter = counter
-                    localStore.didUserSawTooltip()
-                    isShowMessageInput = true
-                }))
+        let columns: [GridItem] = Array(repeating: .init(.flexible(), spacing: 16), count: horizontalSizeClass == .compact ? 1 : 2)
+        
+        return LazyVGrid(columns: columns, spacing: 16) {
+            ForEach(countersStore.counterList) { counter in
+                screenBuilder.getComponent(componentType: .counterCell(counter))
+                    .modifier(TapAndLongPressModifier(isVibration: false, tapAction: {
+                        Vibration.light.vibrate()
+                        selectedCounter = counter
+                    }, longPressAction: {
+                        longPressCounter = counter
+                        localStore.didUserSawTooltip()
+                        isShowMessageInput = true
+                    }))
+            }
         }
     }
     
