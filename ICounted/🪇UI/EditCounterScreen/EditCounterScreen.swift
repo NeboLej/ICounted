@@ -65,6 +65,7 @@ struct EditCounterScreen: View {
                 
             }
         }
+        .padding(.bottom, UIDevice.current.userInterfaceIdiom == .pad ? 16 : 0)
         .background(.background1)
         .onAppear {
             localStore.bindCounter(counter: counter)

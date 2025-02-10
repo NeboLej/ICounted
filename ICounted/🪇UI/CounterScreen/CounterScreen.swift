@@ -20,9 +20,10 @@ struct CounterScreen: View {
     @State private var isShowMessageInput: Bool = false
     @State private var isShowMenu: Bool = false
     @State private var isShowEditCounter = false
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
     var body: some View {
-        VStack(spacing: 16) {
+        VStack {
             ICHeaderView(name: localStore.name, color: localStore.color)
             
             ScrollView(.vertical) {
@@ -36,7 +37,7 @@ struct CounterScreen: View {
                 }.padding(.horizontal, 16)
             }
             
-            HStack {
+            HStack(alignment: .center) {
                 menu()
                 Spacer()
                 countButton()
@@ -44,8 +45,11 @@ struct CounterScreen: View {
                         tooltipView()
                             .offset(x: -16)
                     }
-            }.padding(.horizontal, 16)
+            }
+            .padding(.horizontal, 16)
+            
         }
+        .padding(.bottom, UIDevice.current.userInterfaceIdiom == .pad ? 16 : 0)
         .background(.background1)
         .overlay {
             if isShowMessageInput {
