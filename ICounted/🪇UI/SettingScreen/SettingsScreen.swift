@@ -62,7 +62,11 @@ struct SettingsScreen: View {
                     }
                     .padding(.vertical, 8)
                     
-                }.listRowBackground(Color.indigo)
+                }
+                .listRowBackground(Color.indigo)
+                .onTapGesture {
+                    localStore.openDonation()
+                }
                 
                 Section {
                     HStack {
@@ -90,13 +94,17 @@ struct SettingsScreen: View {
                             .foregroundStyle(.yellow)
                     }
                     .padding(.vertical, 8)
-                    
-                }.listRowBackground(Color.red)
+                }
+                .listRowBackground(Color.red)
+                .onTapGesture {
+                    localStore.openAppStore()
+                }
             }
         }
         //.scrollContentBackground(.hidden)
         //.background(.background2)
         .preferredColorScheme(settingsStore.isDarkMode == nil ? settingsStore.getSystemTheme() : settingsStore.isDarkMode == true ? .dark : .light)
+        .modifier(AlertModifier(alert: localStore.alert))
     }
 }
 

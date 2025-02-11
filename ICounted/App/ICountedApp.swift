@@ -7,10 +7,13 @@
 
 import SwiftUI
 import WidgetKit
+import Combine
+import SwiftData
 
 @main
 struct ICountedApp: App {
     
+    @Query(sort: \Counter.name, order: .forward) private var counters: [Counter]
     @Environment(\.colorScheme) var colorScheme
     
     private let container = sharedModelContainer
@@ -20,12 +23,7 @@ struct ICountedApp: App {
     
     @Environment(\.scenePhase) private var scenePhase
     
-    
     init() {
-        
-//        let schema = Schema([Counter.self, CounterRecord.self])
-//        let config = ModelConfiguration(schema: schema, cloudKitDatabase: .automatic)
-//        container = try! ModelContainer(for: schema, configurations: config)
         
         let dataBase: DBRepository = DBRepository(context: container.mainContext)
         let localRepository: DBRepositoryProtocol = DBCounterRepository(swiftDataDB: dataBase)
@@ -35,17 +33,27 @@ struct ICountedApp: App {
         screenBuilder = ScreenBuilder(countersStore: countersStore, settingsStore: settingsStore)
     }
     
+
+    
     var body: some Scene {
         WindowGroup {
             screenBuilder.getScreen(screenType: .counterList)
                 .id(settingsStore.refreshID)
                 .preferredColorScheme(settingsStore.isDarkMode == nil ? settingsStore.getSystemTheme() : settingsStore.isDarkMode == true ? .dark : .light)
-            
+                .onAppear {
+                    NotificationCenter.default.addObserver(forName: .NSPersistentStoreRemoteChange, object: nil, queue: .main) { _ in
+                        countersStore.updateAllCounters()
+                    }
+                }
+
 //                .overlay {
 //                    if store.state.alert != nil {
 //                        AlertView(model: store.state.alert!, store: store)
 //                    }
 //                }
+        }
+        .onChange(of: counters) { oldValue, newValue in
+            countersStore.updateAllCounters()
         }
         .onChange(of: scenePhase) {
             switch scenePhase {

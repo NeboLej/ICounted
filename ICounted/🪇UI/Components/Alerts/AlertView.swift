@@ -34,6 +34,7 @@ struct AlertView: View {
                 
                 Text(model.message)
                     .font(.myFont(type: .regular, size: 14))
+                    .lineSpacing(4)
                     .foregroundStyle(.textInfo)
                     .padding(16)
                 

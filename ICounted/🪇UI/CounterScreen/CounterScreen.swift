@@ -191,6 +191,7 @@ struct CounterScreen: View {
             VStack(alignment: .leading, spacing: 10) {
                 Text(Localized.shared.counter.menuEdit)
                     .font(.myFont(type: .regular, size: 14))
+                    .padding(.bottom, 6)
                     .foregroundStyle(colorScheme == .light ? .textDark : .textLight)
                     .onTapGesture {
                         isShowEditCounter = true

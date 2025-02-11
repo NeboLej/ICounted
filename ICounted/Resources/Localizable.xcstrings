@@ -1121,13 +1121,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No favorite counters\\nAdd counter to widget in ICounter app"
+            "value" : "No favorite counters\\nAdd counter to widget in app"
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Нет избранных счетчиков\\nДобавьте счетчик в виджет в приложении ICounter"
+            "state" : "needs_review",
+            "value" : "Нет избранных счетчиков\\nДобавьте счетчик в виджет в приложении"
           }
         }
       }
