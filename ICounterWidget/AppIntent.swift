@@ -19,10 +19,11 @@ struct PlusCountIntent: AppIntent {
     }
     init() { } //req
     
+    @MainActor
     func perform() async throws -> some IntentResult {
         guard let uuid = UUID(uuidString: counterId) else { return .result() }
-        let counterWidgetManager = await CounterWidgetManager()
-        await counterWidgetManager.countPlus(counterID: uuid)
+        let counterWidgetManager = CounterWidgetManager()
+        counterWidgetManager.countPlus(counterID: uuid)
         return .result()
     }
 }
@@ -31,6 +32,7 @@ struct PlusCountIntent: AppIntent {
 struct CounterWidgetManager {
     private let modelContainer = sharedModelContainer
     private let localRepository: DBCounterRepository
+    let context = sharedModelContainer.mainContext
     
     init() {
         let dataBase: DBRepository = DBRepository(context: modelContainer.mainContext)
@@ -39,7 +41,11 @@ struct CounterWidgetManager {
     
     func countPlus(counterID: UUID, message: String? = nil) {
         Vibration.light.vibrate()
-        guard let counter = localRepository.getCounter(id: counterID) else { return }
+        
+        let counters = (try? context.fetch(FetchDescriptor<Counter>())) ?? []
+        guard let counter = counters.first(where: { $0.id == counterID }) else { return }
+        
+//        guard let counter = localRepository.getCounter(id: counterID) else { return }
         localRepository.plusCount(counter: counter, message: message)
         try? modelContainer.mainContext.save()
     }
