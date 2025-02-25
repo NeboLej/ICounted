@@ -1,0 +1,155 @@
+{
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [
+      {
+        "locale" : "en_US",
+        "policyText" : "",
+        "policyURL" : ""
+      }
+    ]
+  },
+  "identifier" : "08CE222C",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6741775676",
+    "_developerTeamID" : "955DP87LHM",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 762099086.20237505,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "21637447",
+      "localizations" : [
+
+      ],
+      "name" : "Donation",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "0.99",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "6742144419",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Developer support",
+              "displayName" : "Base respect",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "Поддержка разработчика",
+              "displayName" : "Базовый респект",
+              "locale" : "ru"
+            }
+          ],
+          "productID" : "Base",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Base",
+          "subscriptionGroupID" : "21637447",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "9.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6742144096",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Поддержка разработчика",
+              "displayName" : "Максимальный респект",
+              "locale" : "ru"
+            },
+            {
+              "description" : "Developer support",
+              "displayName" : "Maximum respect",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "Maximum",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Maximum",
+          "subscriptionGroupID" : "21637447",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

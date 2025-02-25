@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import StoreKit
 
 struct SettingsScreen: View {
     
@@ -16,6 +17,9 @@ struct SettingsScreen: View {
     
     var body: some View {
         @Bindable var store = settingsStore
+        NavigationStack {
+            
+        
         VStack(spacing: 0) {
             ICHeaderView(name: Localized.shared.settings.title, color: .background2)
             
@@ -53,20 +57,20 @@ struct SettingsScreen: View {
                     
                 }
                 
-                Section {
-                    HStack {
-                        Text(Localized.shared.settings.supportTheDeveloper)
-                        Spacer()
-                        Image(systemName: "star.fill")
-                            .foregroundStyle(.red)
-                    }
-                    .padding(.vertical, 8)
-                    
-                }
-                .listRowBackground(Color.indigo)
-                .onTapGesture {
-                    localStore.openDonation()
-                }
+//                
+//                Section {
+//                    NavigationLink(destination: SubscriptionStoreView(groupID: "21637447", visibleRelationships: .all)) {
+//                        HStack {
+//                            Text(Localized.shared.settings.supportTheDeveloper)
+//                            Spacer()
+//                            Image(systemName: "star.fill")
+//                                .foregroundStyle(.red)
+//                        }
+//                        .padding(.vertical, 8)
+//                    }
+//                }
+//                .listRowBackground(Color.indigo)
+//                
                 
                 Section {
                     HStack {
@@ -100,11 +104,19 @@ struct SettingsScreen: View {
                     localStore.openAppStore()
                 }
             }
+            }
         }
         //.scrollContentBackground(.hidden)
         //.background(.background2)
         .preferredColorScheme(settingsStore.isDarkMode == nil ? settingsStore.getSystemTheme() : settingsStore.isDarkMode == true ? .dark : .light)
         .modifier(AlertModifier(alert: localStore.alert))
+        .task {
+            do {
+                try await localStore.loadProducts()
+            } catch {
+                print(error)
+            }
+        }
     }
 }
 

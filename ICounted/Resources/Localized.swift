@@ -45,6 +45,13 @@ class LocalizationManager {
         }
     }
     
+    func getCurrentLocal() -> Locale {
+        switch getCurrentLocalization() {
+        case .english: Locale(identifier: "en_EN")
+        case .russian: Locale(identifier: "ru_RU")
+        }
+    }
+    
     init() {
         if !LocalizationType.allCases.map({ $0.getLanguageChortCode() }).contains(currentLicalization) {
             currentLicalization = "en"

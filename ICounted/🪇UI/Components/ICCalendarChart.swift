@@ -16,12 +16,24 @@ struct DateModel: Identifiable {
 struct ICCalendarChart: View {
     
     private let columns = Array(repeating: GridItem(.flexible(minimum: 19, maximum: 20)), count: 7)
-    private let days = Calendar.current.shortWeekdaySymbols
+    private var calendar: Calendar
+    private let days: [String]
     
     @Binding var recordsDate: [Date]
     @Binding var selectedDate: Date?
     @State private var maxRecordsInDayCount: Int = 0
     @Binding var color: Color
+    
+    init(recordsDate: Binding<[Date]>, selectedDate: Binding<Date?>, color: Binding<Color>) {
+        calendar = Calendar(identifier: .gregorian)
+        calendar.locale = LocalizationManager.shared.getCurrentLocal()
+        
+        days = calendar.shortWeekdaySymbols
+        
+        _recordsDate = recordsDate
+        _selectedDate = selectedDate
+        _color = color
+    }
     
     var body: some View {
         HStack(alignment: .center, spacing: 4) {
@@ -53,7 +65,7 @@ struct ICCalendarChart: View {
     @ViewBuilder
     private func monthView(month: Date) -> some View {
         VStack(alignment: .leading, spacing: 2) {
-            Text(month.monthNameShort())
+            Text(month.monthNameShort(locale: calendar.locale!))
                 .font(.myFont(type: .medium, size: 18))
                 .foregroundStyle(.textInfo)
             LazyHGrid(rows: columns, alignment: .center, spacing: 2, pinnedViews: .sectionHeaders) {
@@ -109,7 +121,7 @@ struct ICCalendarChart: View {
 
     private func updateMaxRecordsInDayCount() {
         let days = Dictionary(grouping: recordsDate) { date in
-            Calendar.current.dateComponents([.day, .month], from: date)
+            calendar.dateComponents([.day, .month], from: date)
         }
         
         maxRecordsInDayCount = days.values.max(by: { $0.count < $1.count })?.count ?? 0
@@ -118,16 +130,14 @@ struct ICCalendarChart: View {
     private func getMonths(dates: [Date]) -> [Date] {
         var monthsSet = Set<DateComponents>()
         dates.forEach {
-            let date = Calendar.current.dateComponents([.month, .year], from: $0)
+            let date = calendar.dateComponents([.month, .year], from: $0)
             monthsSet.insert(date)
         }
-        let months = monthsSet.compactMap { Calendar.current.date(from: $0) }.sorted(by: { $0 < $1 })
+        let months = monthsSet.compactMap { calendar.date(from: $0) }.sorted(by: { $0 < $1 })
         return months.isEmpty ? [Date()] : months
     }
     
     private func extractDate(month: Date) -> [DateModel] {
-        let calendar = Calendar.current
-        
         var days = month.getAllDatesForMonth().compactMap {
             return DateModel(day: calendar.component(.day, from: $0), date: $0)
         }

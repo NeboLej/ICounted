@@ -73,8 +73,9 @@ extension Date {
         return range.compactMap { calendar.date(byAdding: .day, value: $0 - 1, to: startDate)! }
     }
     
-    func monthNameShort() -> String {
+    func monthNameShort(locale: Locale = .autoupdatingCurrent) -> String {
         let formatter = DateFormatter()
+        formatter.locale = locale
         formatter.dateFormat = "LLL"
         return formatter.string(from: self)
     }

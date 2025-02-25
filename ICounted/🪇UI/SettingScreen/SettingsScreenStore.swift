@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import StoreKit
 
 @Observable
 class SettingsScreenStore {
     
     var alert: AlertModel?
+    var products: [Product] = []
     
     func openSendProblemScreen() {
         openMail(emailTo: "antrabot@gmail.com", subject: Localized.shared.settings.sendFeedbackEmailTheme, body: "")
@@ -36,5 +38,10 @@ class SettingsScreenStore {
     
     func openDonation() {
         alert = AlertModel(type: .success, title: "Похвалить", message: "Можешь написать разрабу что понравилось, предложить свою идею. Думаю, ему будет приятно.", actions: [.init(name: "ок", completion: { [weak self] in self?.alert = nil } )])
+    }
+    
+    func loadProducts() async throws {
+        let productIds = ["Maximum", "Base"]
+        self.products = try await Product.products(for: productIds)
     }
 }
