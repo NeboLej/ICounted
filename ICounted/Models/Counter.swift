@@ -20,9 +20,9 @@ class Counter: Identifiable, Equatable, HasUUID, ObservableObject {
     var targetCount: Int?
     var dateCreate: Date = Date()
     
-    @Relationship(deleteRule: .cascade, inverse: \CounterRecord.counter) var records: [CounterRecord]? = []
+    @Relationship(deleteRule: .cascade, inverse: \CounterRecord.counter) var records: [CounterRecord]?
     
-    init(id: UUID = .init(), name: String, desc: String, count: Int, lastRecord: Date?, colorHex: String, isFavorite: Bool, targetCount: Int?, dateCreate: Date) {
+    init(id: UUID = .init(), name: String = "def", desc: String = "def", count: Int = 0, lastRecord: Date? = nil, colorHex: String = "FFFFFF", isFavorite: Bool = true, targetCount: Int? = nil, dateCreate: Date = Date()) {
         self.id = id
         self.name = name
         self.desc = desc
@@ -32,6 +32,7 @@ class Counter: Identifiable, Equatable, HasUUID, ObservableObject {
         self.isFavorite = isFavorite
         self.targetCount = targetCount
         self.dateCreate = dateCreate
+        self.records = []
     }
     
     func copy(name: String? =  nil, desc: String? = nil, count: Int? = nil, colorHex: String? = nil, isFavorite: Bool? = nil, targetCount: Int? = nil, dateCreate: Date? = nil) -> Counter {

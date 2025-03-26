@@ -56,7 +56,7 @@ struct RecordCell: View {
 }
 
 #Preview {
-    RecordCell(record: CounterRecord(date: Date(), message: "некий текст на русском чтобы проверять и видить всякие изъяны", counter: nil), color: .red) { _ in
+    RecordCell(record: CounterRecord(date: Date(), message: "некий текст на русском чтобы проверять и видить всякие изъяны", counter: .init()), color: .red) { _ in
         
     }
 }

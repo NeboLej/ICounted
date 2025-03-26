@@ -142,7 +142,7 @@ struct CounterScreen: View {
             ForEach(localStore.selectedRecords) { record in
                 RecordCell(record: record, color: localStore.color) { onDeleteRecord in
                     localStore.showAlertDeleteRecord {
-                        countersStore.deleteRecord(record: onDeleteRecord)
+                        countersStore.deleteRecord(record: onDeleteRecord, counter: counter)
                         localStore.alert = nil
                     } negativeAction: {
                         localStore.alert = nil

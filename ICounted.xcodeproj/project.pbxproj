@@ -87,8 +87,6 @@
 		8EBB73A92C3AB2D000A0A899 /* CountersListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB73A82C3AB2D000A0A899 /* CountersListScreen.swift */; };
 		8EBB73B52C3ABFE300A0A899 /* ShadowModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB73B42C3ABFE300A0A899 /* ShadowModifier.swift */; };
 		8EBB73BA2C3AD89900A0A899 /* CounterValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB73B92C3AD89900A0A899 /* CounterValueView.swift */; };
-		8ECE62DE2D6CB4FA00176F3B /* I Counted.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 8ECE62DD2D6CB4FA00176F3B /* I Counted.storekit */; };
-		8ECE62DF2D6CB4FA00176F3B /* I Counted.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 8ECE62DD2D6CB4FA00176F3B /* I Counted.storekit */; };
 		8ED152972D57A32E008BBB9C /* SettingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED152962D57A32E008BBB9C /* SettingStore.swift */; };
 		8ED152982D57A32E008BBB9C /* SettingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED152962D57A32E008BBB9C /* SettingStore.swift */; };
 		8ED1529A2D57B6D9008BBB9C /* SettingsScreenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED152992D57B6D9008BBB9C /* SettingsScreenStore.swift */; };
@@ -190,7 +188,6 @@
 		8EBB73A82C3AB2D000A0A899 /* CountersListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountersListScreen.swift; sourceTree = "<group>"; };
 		8EBB73B42C3ABFE300A0A899 /* ShadowModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowModifier.swift; sourceTree = "<group>"; };
 		8EBB73B92C3AD89900A0A899 /* CounterValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterValueView.swift; sourceTree = "<group>"; };
-		8ECE62DD2D6CB4FA00176F3B /* I Counted.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "I Counted.storekit"; sourceTree = "<group>"; };
 		8ED152962D57A32E008BBB9C /* SettingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingStore.swift; sourceTree = "<group>"; };
 		8ED152992D57B6D9008BBB9C /* SettingsScreenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenStore.swift; sourceTree = "<group>"; };
 		8EF9BEEC2CFCB87A00C2E776 /* CountersStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountersStore.swift; sourceTree = "<group>"; };
@@ -359,7 +356,6 @@
 				8EBB73A52C3AB23D00A0A899 /* 🪇UI */,
 				8E23F4232CD031840018185D /* App */,
 				8EBB73B72C3AD4FA00A0A899 /* Resources */,
-				8ECE62DD2D6CB4FA00176F3B /* I Counted.storekit */,
 			);
 			path = ICounted;
 			sourceTree = "<group>";
@@ -554,7 +550,6 @@
 				8EB512952D47E89F00E1CFFA /* Localizable.xcstrings in Resources */,
 				8E736D7D2D457D5F005CB1A7 /* Colors.xcassets in Resources */,
 				8E891C512D52A4EA0094EEE4 /* ACARISANS-LIGHT.TTF in Resources */,
-				8ECE62DF2D6CB4FA00176F3B /* I Counted.storekit in Resources */,
 				8E891C522D52A4EA0094EEE4 /* ACARISANS-SEMIBOLD.TTF in Resources */,
 				8E891C532D52A4EA0094EEE4 /* ACARISANS-MEDIUM.TTF in Resources */,
 				8E891C542D52A4EA0094EEE4 /* ACARISANS-BOLD.TTF in Resources */,
@@ -572,7 +567,6 @@
 				8EBB739F2C3AB14F00A0A899 /* Preview Assets.xcassets in Resources */,
 				8EB512942D47E89F00E1CFFA /* Localizable.xcstrings in Resources */,
 				8EBB739C2C3AB14F00A0A899 /* Images.xcassets in Resources */,
-				8ECE62DE2D6CB4FA00176F3B /* I Counted.storekit in Resources */,
 				8E891C4A2D52A4EA0094EEE4 /* ACARISANS-LIGHT.TTF in Resources */,
 				8E891C4B2D52A4EA0094EEE4 /* ACARISANS-SEMIBOLD.TTF in Resources */,
 				8E891C4C2D52A4EA0094EEE4 /* ACARISANS-MEDIUM.TTF in Resources */,
@@ -686,7 +680,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = ICounterWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 955DP87LHM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ICounterWidget/Info.plist;
@@ -698,7 +692,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = nebo.icounter.app.ICounterWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -719,7 +713,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = ICounterWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 955DP87LHM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ICounterWidget/Info.plist;
@@ -731,7 +725,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = nebo.icounter.app.ICounterWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -873,7 +867,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ICounted/ICounted.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 955DP87LHM;
 				ENABLE_PREVIEWS = YES;
@@ -891,7 +885,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = nebo.icounter.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = NO;
@@ -913,7 +907,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ICounted/ICounted.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 955DP87LHM;
 				ENABLE_PREVIEWS = YES;
@@ -931,7 +925,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = nebo.icounter.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = NO;

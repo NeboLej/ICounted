@@ -13,13 +13,13 @@ protocol DBRepositoryProtocol {
     func plusCount(counter: Counter, message: String?, date: Date?)
     func favoriteToggle(counter: Counter)
     func deleteCounter(counter: Counter)
-    func deleteRecord(record: CounterRecord)
+    func deleteRecord(record: CounterRecord, counter: Counter)
 }
 
 class DBCounterRepository: DBRepositoryProtocol {
-
+    
     private let swiftDataDB: DBRepository
-
+    
     init(swiftDataDB: DBRepository) {
         self.swiftDataDB = swiftDataDB
     }
@@ -67,12 +67,10 @@ class DBCounterRepository: DBRepositoryProtocol {
         }
     }
     
-    func deleteRecord(record: CounterRecord) {
+    func deleteRecord(record: CounterRecord, counter: Counter) {
         do {
             try swiftDataDB.delete(model: record)
-            if let counter = record.counter {
-                counter.modify(count: counter.count - 1)
-            }
+            counter.modify(count: counter.count - 1)
         } catch {
             print("Ошибка удаления записи: \(error)")
         }
@@ -83,7 +81,7 @@ class DBCounterRepository: DBRepositoryProtocol {
 class DBRepositoryMock: DBRepositoryProtocol {
     
     var counters: [Counter] = [.init(name: "asdsd", desc: "asdasdsd", count: 123, lastRecord: nil, colorHex: "95D385", isFavorite: true, targetCount: nil, dateCreate: Date()),
-                              .init(name: "assssssOO", desc: "sdasdsddsdsdsd sdasd ", count: 10, lastRecord: Date(), colorHex: "F58F8F", isFavorite: false, targetCount: 100, dateCreate: Date())]
+                               .init(name: "assssssOO", desc: "sdasdsddsdsdsd sdasd ", count: 10, lastRecord: Date(), colorHex: "F58F8F", isFavorite: false, targetCount: 100, dateCreate: Date())]
     
     
     func getAllCounters() -> [Counter] {
@@ -106,7 +104,7 @@ class DBRepositoryMock: DBRepositoryProtocol {
         counters.removeAll(where: { $0.id == counter.id })
     }
     
-    func deleteRecord(record: CounterRecord) {
+    func deleteRecord(record: CounterRecord, counter: Counter) {
         counters.forEach { counter in
             counter.records?.removeAll(where: { $0.id == record.id })
         }

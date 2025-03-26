@@ -70,8 +70,8 @@ class CountersStore: BaseStore {
         updateAllCounters()
     }
     
-    func deleteRecord(record: CounterRecord) {
-        localRepository.deleteRecord(record: record)
+    func deleteRecord(record: CounterRecord, counter: Counter) {
+        localRepository.deleteRecord(record: record, counter: counter)
         updateAllCounters()
     }
 }

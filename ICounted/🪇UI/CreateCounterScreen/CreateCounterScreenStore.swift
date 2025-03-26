@@ -12,7 +12,7 @@ class CreateCounterScreenStore {
     
     var name: String = ""
     var description: String = ""
-    var color: Color = .blue
+    var color: Color = Color(hex: "FF4497")
     var startValue: Int = 0
     var isUseTargetValue = false
     var targetCount: Int = 100
